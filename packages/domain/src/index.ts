@@ -6,3 +6,19 @@ export type {
   AppRole,
   SubscriptionState,
 } from './access/types';
+export {
+  assertHierarchyIntegrity,
+  canTransitionContent,
+  transitionContent,
+} from './content/publishing';
+export { ACCESS_LEVELS, CONTENT_STATUSES } from './content/types';
+export type {
+  AccessLevel,
+  CatalogEntity,
+  ContentStatus,
+  Cycle,
+  Discipline,
+  HierarchyIntegrityInput,
+  Lesson,
+  Module,
+} from './content/types';
