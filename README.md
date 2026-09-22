@@ -25,4 +25,4 @@ Projeto em planejamento aprovado e início de implementação.
 
 ## Organização da execução
 
-A plataforma principal será implementada em blocos completos pelo GPT-5.6. O pipeline de ativos e o visualizador do Atlas 3D serão desenvolvidos como subprojeto especializado no Codex. As decisões de produto e os contratos entre módulos permanecem centralizados na especificação.
+A plataforma principal será implementada em blocos completos. O pipeline de ativos e o visualizador do Atlas 3D permanecem como subprojeto especializado, integrados por contratos tipados.

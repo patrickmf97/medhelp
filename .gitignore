@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.turbo/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.local
+.env.*.local
+.worktrees/
+*.tsbuildinfo
+medhelp-repo/
+medhelp-design/
+project_sources/
+.codex/
+*.jpg

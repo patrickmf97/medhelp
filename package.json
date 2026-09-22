@@ -1,0 +1,21 @@
+{
+  "name": "medhelp",
+  "private": true,
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "test:e2e": "pnpm --filter @medhelp/web test:e2e",
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "supabase": "2.117.0",
+    "turbo": "2.11.2",
+    "typescript": "6.0.3"
+  }
+}
