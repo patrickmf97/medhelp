@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Logo } from './logo';
 
 const links = [
-  ['Recursos', '#recursos'],
-  ['Atlas 3D', '#atlas'],
-  ['Disciplinas', '#disciplinas'],
-  ['Biblioteca', '#biblioteca'],
-  ['Preço', '#preco'],
-  ['FAQ', '#faq'],
+  ['Recursos', '/#recursos'],
+  ['Atlas 3D', '/#atlas'],
+  ['Disciplinas', '/#disciplinas'],
+  ['Biblioteca', '/#biblioteca'],
+  ['Preço', '/#preco'],
+  ['FAQ', '/#faq'],
 ] as const;
 
 export function Header() {
