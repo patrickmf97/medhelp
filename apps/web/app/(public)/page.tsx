@@ -6,5 +6,5 @@ import { Pricing } from '@/components/public/pricing';
 import { StudyJourney } from '@/components/public/study-journey';
 
 export default function HomePage() {
-  return <><Hero /><Features /><AtlasDemo /><StudyJourney /><Pricing /><Faq /></>;
+  return <div className="public-home"><Hero /><Features /><AtlasDemo /><StudyJourney /><Pricing /><Faq /></div>;
 }
