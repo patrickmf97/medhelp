@@ -1,3 +1,1 @@
-export default function HomePage() {
-  return <main>MEDHELP</main>;
-}
+export { default } from './(public)/page';
