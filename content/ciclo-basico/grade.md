@@ -1,8 +1,8 @@
 # Grade editorial · Ciclo básico MEDHELP
 
-**12 disciplinas · 72 módulos planejados · versão 0.1 · 24/09/2026**
+**12 disciplinas · 72 módulos com introdução · versão 0.3 · 24/09/2026**
 
-Cada módulo abaixo tem um resultado de aprendizagem. A lista representa o escopo inicial de produção, não conteúdo já concluído. A quantidade de aulas será definida pela profundidade de cada tema. CH-01, CH-02, CH-03, CH-04, BQ-01, AN-01, FI-01 e EG-01 têm rascunhos parciais; os demais estão planejados. A revisão informada pelo usuário para o lote anterior está em [revisoes.md](revisoes.md).
+Cada módulo abaixo tem um resultado de aprendizagem planejado. Todos os 72 módulos possuem conteúdo introdutório; os resultados mais amplos ainda exigem aprofundamento. O acervo contém 83 aulas curtas. Consulte o [índice de aulas](README.md) e o [catálogo](catalogo.json) para acessar cada módulo. Os 64 textos do lote 3 são novos rascunhos, com revisão técnica humana pendente. A revisão informada anteriormente pelo usuário está em [revisoes.md](revisoes.md).
 
 ## CH · Citologia e Histologia
 
