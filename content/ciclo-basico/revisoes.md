@@ -23,3 +23,19 @@ Tipo de registro: revisão comunicada pelo usuário. Não foi anexado parecer t�
 - BQ-01: três aulas, seis cartões e quatro questões; cálculos numéricos conferidos.
 
 Estado: aguardando revisão do novo material. Próxima produção autorizada: EG-02, EG-04 e BQ-02.
+
+## 24/09/2026 · Validação comunicada do acervo v0.3
+
+Patrick Morais informou: “Certo, já revisei” e, na sequência, “pode seguir para as próximas partes, já validei o material”.
+
+Escopo: acervo apresentado no commit c66940964096dafec59a4ddf16e55de7d73fd69d — 83 aulas introdutórias, 72 módulos, 12 disciplinas, incluindo os lotes 2 e 3. A validação comunicada autoriza avançar na integração do conteúdo. Não é tratada como parecer técnico de especialista, certificação curricular ou revisão de futuras alterações.
+
+Este registro é posterior aos avisos de revisão pendente nos arquivos e não os apaga: distingue validação do responsável pelo produto de revisão técnica documentada. Não houve importação ou publicação no site nesta atualização.
+
+### Regra comercial comunicada
+
+- Compra de um mês: pagamento integral, sem parcelamento.
+- Compra de mais de um mês em uma única contratação: parcelamento pode ser oferecido.
+- O usuário não definiu número máximo de parcelas, descontos ou novos preços.
+- Preservar R$ 30/mês como referência aprovada; não inventar condições comerciais.
+- A troca para InfinitePay ainda requer implementação e validação. Esta anotação não ativa cobranças.
