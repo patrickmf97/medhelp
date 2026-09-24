@@ -22,3 +22,5 @@ export type {
   Lesson,
   Module,
 } from './content/types';
+export { scheduleReview } from './study/scheduler';
+export type { ReviewGrade, ReviewState } from './study/scheduler';
