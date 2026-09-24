@@ -1,0 +1,1143 @@
+{
+  "projeto": "MEDHELP",
+  "versao": "0.3",
+  "data": "2026-09-24",
+  "observacao": "Cobertura introdutória não equivale a disciplina completa. Identificadores de EG-01 são mapeamento do catálogo para as duas seções do rascunho anterior.",
+  "totais": {
+    "disciplinas": 12,
+    "modulos_com_introducao": 72,
+    "aulas": 83,
+    "aulas_novas": 64,
+    "flashcards_existentes": 54,
+    "questoes_multipla_escolha_existentes": 36,
+    "exercicios_abertos_novos": 64
+  },
+  "modulos": [
+    {
+      "id": "CH-01",
+      "titulo": "Membrana e transporte",
+      "objetivo_planejado": "Relacionar permeabilidade, proteínas e forças de transporte.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/ch-01.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "CH-01-A1",
+          "titulo": "Como a membrana seleciona o que atravessa"
+        },
+        {
+          "id": "CH-01-A2",
+          "titulo": "Gradientes, energia e água"
+        }
+      ]
+    },
+    {
+      "id": "CH-02",
+      "titulo": "Organelas e citoesqueleto",
+      "objetivo_planejado": "Integrar síntese, tráfego, degradação e sustentação celular.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/ch-02.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "CH-02-A1",
+          "titulo": "Da síntese ao destino"
+        },
+        {
+          "id": "CH-02-A2",
+          "titulo": "Funções que se complementam"
+        },
+        {
+          "id": "CH-02-A3",
+          "titulo": "Estrutura que também movimenta"
+        }
+      ]
+    },
+    {
+      "id": "CH-03",
+      "titulo": "Epitélios",
+      "objetivo_planejado": "Classificar revestimentos e relacionar organização à função.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/ch-03.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "CH-03-A1",
+          "titulo": "Uma leitura organizada do revestimento"
+        },
+        {
+          "id": "CH-03-A2",
+          "titulo": "Polaridade e função"
+        }
+      ]
+    },
+    {
+      "id": "CH-04",
+      "titulo": "Conjuntivo, adiposo e cartilagem",
+      "objetivo_planejado": "Comparar células, fibras e matriz extracelular.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/ch-04.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "CH-04-A1",
+          "titulo": "A matriz também explica a função"
+        },
+        {
+          "id": "CH-04-A2",
+          "titulo": "Duas organizações do tecido adiposo"
+        },
+        {
+          "id": "CH-04-A3",
+          "titulo": "Cartilagem: células em matriz hidratada"
+        }
+      ]
+    },
+    {
+      "id": "CH-05",
+      "titulo": "Osso, sangue e hematopoese",
+      "objetivo_planejado": "Relacionar renovação tecidual, células sanguíneas e medula.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/ch.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "CH-05-A1",
+          "titulo": "Osso, sangue e hematopoese"
+        }
+      ]
+    },
+    {
+      "id": "CH-06",
+      "titulo": "Músculo e tecido nervoso",
+      "objetivo_planejado": "Reconhecer padrões histológicos ligados à contração e comunicação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/ch.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "CH-06-A1",
+          "titulo": "Músculo e tecido nervoso"
+        }
+      ]
+    },
+    {
+      "id": "EG-01",
+      "titulo": "Ciclo celular, mitose e meiose",
+      "objetivo_planejado": "Distinguir cromossomos, cromátides e ploidia.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "../drafts/biologia-celular-divisao-celular.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "EG-01-A1",
+          "titulo": "O que acontece antes e durante a mitose",
+          "secao_original": "Aula 1"
+        },
+        {
+          "id": "EG-01-A2",
+          "titulo": "Por que a meiose reduz o número cromossômico",
+          "secao_original": "Aula 2"
+        }
+      ]
+    },
+    {
+      "id": "EG-02",
+      "titulo": "DNA, expressão e regulação gênica",
+      "objetivo_planejado": "Explicar replicação, transcrição, tradução e controle gênico.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EG-02-A1",
+          "titulo": "Do gene à função"
+        }
+      ]
+    },
+    {
+      "id": "EG-03",
+      "titulo": "Herança e variação genética",
+      "objetivo_planejado": "Resolver padrões de herança e reconhecer limites dos modelos.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EG-03-A1",
+          "titulo": "Herança e probabilidade"
+        }
+      ]
+    },
+    {
+      "id": "EG-04",
+      "titulo": "Gametogênese, fecundação e implantação",
+      "objetivo_planejado": "Ordenar eventos e distinguir idade gestacional de embrionária.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EG-04-A1",
+          "titulo": "Da gametogênese à implantação"
+        }
+      ]
+    },
+    {
+      "id": "EG-05",
+      "titulo": "Gastrulação, neurulação e anexos",
+      "objetivo_planejado": "Relacionar folhetos, organização embrionária e anexos.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EG-05-A1",
+          "titulo": "Folhetos, tubo neural e anexos"
+        }
+      ]
+    },
+    {
+      "id": "EG-06",
+      "titulo": "Organogênese e alterações do desenvolvimento",
+      "objetivo_planejado": "Relacionar janelas do desenvolvimento a alterações estruturais.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EG-06-A1",
+          "titulo": "Formação, crescimento e maturação"
+        }
+      ]
+    },
+    {
+      "id": "AN-01",
+      "titulo": "Linguagem, planos e relações",
+      "objetivo_planejado": "Descrever localização com um referencial comum.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/an-01.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "AN-01-A1",
+          "titulo": "Um referencial para descrever o corpo"
+        },
+        {
+          "id": "AN-01-A2",
+          "titulo": "Planos de corte e posição"
+        }
+      ]
+    },
+    {
+      "id": "AN-02",
+      "titulo": "Aparelho locomotor",
+      "objetivo_planejado": "Relacionar ossos, articulações, músculos e feixes neurovasculares.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/an.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "AN-02-A1",
+          "titulo": "Movimento depende de relações"
+        }
+      ]
+    },
+    {
+      "id": "AN-03",
+      "titulo": "Cabeça, pescoço e dorso",
+      "objetivo_planejado": "Localizar regiões, fáscias, trígonos e trajetos.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/an.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "AN-03-A1",
+          "titulo": "Cabeça, pescoço e dorso em camadas"
+        }
+      ]
+    },
+    {
+      "id": "AN-04",
+      "titulo": "Tórax",
+      "objetivo_planejado": "Relacionar coração, vasos, pulmões, pleuras e mediastino.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/an.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "AN-04-A1",
+          "titulo": "Tórax e trajeto do sangue"
+        }
+      ]
+    },
+    {
+      "id": "AN-05",
+      "titulo": "Abdome, pelve e períneo",
+      "objetivo_planejado": "Reconhecer vísceras, compartimentos e relações.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/an.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "AN-05-A1",
+          "titulo": "Abdome, pelve e continuidade do tubo digestivo"
+        }
+      ]
+    },
+    {
+      "id": "AN-06",
+      "titulo": "Neuroanatomia",
+      "objetivo_planejado": "Mapear encéfalo, medula, nervos, meninges, vias e vascularização.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/an.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "AN-06-A1",
+          "titulo": "Organização do sistema nervoso"
+        }
+      ]
+    },
+    {
+      "id": "BQ-01",
+      "titulo": "Água, pH e tampões",
+      "objetivo_planejado": "Interpretar pH, equilíbrio e capacidade tamponante.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/bq-01.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "BQ-01-A1",
+          "titulo": "Água e interações"
+        },
+        {
+          "id": "BQ-01-A2",
+          "titulo": "Ler a escala de pH"
+        },
+        {
+          "id": "BQ-01-A3",
+          "titulo": "O que um tampão consegue fazer"
+        }
+      ]
+    },
+    {
+      "id": "BQ-02",
+      "titulo": "Proteínas e enzimas",
+      "objetivo_planejado": "Relacionar estrutura, catálise, cinética e regulação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/bq.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "BQ-02-A1",
+          "titulo": "Proteínas e catálise"
+        }
+      ]
+    },
+    {
+      "id": "BQ-03",
+      "titulo": "Carboidratos e energia",
+      "objetivo_planejado": "Integrar glicólise, ciclo do citrato e fosforilação oxidativa.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/bq.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "BQ-03-A1",
+          "titulo": "Da glicose ao ATP"
+        }
+      ]
+    },
+    {
+      "id": "BQ-04",
+      "titulo": "Lipídios e membranas",
+      "objetivo_planejado": "Relacionar síntese, degradação e transporte de lipídios.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/bq.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "BQ-04-A1",
+          "titulo": "Lipídios como reserva e estrutura"
+        }
+      ]
+    },
+    {
+      "id": "BQ-05",
+      "titulo": "Aminoácidos, nitrogênio e nucleotídeos",
+      "objetivo_planejado": "Explicar destino do nitrogênio e metabolismo de bases.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/bq.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "BQ-05-A1",
+          "titulo": "Destinos do carbono e do nitrogênio"
+        }
+      ]
+    },
+    {
+      "id": "BQ-06",
+      "titulo": "Integração metabólica e nutrição",
+      "objetivo_planejado": "Comparar estado alimentado, jejum e exercício.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/bq.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "BQ-06-A1",
+          "titulo": "Integração entre alimentação e jejum"
+        }
+      ]
+    },
+    {
+      "id": "FI-01",
+      "titulo": "Homeostase e sistemas de controle",
+      "objetivo_planejado": "Identificar variável, sensor, integrador e efetor.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "modules/fi-01.md",
+      "lote": "anterior",
+      "aulas": [
+        {
+          "id": "FI-01-A1",
+          "titulo": "Estabilidade que depende de mudança"
+        },
+        {
+          "id": "FI-01-A2",
+          "titulo": "Feedback e interpretação de uma sequência"
+        }
+      ]
+    },
+    {
+      "id": "FI-02",
+      "titulo": "Neurofisiologia e músculo",
+      "objetivo_planejado": "Explicar potenciais, sinapses, sensibilidade e contração.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fi.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FI-02-A1",
+          "titulo": "Excitação e comunicação"
+        }
+      ]
+    },
+    {
+      "id": "FI-03",
+      "titulo": "Cardiovascular e sangue",
+      "objetivo_planejado": "Integrar ciclo cardíaco, débito, pressão, fluxo e hemostasia.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fi.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FI-03-A1",
+          "titulo": "Bomba, fluxo e resistência"
+        }
+      ]
+    },
+    {
+      "id": "FI-04",
+      "titulo": "Respiratória",
+      "objetivo_planejado": "Relacionar ventilação, difusão, perfusão e gases.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fi.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FI-04-A1",
+          "titulo": "Ventilar, perfundir e trocar gases"
+        }
+      ]
+    },
+    {
+      "id": "FI-05",
+      "titulo": "Renal e equilíbrio hidroeletrolítico",
+      "objetivo_planejado": "Explicar filtração, transporte tubular, volume e pH.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fi.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FI-05-A1",
+          "titulo": "Filtrar não é excretar"
+        }
+      ]
+    },
+    {
+      "id": "FI-06",
+      "titulo": "Digestória, endócrina e reprodutiva",
+      "objetivo_planejado": "Integrar digestão, eixos hormonais e reprodução.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fi.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FI-06-A1",
+          "titulo": "Sinais que coordenam órgãos"
+        }
+      ]
+    },
+    {
+      "id": "MP-01",
+      "titulo": "Microbiota e transmissão",
+      "objetivo_planejado": "Distinguir colonização, infecção, doença e transmissão.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-01-A1",
+          "titulo": "Presença microbiana e doença"
+        }
+      ]
+    },
+    {
+      "id": "MP-02",
+      "titulo": "Bactérias",
+      "objetivo_planejado": "Relacionar estrutura, virulência, identificação e resistência.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-02-A1",
+          "titulo": "Estrutura bacteriana e interpretação"
+        }
+      ]
+    },
+    {
+      "id": "MP-03",
+      "titulo": "Vírus",
+      "objetivo_planejado": "Comparar organização, replicação e interação com hospedeiros.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-03-A1",
+          "titulo": "Vírus dependem de células"
+        }
+      ]
+    },
+    {
+      "id": "MP-04",
+      "titulo": "Fungos",
+      "objetivo_planejado": "Reconhecer formas, crescimento e patogenicidade.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-04-A1",
+          "titulo": "Leveduras, hifas e contexto"
+        }
+      ]
+    },
+    {
+      "id": "MP-05",
+      "titulo": "Protozoários",
+      "objetivo_planejado": "Relacionar ciclos, hospedeiros e prevenção.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-05-A1",
+          "titulo": "Ciclos de protozoários"
+        }
+      ]
+    },
+    {
+      "id": "MP-06",
+      "titulo": "Helmintos e artrópodes",
+      "objetivo_planejado": "Interpretar ciclos, vetores e determinantes ambientais.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/mp.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "MP-06-A1",
+          "titulo": "Hospedeiros e estágios dos helmintos"
+        }
+      ]
+    },
+    {
+      "id": "IM-01",
+      "titulo": "Barreiras e imunidade inata",
+      "objetivo_planejado": "Relacionar reconhecimento, células e respostas iniciais.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-01-A1",
+          "titulo": "Barreiras são parte da imunidade"
+        }
+      ]
+    },
+    {
+      "id": "IM-02",
+      "titulo": "Antígenos e apresentação",
+      "objetivo_planejado": "Explicar processamento e apresentação por MHC.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-02-A1",
+          "titulo": "Apresentar não é apenas encontrar"
+        }
+      ]
+    },
+    {
+      "id": "IM-03",
+      "titulo": "Resposta adaptativa",
+      "objetivo_planejado": "Comparar ativação e funções de linfócitos T e B.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-03-A1",
+          "titulo": "Seleção e expansão clonal"
+        }
+      ]
+    },
+    {
+      "id": "IM-04",
+      "titulo": "Anticorpos e complemento",
+      "objetivo_planejado": "Associar classes e mecanismos efetores.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-04-A1",
+          "titulo": "Anticorpos conectam reconhecimento e efeito"
+        }
+      ]
+    },
+    {
+      "id": "IM-05",
+      "titulo": "Tolerância e imunopatologia",
+      "objetivo_planejado": "Distinguir hipersensibilidade, autoimunidade e imunodeficiência.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-05-A1",
+          "titulo": "Quando a resposta causa dano"
+        }
+      ]
+    },
+    {
+      "id": "IM-06",
+      "titulo": "Memória e imunização",
+      "objetivo_planejado": "Explicar respostas primária, secundária e vacinação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/im.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "IM-06-A1",
+          "titulo": "Memória e imunização"
+        }
+      ]
+    },
+    {
+      "id": "PG-01",
+      "titulo": "Adaptação e lesão celular",
+      "objetivo_planejado": "Distinguir adaptação, reversibilidade e morte.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-01-A1",
+          "titulo": "Adaptação e limites da resposta celular"
+        }
+      ]
+    },
+    {
+      "id": "PG-02",
+      "titulo": "Inflamação aguda",
+      "objetivo_planejado": "Relacionar vasos, mediadores e recrutamento celular.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-02-A1",
+          "titulo": "Inflamação aguda como resposta organizada"
+        }
+      ]
+    },
+    {
+      "id": "PG-03",
+      "titulo": "Inflamação crônica e reparo",
+      "objetivo_planejado": "Comparar persistência, regeneração e fibrose.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-03-A1",
+          "titulo": "Persistência, regeneração e cicatriz"
+        }
+      ]
+    },
+    {
+      "id": "PG-04",
+      "titulo": "Distúrbios hemodinâmicos",
+      "objetivo_planejado": "Distinguir edema, trombose, embolia, isquemia e infarto.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-04-A1",
+          "titulo": "Líquido fora do lugar e fluxo interrompido"
+        }
+      ]
+    },
+    {
+      "id": "PG-05",
+      "titulo": "Neoplasia",
+      "objetivo_planejado": "Relacionar alterações moleculares, invasão e disseminação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-05-A1",
+          "titulo": "Neoplasia, invasão e metástase"
+        }
+      ]
+    },
+    {
+      "id": "PG-06",
+      "titulo": "Integração anatomopatológica",
+      "objetivo_planejado": "Interpretar descrições e limites de inferência diagnóstica.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/pg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "PG-06-A1",
+          "titulo": "Ler um laudo como evidência"
+        }
+      ]
+    },
+    {
+      "id": "FG-01",
+      "titulo": "Princípios e nomenclatura",
+      "objetivo_planejado": "Distinguir fármaco, medicamento, formulação e alvo.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-01-A1",
+          "titulo": "Substância, produto e nome"
+        }
+      ]
+    },
+    {
+      "id": "FG-02",
+      "titulo": "Farmacocinética",
+      "objetivo_planejado": "Relacionar absorção, distribuição, metabolismo e eliminação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-02-A1",
+          "titulo": "O percurso do fármaco"
+        }
+      ]
+    },
+    {
+      "id": "FG-03",
+      "titulo": "Farmacodinâmica",
+      "objetivo_planejado": "Interpretar afinidade, eficácia, potência e dose-resposta.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-03-A1",
+          "titulo": "Potência não é eficácia máxima"
+        }
+      ]
+    },
+    {
+      "id": "FG-04",
+      "titulo": "Variabilidade e interações",
+      "objetivo_planejado": "Reconhecer fatores que alteram exposição e resposta.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-04-A1",
+          "titulo": "Por que respostas variam"
+        }
+      ]
+    },
+    {
+      "id": "FG-05",
+      "titulo": "Segurança e farmacovigilância",
+      "objetivo_planejado": "Distinguir eventos e reações adversas e sua investigação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-05-A1",
+          "titulo": "Evento, suspeita e causalidade"
+        }
+      ]
+    },
+    {
+      "id": "FG-06",
+      "titulo": "Integração de mecanismos",
+      "objetivo_planejado": "Relacionar classes a alvos, sem esquemas terapêuticos individuais.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/fg.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "FG-06-A1",
+          "titulo": "Do alvo ao resultado"
+        }
+      ]
+    },
+    {
+      "id": "EB-01",
+      "titulo": "Populações e frequência",
+      "objetivo_planejado": "Calcular e interpretar prevalência e incidência.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-01-A1",
+          "titulo": "Contar casos exige definir a população"
+        }
+      ]
+    },
+    {
+      "id": "EB-02",
+      "titulo": "Delineamentos e causalidade",
+      "objetivo_planejado": "Comparar desenhos, vieses e confundimento.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-02-A1",
+          "titulo": "O desenho determina o que se pode estimar"
+        }
+      ]
+    },
+    {
+      "id": "EB-03",
+      "titulo": "Associação e impacto",
+      "objetivo_planejado": "Interpretar riscos, razões e diferenças absolutas.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-03-A1",
+          "titulo": "Efeito relativo e diferença absoluta"
+        }
+      ]
+    },
+    {
+      "id": "EB-04",
+      "titulo": "Testes diagnósticos",
+      "objetivo_planejado": "Relacionar sensibilidade, especificidade e valores preditivos.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-04-A1",
+          "titulo": "Interpretar um teste pela tabela completa"
+        }
+      ]
+    },
+    {
+      "id": "EB-05",
+      "titulo": "Estatística e inferência",
+      "objetivo_planejado": "Interpretar distribuições, intervalos e incerteza.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-05-A1",
+          "titulo": "Estimativa, incerteza e valor de p"
+        }
+      ]
+    },
+    {
+      "id": "EB-06",
+      "titulo": "Leitura crítica",
+      "objetivo_planejado": "Avaliar validade, aplicabilidade e limitações de estudos.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/eb.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "EB-06-A1",
+          "titulo": "Ler além da conclusão do artigo"
+        }
+      ]
+    },
+    {
+      "id": "SH-01",
+      "titulo": "Processo saúde-doença",
+      "objetivo_planejado": "Relacionar saúde, condições sociais e trajetórias de vida.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-01-A1",
+          "titulo": "Saúde tem condições de produção"
+        }
+      ]
+    },
+    {
+      "id": "SH-02",
+      "titulo": "Organização do SUS",
+      "objetivo_planejado": "Compreender princípios, atenção e redes por fontes vigentes.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-02-A1",
+          "titulo": "Princípios e organização do SUS"
+        }
+      ]
+    },
+    {
+      "id": "SH-03",
+      "titulo": "Atenção primária e território",
+      "objetivo_planejado": "Relacionar acesso, longitudinalidade e coordenação.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-03-A1",
+          "titulo": "Atenção primária e continuidade"
+        }
+      ]
+    },
+    {
+      "id": "SH-04",
+      "titulo": "Vigilância e promoção",
+      "objetivo_planejado": "Distinguir prevenção, vigilância e promoção da saúde.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-04-A1",
+          "titulo": "Promoção e prevenção"
+        }
+      ]
+    },
+    {
+      "id": "SH-05",
+      "titulo": "Bioética e direitos",
+      "objetivo_planejado": "Analisar autonomia, consentimento, sigilo e equidade.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-05-A1",
+          "titulo": "Autonomia, informação e confidencialidade"
+        }
+      ]
+    },
+    {
+      "id": "SH-06",
+      "titulo": "Diversidade e ambiente",
+      "objetivo_planejado": "Reconhecer barreiras, discriminação e determinantes ambientais.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/sh.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "SH-06-A1",
+          "titulo": "Equidade, diversidade e ambiente"
+        }
+      ]
+    },
+    {
+      "id": "HC-01",
+      "titulo": "Aprendizagem e busca científica",
+      "objetivo_planejado": "Formular perguntas, buscar fontes e registrar evidências.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-01-A1",
+          "titulo": "Transformar dúvida em busca reproduzível"
+        }
+      ]
+    },
+    {
+      "id": "HC-02",
+      "titulo": "Comunicação e entrevista",
+      "objetivo_planejado": "Conduzir abertura, escuta, síntese e encerramento.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-02-A1",
+          "titulo": "Comunicação que verifica compreensão"
+        }
+      ]
+    },
+    {
+      "id": "HC-03",
+      "titulo": "Exame físico: fundamentos",
+      "objetivo_planejado": "Compreender preparação, consentimento e prática supervisionada.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-03-A1",
+          "titulo": "Exame físico como observação estruturada"
+        }
+      ]
+    },
+    {
+      "id": "HC-04",
+      "titulo": "Medidas e sinais vitais",
+      "objetivo_planejado": "Reconhecer técnica, fontes de erro e contexto.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-04-A1",
+          "titulo": "Sinais vitais são medidas contextualizadas"
+        }
+      ]
+    },
+    {
+      "id": "HC-05",
+      "titulo": "Biossegurança e segurança do paciente",
+      "objetivo_planejado": "Relacionar precauções e prevenção de incidentes.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-05-A1",
+          "titulo": "Higiene das mãos e barreiras de segurança"
+        }
+      ]
+    },
+    {
+      "id": "HC-06",
+      "titulo": "Registro e trabalho em equipe",
+      "objetivo_planejado": "Produzir comunicação objetiva, rastreável e respeitosa.",
+      "cobertura": "introducao_parcial",
+      "revisao_tecnica": "pendente",
+      "arquivo": "disciplinas/hc.md",
+      "lote": "3",
+      "aulas": [
+        {
+          "id": "HC-06-A1",
+          "titulo": "Registrar e transferir responsabilidade"
+        }
+      ]
+    }
+  ]
+}
