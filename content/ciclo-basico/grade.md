@@ -2,7 +2,7 @@
 
 **12 disciplinas · 72 módulos planejados · versão 0.1 · 24/09/2026**
 
-Cada módulo abaixo tem um resultado de aprendizagem. A lista representa o escopo inicial de produção, não conteúdo já concluído. A quantidade de aulas será definida pela profundidade de cada tema. CH-01, CH-03, AN-01, FI-01 e EG-01 têm rascunhos parciais; os demais estão planejados.
+Cada módulo abaixo tem um resultado de aprendizagem. A lista representa o escopo inicial de produção, não conteúdo já concluído. A quantidade de aulas será definida pela profundidade de cada tema. CH-01, CH-02, CH-03, CH-04, BQ-01, AN-01, FI-01 e EG-01 têm rascunhos parciais; os demais estão planejados. A revisão informada pelo usuário para o lote anterior está em [revisoes.md](revisoes.md).
 
 ## CH · Citologia e Histologia
 
