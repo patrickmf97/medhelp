@@ -371,3 +371,17 @@ body { background: var(--surface-warm); font-family: Inter,ui-sans-serif,-apple-
 .sample-page__notice { color: var(--muted); }
 .sample-page__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 1rem; }
 .sample-page small { color: var(--muted); }
+.student-discipline { margin-block: 2rem; }
+.student-discipline > h3 { font-size: 1.4rem; }
+.student-module { margin-block: 1.5rem 2rem; }
+.student-module > h4 { color: var(--muted); font-size: 1rem; }
+.student-lesson-card h5 { font-size: 1.3rem; margin-block: 1rem; }
+.student-lesson-content { min-width: 0; overflow-wrap: anywhere; }
+.student-table-scroll { margin-block: 1.5rem; border: 1px solid var(--line); border-radius: 12px; }
+.student-table-scroll:focus-visible { outline: 2px solid var(--emerald-dark); outline-offset: 3px; }
+.student-table-scroll table { border-collapse: collapse; width: 100%; min-width: 28rem; }
+.student-table-scroll th, .student-table-scroll td { padding: .85rem 1rem; text-align: left; border-bottom: 1px solid var(--line); }
+.student-table-scroll th { background: #eaf7f3; color: var(--navy); }
+.student-table-scroll tr:last-child td { border-bottom: 0; }
+.student-lesson-content li { color: #33495a; line-height: 1.8; margin-block: .4rem; }
+.student-lesson-content a { color: var(--emerald-dark); text-decoration: underline; text-underline-offset: .2em; }
