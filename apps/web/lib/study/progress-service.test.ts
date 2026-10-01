@@ -29,8 +29,8 @@ describe('student progress', () => {
     const dashboard = buildStudentDashboard({
       name: 'Patrick', premiumAccess: false,
       lessons: [
-        { id: 'a', title: 'Aula gratuita', cycle: 'Ciclo Básico', discipline: 'Anatomia', accessLevel: 'free' },
-        { id: 'b', title: 'Aula premium', cycle: 'Ciclo Clínico', discipline: 'Clínica', accessLevel: 'premium' },
+        { id: 'a', title: 'Aula gratuita', cycle: 'Ciclo Básico', discipline: 'Anatomia', module: 'Introdução', accessLevel: 'free' },
+        { id: 'b', title: 'Aula premium', cycle: 'Ciclo Clínico', discipline: 'Clínica', module: 'Introdução', accessLevel: 'premium' },
       ],
       progress: [
         { lesson_id: 'b', seconds: 600, completed_at: '2026-09-23T11:00:00Z', last_studied_at: '2026-09-23T11:00:00Z' },

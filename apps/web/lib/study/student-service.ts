@@ -69,14 +69,14 @@ export async function getStudentDashboard(userId: string) {
     premiumAccess: access.premiumAccess,
     subscriptionState: access.subscriptionState,
     accessUntil: access.accessUntil,
-    lessons: catalog.map(({ id, title, cycle, discipline, accessLevel }) => ({ id, title, cycle, discipline, accessLevel })),
+    lessons: catalog.map(({ id, title, cycle, discipline, module, accessLevel }) => ({ id, title, cycle, discipline, module, accessLevel })),
     progress: (progressResult.data ?? []) as StoredProgress[],
     favoriteIds: (favoritesResult.data ?? []).map((item) => item.lesson_id),
     streak: streakResult.data?.current_count ?? 0,
   });
 }
 
-export type LessonBlock = { id: string; type: 'heading' | 'rich_text' | 'callout' | 'image' | 'video'; text: string; src: string | null };
+export type LessonBlock = { id: string; type: 'heading' | 'rich_text' | 'callout' | 'image' | 'video'; text: string; src: string | null; format: 'medhelp-markdown-v1' | null };
 
 function mapLessonBlocks(rows: unknown[]): LessonBlock[] {
   return rows.flatMap((value) => {
@@ -90,7 +90,8 @@ function mapLessonBlocks(rows: unknown[]): LessonBlock[] {
     const url = typeof content.url === 'string' ? content.url : '';
     const src = /^https:\/\//i.test(url) ? url : null;
     if (!text && !src) return [];
-    return [{ id, type, text, src }];
+    const format = content.format === 'medhelp-markdown-v1' ? 'medhelp-markdown-v1' as const : null;
+    return [{ id, type, text, src, format }];
   });
 }
 

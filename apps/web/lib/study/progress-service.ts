@@ -58,6 +58,7 @@ export interface StudentLesson {
   title: string;
   cycle: string;
   discipline: string;
+  module: string;
   accessLevel: 'free' | 'premium';
 }
 

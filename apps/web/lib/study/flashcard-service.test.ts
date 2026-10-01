@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { requireUser } from '@/lib/auth/require-role';
 import { buildFlashcardQueue, getStudentFlashcards, submitFlashcardReview } from './flashcard-service';
 
@@ -39,6 +39,12 @@ describe('submitting a review', () => {
 });
 
 describe('loading a large review queue', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-24T12:00:00Z'));
+  });
+  afterEach(() => vi.useRealTimers());
+
   it('paginates cards and schedules so old reviews are not treated as new', async () => {
     const cards = Array.from({ length: 1001 }, (_, index) => ({ ...card, id: `card-${index}` }));
     const schedules = cards.slice(0, 1000).map((item) => ({ card_id: item.id, due_at: '2026-09-25T12:00:00Z' }));
