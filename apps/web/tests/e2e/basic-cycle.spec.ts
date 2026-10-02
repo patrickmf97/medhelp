@@ -39,6 +39,8 @@ test('imported lessons: premium, persistence, expiry and direct RLS', async ({ p
   const content=page.getByRole('region',{name:'Conteúdo da aula'});
   await expect(content).toBeVisible();
   await expect(content.getByRole('table').first()).toBeVisible();
+  await content.getByRole('region',{name:'Tabela da aula'}).focus();
+  await expect(content.getByRole('region',{name:'Tabela da aula'})).toBeFocused();
   await expect(content).toContainText(/Quest|Exerc|Pratique/i);
   await expect(content).toContainText(/Referências|Fontes/);
   await page.getByRole('button',{name:'Marcar como concluída'}).click();
