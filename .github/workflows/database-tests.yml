@@ -24,12 +24,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Install locked workspace dependencies
+        run: |
+          npm install --global pnpm@10.19.0
+          pnpm install --frozen-lockfile
       - name: Validate lesson compiler
         run: node --test scripts/content/*.test.mjs
       - name: Start disposable local database
-        run: npx --yes supabase@2.117.0 db start
+        run: pnpm exec supabase start -x realtime,storage-api,imgproxy,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
       - name: Run database tests
         run: npx --yes supabase@2.117.0 test db
+      - name: Install browser
+        run: pnpm --filter @medhelp/web exec playwright install --with-deps chromium
+      - name: Test authenticated desktop and mobile journey
+        run: node scripts/content/ci-journey.mjs
       - name: Stop disposable database
         if: always()
         run: npx --yes supabase@2.117.0 stop --no-backup

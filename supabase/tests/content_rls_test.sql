@@ -92,10 +92,12 @@ select throws_ok(
   $$ update public.lessons set status = 'published', updated_by = auth.uid() where id = (select id from public.lessons where slug = 'nova-aula') $$,
   '23514', null, 'drafts cannot be published directly'
 );
+reset role;
 select ok(
   (select count(*) >= 3 from public.audit_logs where entity_type = 'lessons'),
   'content mutations produce audit events'
 );
+set local role authenticated;
 with affected as (
     update public.subscriptions set state = 'expired'
     returning 1
