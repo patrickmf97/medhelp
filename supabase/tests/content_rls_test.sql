@@ -39,12 +39,11 @@ set local role authenticated;
 select set_config('request.jwt.claim.sub', '20000000-0000-0000-0000-000000000001', true);
 select is((select count(*) from public.lessons), 2::bigint, 'students see released lesson metadata');
 select is((select count(*) from public.lesson_blocks), 1::bigint, 'students without access read only free content');
-select is(
-  (with affected as (
+with affected as (
     update public.lessons set title = 'Alterada'
     where id = '23000000-0000-0000-0000-000000000001'
     returning 1
-  ) select count(*) from affected),
+  ) select is((select count(*) from affected),
   0::bigint,
   'students cannot mutate lessons'
 );
@@ -93,15 +92,16 @@ select throws_ok(
   $$ update public.lessons set status = 'published', updated_by = auth.uid() where id = (select id from public.lessons where slug = 'nova-aula') $$,
   '23514', null, 'drafts cannot be published directly'
 );
+reset role;
 select ok(
   (select count(*) >= 3 from public.audit_logs where entity_type = 'lessons'),
   'content mutations produce audit events'
 );
-select is(
-  (with affected as (
+set local role authenticated;
+with affected as (
     update public.subscriptions set state = 'expired'
     returning 1
-  ) select count(*) from affected),
+  ) select is((select count(*) from affected),
   0::bigint,
   'editors cannot mutate billing'
 );

@@ -385,3 +385,8 @@ body { background: var(--surface-warm); font-family: Inter,ui-sans-serif,-apple-
 .student-table-scroll tr:last-child td { border-bottom: 0; }
 .student-lesson-content li { color: #33495a; line-height: 1.8; margin-block: .4rem; }
 .student-lesson-content a { color: var(--emerald-dark); text-decoration: underline; text-underline-offset: .2em; }
+
+/* Keep demo dashboard captions readable on its light cards (WCAG AA). */
+.dashboard-preview .dashboard-preview__content small,
+.dashboard-preview .dashboard-preview__progress span,
+.dashboard-preview .dashboard-preview__lesson p { color: #52697a; }

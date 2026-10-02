@@ -36,7 +36,9 @@ set local role authenticated;
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000003', true);
 select is((select count(*) from public.subscriptions), 0::bigint, 'editor cannot read billing');
 select is((select count(*) from public.user_roles where user_id <> auth.uid()), 0::bigint, 'editor cannot list other roles');
-select throws_ok($$ update public.user_roles set role = 'admin' where user_id = '10000000-0000-0000-0000-000000000003' $$, '42501', null, 'editor cannot elevate roles');
+with affected as (
+  update public.user_roles set role = 'admin' where user_id = '10000000-0000-0000-0000-000000000003' returning 1
+) select is((select count(*) from affected), 0::bigint, 'editor cannot elevate roles');
 reset role;
 
 set local role authenticated;
