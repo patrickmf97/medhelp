@@ -24,7 +24,8 @@ test('imported lessons: premium, persistence, expiry and direct RLS', async ({ p
   const login=async () => {
     await page.goto(`/entrar?next=${encodeURIComponent(`/aluno/disciplinas/${id}`)}`);
     await page.getByLabel('E-mail',{exact:true}).fill(email);
-    await page.getByLabel('Senha',{exact:true}).fill(password);
+    // The shared Field wraps its hint in the label; match the label prefix.
+    await page.getByLabel(/^Senha/).fill(password);
     await page.getByRole('button',{name:'Entrar',exact:true}).click();
     await expect(page).toHaveURL(new RegExp(`/aluno/disciplinas/${id}$`));
   };
