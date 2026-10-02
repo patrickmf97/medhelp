@@ -25,11 +25,11 @@ alter table public.content_import_bindings enable row level security;
 revoke all on public.content_import_batches, public.content_import_bindings from anon, authenticated;
 grant select, insert, update on public.content_import_batches, public.content_import_bindings to authenticated;
 create policy "staff import batches" on public.content_import_batches for all to authenticated
-using (public.has_role('editor') or public.has_role('admin'))
-with check (public.has_role('editor') or public.has_role('admin'));
+using (private.has_role('editor') or private.has_role('admin'))
+with check (private.has_role('editor') or private.has_role('admin'));
 create policy "staff import bindings" on public.content_import_bindings for all to authenticated
-using (public.has_role('editor') or public.has_role('admin'))
-with check (public.has_role('editor') or public.has_role('admin'));
+using (private.has_role('editor') or private.has_role('admin'))
+with check (private.has_role('editor') or private.has_role('admin'));
 
 create function private.content_import_hash(value jsonb) returns text
 language sql immutable security invoker set search_path = '' as $$
@@ -38,7 +38,7 @@ $$;
 create function private.content_import_authorize() returns void
 language plpgsql security invoker set search_path = '' as $$
 begin
-  if auth.uid() is null or not (public.has_role('editor') or public.has_role('admin')) then
+  if auth.uid() is null or not (private.has_role('editor') or private.has_role('admin')) then
     raise exception 'Editor session required' using errcode = '42501';
   end if;
 end;

@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: '24'
       - name: Validate lesson compiler
-        run: node --test scripts/content/compile.test.mjs
+        run: node --test scripts/content/*.test.mjs
       - name: Start disposable local database
         run: npx --yes supabase@2.117.0 db start
       - name: Run database tests
