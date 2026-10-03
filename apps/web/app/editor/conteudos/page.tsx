@@ -16,7 +16,7 @@ export default async function EditorialCatalogPage() {
     <section className="editor-page">
       <header className="editor-page__header">
         <div><span className="eyebrow">Catálogo acadêmico</span><h1>Conteúdos</h1><p>Organize, revise, agende e publique aulas com rastreabilidade.</p></div>
-        <Link className={buttonClassName('primary')} href="/editor/conteudos/novo">Nova aula</Link>
+        <div><Link className={buttonClassName('secondary')} href="/editor/conteudos/importar">Importar aulas</Link> <Link className={buttonClassName('primary')} href="/editor/conteudos/novo">Nova aula</Link></div>
       </header>
       {lessons.length === 0 ? (
         <div className="empty-state"><span aria-hidden="true">▤</span><h2>Nenhuma aula criada</h2><p>Crie a primeira aula quando a hierarquia acadêmica estiver configurada.</p></div>

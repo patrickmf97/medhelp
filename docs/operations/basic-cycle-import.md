@@ -1,5 +1,13 @@
 # Integração do ciclo básico — operação segura
 
+## Atualização operacional — 3 de outubro de 2026
+
+PR #3 integrado em main; testes descartáveis confirmados: 17 compilador/CLI, 88 pgTAP e 16 navegador. Produção ainda tem zero aulas, blocos, disciplinas e módulos. A migration de importação ainda não foi aplicada.
+
+O painel `/editor/conteudos/importar` acrescenta um transporte autenticado para as mesmas RPCs. Editor/admin seleciona o JSON compilado (até 500 KB), simula e importa usando a impressão conferida. Após revisar as aulas, simula novamente e publica separadamente o lote original. Nenhuma credencial é extraída do navegador e nenhum conteúdo é incluído no bundle público. Mensagens operacionais são resultados estruturados, pois Next.js omite mensagens de exceções de servidor em produção.
+
+O identificador do lote permanece apenas na tela atual: conserve-o para recuperação por RPC se houver navegação ou perda da resposta. A publicação continua dependendo da verificação prévia do backup/restauração descrita abaixo. Login do administrador foi confirmado; isso não comprova a disponibilidade do backup nem a importação.
+
 ## Estado da entrega
 
 Compilador e leitor entregues em `main` por PR #2. Importação e testes de banco/jornada na branch `codex/basic-cycle-db-import`, base `bb34bc9`.
