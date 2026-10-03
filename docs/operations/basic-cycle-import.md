@@ -2,13 +2,24 @@
 
 ## Atualização operacional — 3 de outubro de 2026
 
-PR #3 integrado em main; testes descartáveis confirmados: 17 compilador/CLI, 88 pgTAP e 16 navegador. Produção ainda tem zero aulas, blocos, disciplinas e módulos. A migration de importação ainda não foi aplicada.
+PRs #3 e #4 integrados em main. Em 3 de outubro de 2026, o lote `7b2b6678-515c-478d-83be-78cc78f710ee` foi importado e publicado pela sessão real do administrador. Produção confirmada: 12 disciplinas, 72 módulos, 83 aulas premium publicadas e 83 blocos ativos, sem aulas pendentes no lote. Acervo: `4daf7a7613e48cf09607a1628a890f656a551dfe4d6df47da4976bae610ab4ad`.
+
+- Primeira simulação: 83 inclusões, zero alterações e zero conflitos. Após aplicação: 83 sem alteração, zero novas aulas.
+- Todos os 83 textos em produção conferidos por SHA-256 contra o pacote compilado, incluindo tipo, formato e posição de bloco. Amostras CH-01-A1, EB-04-A1 e EG-01-A1 preservam referências e tabelas.
+- Catálogo real do aluno exibe 83 aulas. API anônima permite os metadados publicados, mas não retorna blocos premium nem acesso aos lotes/vínculos. Leitor do aluno sem assinatura exibe apenas a prévia, não o texto premium.
+- Progresso e favoritos preservados: contagens e fingerprints antes/depois iguais (ambos vazios nesta primeira importação).
+- Migration local `20261001195840_content_import.sql` aplicada pelo conector em produção como `20261003205601_content_import`; invocador, search_path vazio, RLS ativo e sem EXECUTE para anon. Não reaplicar a mesma SQL sob outro timestamp.
+- Testes descartáveis anteriores: 17 compilador/CLI, 88 pgTAP e 16 navegador. Compilador/CLI 17/17 repetidos antes desta operação.
+
+Backup alternativo sem custo: captura lógica das cinco tabelas do catálogo, com colunas, defaults, constraints, enums e dados. Restaurada em PostgreSQL isolado via PGlite 0.5.8; igualdade JSON exata de todos os registros confirmada em UTC. Snapshot SHA-256 `e9254cb40572e9209acb34a0236c394c282d3cf066c9c8f0659ddc37d80cd2aa`. Arquivo entregue: `MEDHELP-backup-catalogo-2026-10-03.zip`.
+
+Decisão operacional: aceitar esse backup **limitado ao catálogo** para esta primeira importação aditiva, pois havia somente três ciclos seedados e nenhuma aula/disciplina/módulo/bloco. Não é backup completo de Auth, pagamentos, mídia ou plataforma; políticas, funções e triggers continuam nas migrations versionadas, não no ensaio de restauração de dados. Não houve reset remoto, exclusão, alteração de cobrança ou extração de credenciais. Para futuras operações destrutivas ou recuperação completa, continua necessário um backup completo adequado.
 
 O painel `/editor/conteudos/importar` acrescenta um transporte autenticado para as mesmas RPCs. Editor/admin seleciona o JSON compilado (até 500 KB), simula e importa usando a impressão conferida. Após revisar as aulas, simula novamente e publica separadamente o lote original. Nenhuma credencial é extraída do navegador e nenhum conteúdo é incluído no bundle público. Mensagens operacionais são resultados estruturados, pois Next.js omite mensagens de exceções de servidor em produção.
 
-O identificador do lote permanece apenas na tela atual: conserve-o para recuperação por RPC se houver navegação ou perda da resposta. A publicação continua dependendo da verificação prévia do backup/restauração descrita abaixo. Login do administrador foi confirmado; isso não comprova a disponibilidade do backup nem a importação.
+O identificador do lote permanece apenas na tela atual: conserve-o para recuperação por RPC se houver navegação ou perda da resposta. O lote original desta publicação está registrado acima. Os procedimentos abaixo preservam o histórico de implementação e orientam novas operações; suas declarações antigas de produção pendente foram superadas pelo relatório acima.
 
-## Estado da entrega
+## Estado da entrega inicial — histórico
 
 Compilador e leitor entregues em `main` por PR #2. Importação e testes de banco/jornada na branch `codex/basic-cycle-db-import`, base `bb34bc9`.
 
