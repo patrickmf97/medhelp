@@ -24,3 +24,5 @@ export type {
 } from './content/types';
 export { scheduleReview } from './study/scheduler';
 export type { ReviewGrade, ReviewState } from './study/scheduler';
+export { scoreQuestion, summarizeAttempt } from './study/questions';
+export type { OptionId, QuestionOutcome } from './study/questions';
