@@ -36,7 +36,9 @@
 
 ## Audit note (2026-10-26)
 
-Checkboxes below were cross-checked against the actual code and tests on `main` (not just commit messages). Tasks 1-8 are implemented and covered by passing tests (`pnpm test` green: 24 domain + 71 web tests at audit time). Tasks 9, 10, 11, 12, 13 and 15 have no corresponding code yet. Task 14 is only a one-line stub (`AtlasRegionSelection` type) — none of `AtlasViewerProps`, `AtlasEvent`, `AtlasAccessPolicy`, the shell component or the host routes exist.
+Checkboxes below were cross-checked against the actual code and tests on `main` (not just commit messages). Tasks 1-8 are implemented and covered by passing tests (`pnpm test` green: 24 domain + 71 web tests at audit time). Tasks 9, 11, 12 and 13 have no corresponding code yet. Task 14 is only a one-line stub (`AtlasRegionSelection` type) — none of `AtlasViewerProps`, `AtlasEvent`, `AtlasAccessPolicy`, the shell component or the host routes exist. Task 15 is mostly not started (no `sitemap.ts`, `robots.ts`, `lib/security/rate-limit.ts` or `instrumentation.ts`), but correction: `apps/web/app/(public)/[document]/page.tsx` already serves `/termos`, `/privacidade`, `/creditos-e-licencas` and `/contato` as a generic catch-all — each one explicitly says it is a placeholder pending legal review, so the route exists but the step's other legal/SEO/security work does not; checkboxes stay unchecked since the full step is not done.
+
+**Update (same session):** Task 10 (licensed ebook library) was implemented in this session — see the `feat: add rights-aware ebook library` commit for the full file list, pgTAP coverage and a dedicated Playwright spec (`apps/web/tests/e2e/library.spec.ts`) proving the free/premium RLS boundary end-to-end.
 
 Note on Task 9 (Questions and simulations): a separate, more specific approach exists on the unmerged remote branch `origin/codex/enamed-question-bank` (commit `0558874`, 2026-10-03, not on `main`) — a private "Enamed" question-bank pilot with its own plan docs under a different `docs/superpowers/plans/2026-10-03-enamed-*.md` naming, domain scoring contracts, a `question_bank` migration and pgTAP tests, explicitly left mid-flight ("Full question bank and REST denial verification remain pending"). Building a second, independent Questions feature in this session would conflict with that line of work, so Task 9 was deliberately left alone pending Patrick's decision on which direction to pursue.
 
@@ -371,19 +373,19 @@ expect(scoreAttempt([{ id: 'q1', correctOptionId: 'b' }], [{ questionId: 'q1', o
 **Interfaces:**
 - Produces: `validateEbookLicense(input: EbookLicenseInput): ValidationResult` and `createSignedDownload`.
 
-- [ ] **Step 1: Test rejection of missing author, source, license type or license URL**
+- [x] **Step 1: Test rejection of missing author, source, license type or license URL**
 
 ```ts
 expect(validateEbookLicense({ type: 'open', licenseUrl: '' }).ok).toBe(false);
 ```
 
-- [ ] **Step 2: Run tests and verify failure**
+- [x] **Step 2: Run tests and verify failure**
 
-- [ ] **Step 3: Add database constraints and server validation preventing invalid publication**
+- [x] **Step 3: Add database constraints and server validation preventing invalid publication**
 
-- [ ] **Step 4: Build library search, detail, admin form and short-lived download URL**
+- [x] **Step 4: Build library search, detail, admin form and short-lived download URL**
 
-- [ ] **Step 5: Verify free/premium access and commit `feat: add rights-aware ebook library`**
+- [x] **Step 5: Verify free/premium access and commit `feat: add rights-aware ebook library`**
 
 ### Task 11: Integrate Mercado Pago subscriptions and PIX
 
