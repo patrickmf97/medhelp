@@ -1,7 +1,9 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { getSiteUrl } from '@/src/site-config';
 import { createClient } from '@/lib/supabase/server';
+import { enforceRateLimit } from '@/lib/security/rate-limit';
 import { safeRedirectPath } from './require-role';
 import { loginSchema, recoverySchema, resetPasswordSchema, signupSchema } from './schemas';
 
@@ -13,6 +15,7 @@ export type AuthActionState = {
 
 const genericLoginError = 'Não foi possível entrar. Confira seus dados e tente novamente.';
 const genericRecoveryMessage = 'Se existir uma conta com este e-mail, enviaremos as instruções de recuperação.';
+const rateLimitedMessage = 'Muitas tentativas em pouco tempo. Aguarde um minuto e tente novamente.';
 
 function validationState(error: { flatten: () => { fieldErrors: Record<string, string[]> } }): AuthActionState {
   return { errors: error.flatten().fieldErrors };
@@ -21,6 +24,9 @@ function validationState(error: { flatten: () => { fieldErrors: Record<string, s
 export async function loginAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const parsed = loginSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return validationState(parsed.error);
+
+  const rateLimit = await enforceRateLimit('login');
+  if (!rateLimit.allowed) return { message: rateLimitedMessage };
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email: parsed.data.email, password: parsed.data.password });
@@ -33,8 +39,11 @@ export async function signUpAction(_state: AuthActionState, formData: FormData):
   const parsed = signupSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return validationState(parsed.error);
 
+  const rateLimit = await enforceRateLimit('signup');
+  if (!rateLimit.allowed) return { message: rateLimitedMessage };
+
   const supabase = await createClient();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = getSiteUrl();
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -56,8 +65,11 @@ export async function recoverPasswordAction(_state: AuthActionState, formData: F
   const parsed = recoverySchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return validationState(parsed.error);
 
+  const rateLimit = await enforceRateLimit('passwordRecovery');
+  if (!rateLimit.allowed) return { success: true, message: genericRecoveryMessage };
+
   const supabase = await createClient();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = getSiteUrl();
   await supabase.auth.resetPasswordForEmail(parsed.data.email, { redirectTo: `${siteUrl}/auth/callback?next=${encodeURIComponent('/redefinir-senha')}` });
   return { success: true, message: genericRecoveryMessage };
 }
@@ -65,6 +77,9 @@ export async function recoverPasswordAction(_state: AuthActionState, formData: F
 export async function resetPasswordAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const parsed = resetPasswordSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return validationState(parsed.error);
+
+  const rateLimit = await enforceRateLimit('passwordReset');
+  if (!rateLimit.allowed) return { message: rateLimitedMessage };
 
   const supabase = await createClient();
   const { error } = await supabase.auth.updateUser({ password: parsed.data.password });
