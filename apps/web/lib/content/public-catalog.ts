@@ -30,6 +30,48 @@ function asString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value : null;
 }
 
+function asNumber(value: unknown): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+}
+
+/**
+ * The lessons query returns rows in whatever order Postgres/Supabase fetched
+ * them in (paginated by id for stability), which has no relation to the
+ * curriculum's actual structure. Cycles, disciplines, modules and lessons
+ * each carry their own `position` column (see
+ * supabase/migrations/20260922222512_content.sql) that encodes the intended
+ * reading order. This sorts the raw nested rows by that real hierarchy
+ * (cycle, then discipline, then module, then lesson) before they are mapped
+ * into public catalog items, so any downstream grouping that merely
+ * preserves input order (e.g. groupLessons) ends up presenting the
+ * curriculum in its real sequence instead of first-appearance order.
+ */
+export function sortCatalogRowsByPosition(rows: unknown[]): unknown[] {
+  function positionKey(value: unknown) {
+    const row = asRecord(value);
+    const moduleRelation = asRecord(row?.modules);
+    const discipline = asRecord(moduleRelation?.disciplines);
+    const cycle = asRecord(discipline?.cycles);
+    return {
+      cyclePosition: asNumber(cycle?.position),
+      disciplinePosition: asNumber(discipline?.position),
+      modulePosition: asNumber(moduleRelation?.position),
+      lessonPosition: asNumber(row?.position),
+    };
+  }
+
+  return [...rows].sort((a, b) => {
+    const left = positionKey(a);
+    const right = positionKey(b);
+    return (
+      left.cyclePosition - right.cyclePosition ||
+      left.disciplinePosition - right.disciplinePosition ||
+      left.modulePosition - right.modulePosition ||
+      left.lessonPosition - right.lessonPosition
+    );
+  });
+}
+
 export function mapPublicCatalogRows(rows: unknown[]): PublicCatalogItem[] {
   return rows.flatMap((value) => {
     const row = asRecord(value);
@@ -80,25 +122,27 @@ export async function listPublicCatalog(): Promise<PublicCatalogItem[]> {
   const supabase = await createClient();
   const publishedBefore = new Date().toISOString();
   const pageSize = 1000;
-  const items: PublicCatalogItem[] = [];
+  const rows: unknown[] = [];
   for (let offset = 0; ; offset += pageSize) {
     const { data, error } = await supabase
     .from('lessons')
     .select(
-      'id, title, slug, summary, access_level, modules!inner(title, disciplines!inner(title, cycles!inner(title, slug)))',
+      'id, title, slug, summary, access_level, position, modules!inner(title, position, disciplines!inner(title, position, cycles!inner(title, slug, position)))',
     )
     .eq('status', 'published')
     .lte('published_at', publishedBefore)
     .is('deleted_at', null)
-    .order('published_at', { ascending: false })
     .order('id', { ascending: true })
     .range(offset, offset + pageSize - 1);
 
     if (error) throw new Error('Não foi possível carregar o catálogo público.');
-    items.push(...mapPublicCatalogRows((data ?? []) as unknown[]));
+    rows.push(...((data ?? []) as unknown[]));
     if (!data || data.length < pageSize) break;
   }
-  return items;
+  // Fetch order above is only for stable pagination; the curriculum's real
+  // reading order (cycle -> discipline -> module -> lesson) comes from the
+  // position columns, applied here before mapping to public items.
+  return mapPublicCatalogRows(sortCatalogRowsByPosition(rows));
 }
 
 export async function getPublicFreeSample(id: string): Promise<PublicFreeSample | null> {

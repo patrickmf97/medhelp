@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { createClient } from '@/lib/supabase/server';
-import { getPublicFreeSample, listPublicCatalog, mapPublicCatalogRows } from './public-catalog';
+import { getPublicFreeSample, listPublicCatalog, mapPublicCatalogRows, sortCatalogRowsByPosition } from './public-catalog';
 
 vi.mock('@/lib/supabase/server', () => ({ createClient: vi.fn() }));
 
@@ -52,6 +52,50 @@ describe('public catalog mapping', () => {
         },
       ]),
     ).toEqual([]);
+  });
+});
+
+describe('curriculum position ordering', () => {
+  function row(id: string, cyclePosition: number, disciplinePosition: number, modulePosition: number, lessonPosition: number) {
+    return {
+      id,
+      title: id,
+      slug: id,
+      summary: null,
+      access_level: 'free',
+      position: lessonPosition,
+      modules: {
+        title: `module-${modulePosition}`,
+        position: modulePosition,
+        disciplines: {
+          title: `discipline-${disciplinePosition}`,
+          position: disciplinePosition,
+          cycles: { title: `cycle-${cyclePosition}`, slug: `cycle-${cyclePosition}`, position: cyclePosition },
+        },
+      },
+    };
+  }
+
+  it('orders cycles, then disciplines, then modules, then lessons by their real position columns, not fetch order', () => {
+    const rows = [
+      row('lesson-c1-d0-m0-l1', 1, 0, 0, 1),
+      row('lesson-c0-d1-m0-l0', 0, 1, 0, 0),
+      row('lesson-c0-d0-m1-l0', 0, 0, 1, 0),
+      row('lesson-c0-d0-m0-l0', 0, 0, 0, 0),
+      row('lesson-c1-d0-m0-l0', 1, 0, 0, 0),
+      row('lesson-c0-d0-m0-l1', 0, 0, 0, 1),
+    ];
+
+    const ordered = mapPublicCatalogRows(sortCatalogRowsByPosition(rows));
+
+    expect(ordered.map((item) => item.id)).toEqual([
+      'lesson-c0-d0-m0-l0',
+      'lesson-c0-d0-m0-l1',
+      'lesson-c0-d0-m1-l0',
+      'lesson-c0-d1-m0-l0',
+      'lesson-c1-d0-m0-l0',
+      'lesson-c1-d0-m0-l1',
+    ]);
   });
 });
 
