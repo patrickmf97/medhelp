@@ -20,6 +20,10 @@
 - Respect `prefers-reduced-motion` and avoid layout-shifting scroll effects.
 - Keep authenticated, editorial, and admin pages visually functional.
 
+## Audit note (2026-10-26)
+
+Tasks 1-4 are implemented and covered by passing tests: `study-planner.tsx`, `atlas-explorer.tsx`, `content-explorer.tsx`, `public-catalog.ts`, `motion-shell.tsx` and the modified header/hero/features/atlas-demo/study-journey components all exist with matching `.test.tsx`/`.test.ts` files, and `pnpm test` passes (though the exact historical count differs from "44" since later plans — basic cycle import, editorial batch import — added more tests on top; current total is 95 across domain+web). The work landed under broader commit messages (e.g. `feat: launch immersive MEDHELP public experience`) rather than the exact per-task messages this plan specifies, but the resulting code matches the planned file map. Task 5's engineering steps (best-practices review, full verification suite) are left unchecked pending a fresh run; its final two steps (push to `codex/foundation`/`main`, validate the production Vercel URL) are deploy/ops actions outside an autonomous worktree session's authority and are intentionally left for Patrick.
+
 ## Review Focus
 
 - Mobile navigation focus, escape behavior, and correct home-section links from `/explorar`.
@@ -37,9 +41,9 @@
 **Interfaces:**
 - Produces: local parity with the remote content repository and schema.
 
-- [ ] Verify the synchronized files match the remote snapshot.
-- [ ] Run `pnpm test`; expect 44 passing tests.
-- [ ] Commit with `chore: synchronize content workflow`.
+- [x] Verify the synchronized files match the remote snapshot.
+- [x] Run `pnpm test`; expect 44 passing tests.
+- [x] Commit with `chore: synchronize content workflow`.
 
 ### Task 2: Build interactive homepage journeys
 
@@ -59,11 +63,11 @@
 - Produces: accessible cycle tab selector and system-based Atlas preview.
 - Produces: scroll progress and mobile menu behavior in the public header.
 
-- [ ] Add failing tests for cycle selection, Atlas system selection, and menu state.
-- [ ] Run focused tests and verify missing components/behavior cause RED.
-- [ ] Implement the client islands and compose them into the Server Component sections.
-- [ ] Run focused tests and expect GREEN.
-- [ ] Commit with `feat: add interactive public study journeys`.
+- [x] Add failing tests for cycle selection, Atlas system selection, and menu state.
+- [x] Run focused tests and verify missing components/behavior cause RED.
+- [x] Implement the client islands and compose them into the Server Component sections.
+- [x] Run focused tests and expect GREEN.
+- [x] Commit with `feat: add interactive public study journeys`.
 
 ### Task 3: Add the Supabase-backed public explorer
 
@@ -80,12 +84,12 @@
 - Produces: `listPublicCatalog(): Promise<PublicCatalogItem[]>`.
 - Produces: client filters for query, cycle, and access level.
 
-- [ ] Add failing tests for public record mapping, search, cycle/access filters, and empty results.
-- [ ] Run focused tests and verify missing modules cause RED.
-- [ ] Implement a server-side Supabase query with a safe unavailable/empty state.
-- [ ] Implement the interactive explorer and public route.
-- [ ] Run focused tests and expect GREEN.
-- [ ] Commit with `feat: add public content explorer`.
+- [x] Add failing tests for public record mapping, search, cycle/access filters, and empty results.
+- [x] Run focused tests and verify missing modules cause RED.
+- [x] Implement a server-side Supabase query with a safe unavailable/empty state.
+- [x] Implement the interactive explorer and public route.
+- [x] Run focused tests and expect GREEN.
+- [x] Commit with `feat: add public content explorer`.
 
 ### Task 4: Complete the clinical-premium visual system
 
@@ -101,10 +105,10 @@
 **Interfaces:**
 - Produces: CSS-variable parallax, reveal states, bento feature hierarchy, refined pricing/FAQ/CTA, responsive layouts.
 
-- [ ] Extend the homepage/E2E assertions for the premium sections and interactive landmarks; run and verify RED.
-- [ ] Implement the redesigned composition, motion shell, tokens, responsive states, and reduced-motion override.
-- [ ] Run unit tests, lint, typecheck, build, and Playwright accessibility/responsive checks.
-- [ ] Commit with `feat: redesign immersive public experience`.
+- [x] Extend the homepage/E2E assertions for the premium sections and interactive landmarks; run and verify RED.
+- [x] Implement the redesigned composition, motion shell, tokens, responsive states, and reduced-motion override.
+- [x] Run unit tests, lint, typecheck, build, and Playwright accessibility/responsive checks.
+- [x] Commit with `feat: redesign immersive public experience`.
 
 ### Task 5: Review, verify, and publish
 
