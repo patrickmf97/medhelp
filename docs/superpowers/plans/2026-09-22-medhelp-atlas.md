@@ -10,6 +10,10 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-22-medhelp-design.md`
 
+## Audit note (2026-10-26)
+
+No task in this plan has code yet. `packages/atlas-contract/src/index.ts` exists but only contains one trivial type (`AtlasRegionSelection`), unrelated to this plan's file map (`tools/atlas-pipeline`, `packages/atlas-viewer` do not exist). This is expected: the 3D viewer is specialized visual work that needs human review on-screen and was deliberately left untouched during this autonomous session.
+
 ## Global Constraints
 
 - Source dataset is BodyParts3D 4.0 under CC BY 4.0.

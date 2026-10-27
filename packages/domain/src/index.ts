@@ -11,6 +11,8 @@ export {
   canTransitionContent,
   transitionContent,
 } from './content/publishing';
+export { EBOOK_LICENSE_TYPES, validateEbookLicense } from './content/ebook-license';
+export type { EbookLicenseInput, EbookLicenseType, ValidationResult } from './content/ebook-license';
 export { ACCESS_LEVELS, CONTENT_STATUSES } from './content/types';
 export type {
   AccessLevel,

@@ -34,6 +34,14 @@
 - Publishing an ebook with absent or incompatible rights metadata must fail at database and UI boundaries.
 - Concurrent flashcard answers must not create two active schedules for the same card and student.
 
+## Audit note (2026-10-26)
+
+Checkboxes below were cross-checked against the actual code and tests on `main` (not just commit messages). Tasks 1-8 are implemented and covered by passing tests (`pnpm test` green: 24 domain + 71 web tests at audit time). Tasks 9, 11, 12 and 13 have no corresponding code yet. Task 14 is only a one-line stub (`AtlasRegionSelection` type) — none of `AtlasViewerProps`, `AtlasEvent`, `AtlasAccessPolicy`, the shell component or the host routes exist. Task 15 is mostly not started (no `sitemap.ts`, `robots.ts`, `lib/security/rate-limit.ts` or `instrumentation.ts`), but correction: `apps/web/app/(public)/[document]/page.tsx` already serves `/termos`, `/privacidade`, `/creditos-e-licencas` and `/contato` as a generic catch-all — each one explicitly says it is a placeholder pending legal review, so the route exists but the step's other legal/SEO/security work does not; checkboxes stay unchecked since the full step is not done.
+
+**Update (same session):** Task 10 (licensed ebook library) was implemented in this session — see the `feat: add rights-aware ebook library` commit for the full file list, pgTAP coverage and a dedicated Playwright spec (`apps/web/tests/e2e/library.spec.ts`) proving the free/premium RLS boundary end-to-end.
+
+Note on Task 9 (Questions and simulations): a separate, more specific approach exists on the unmerged remote branch `origin/codex/enamed-question-bank` (commit `0558874`, 2026-10-03, not on `main`) — a private "Enamed" question-bank pilot with its own plan docs under a different `docs/superpowers/plans/2026-10-03-enamed-*.md` naming, domain scoring contracts, a `question_bank` migration and pgTAP tests, explicitly left mid-flight ("Full question bank and REST denial verification remain pending"). Building a second, independent Questions feature in this session would conflict with that line of work, so Task 9 was deliberately left alone pending Patrick's decision on which direction to pursue.
+
 ## Planned File Map
 
 ```text
@@ -63,7 +71,7 @@ supabase/tests/                  # pgTAP authorization tests
 **Interfaces:**
 - Produces: workspace commands `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:e2e`, `pnpm build`.
 
-- [ ] **Step 1: Create the workspace manifests and strict TypeScript configuration**
+- [x] **Step 1: Create the workspace manifests and strict TypeScript configuration**
 
 ```json
 {
@@ -81,7 +89,7 @@ supabase/tests/                  # pgTAP authorization tests
 }
 ```
 
-- [ ] **Step 2: Add a failing smoke test for the public home module**
+- [x] **Step 2: Add a failing smoke test for the public home module**
 
 ```ts
 import { describe, expect, it } from 'vitest';
@@ -95,9 +103,9 @@ describe('siteConfig', () => {
 });
 ```
 
-- [ ] **Step 3: Run `pnpm test` and verify failure because `site-config` is absent**
+- [x] **Step 3: Run `pnpm test` and verify failure because `site-config` is absent**
 
-- [ ] **Step 4: Implement `apps/web/src/site-config.ts`, run lint, typecheck, test and build**
+- [x] **Step 4: Implement `apps/web/src/site-config.ts`, run lint, typecheck, test and build**
 
 ```ts
 export const siteConfig = {
@@ -108,7 +116,7 @@ export const siteConfig = {
 } as const;
 ```
 
-- [ ] **Step 5: Commit with `chore: bootstrap medhelp monorepo`**
+- [x] **Step 5: Commit with `chore: bootstrap medhelp monorepo`**
 
 ### Task 2: Define domain contracts for roles and subscription access
 
@@ -121,7 +129,7 @@ export const siteConfig = {
 - Produces: `evaluateAccess(input: AccessInput, now: Date): AccessDecision`.
 - Produces: roles `student | editor | admin` and subscription states `pending | active | grace | expired | canceled | refunded`.
 
-- [ ] **Step 1: Write tests for active, grace, canceled-before-end and expired access**
+- [x] **Step 1: Write tests for active, grace, canceled-before-end and expired access**
 
 ```ts
 expect(evaluateAccess({ state: 'grace', accessUntil: '2026-09-25T00:00:00Z' }, new Date('2026-09-24')))
@@ -130,9 +138,9 @@ expect(evaluateAccess({ state: 'expired', accessUntil: '2026-09-20T00:00:00Z' },
   .toEqual({ canAccessPremium: false, reason: 'expired' });
 ```
 
-- [ ] **Step 2: Run the focused test and verify the missing-export failure**
+- [x] **Step 2: Run the focused test and verify the missing-export failure**
 
-- [ ] **Step 3: Implement exhaustive state evaluation with no provider-specific values**
+- [x] **Step 3: Implement exhaustive state evaluation with no provider-specific values**
 
 ```ts
 export type AccessDecision = {
@@ -141,9 +149,9 @@ export type AccessDecision = {
 };
 ```
 
-- [ ] **Step 4: Run domain tests and typecheck**
+- [x] **Step 4: Run domain tests and typecheck**
 
-- [ ] **Step 5: Commit with `feat: define access domain rules`**
+- [x] **Step 5: Commit with `feat: define access domain rules`**
 
 ### Task 3: Create the database foundation, roles and RLS
 
@@ -157,7 +165,7 @@ export type AccessDecision = {
 - Consumes: access states from Task 2.
 - Produces: `profiles`, `roles`, `user_roles`, `subscriptions`, `access_grants`, `legal_acceptances`, `audit_logs`.
 
-- [ ] **Step 1: Write pgTAP tests proving deny-by-default, self-profile access and editor/admin separation**
+- [x] **Step 1: Write pgTAP tests proving deny-by-default, self-profile access and editor/admin separation**
 
 ```sql
 select throws_ok(
@@ -168,9 +176,9 @@ select throws_ok(
 );
 ```
 
-- [ ] **Step 2: Run `supabase db reset` followed by `supabase test db` and verify failure**
+- [x] **Step 2: Run `supabase db reset` followed by `supabase test db` and verify failure**
 
-- [ ] **Step 3: Add tables, constraints, indexes, updated-at trigger and RLS policies**
+- [x] **Step 3: Add tables, constraints, indexes, updated-at trigger and RLS policies**
 
 ```sql
 create type public.app_role as enum ('student', 'editor', 'admin');
@@ -179,9 +187,9 @@ create policy "profile owner reads self" on public.profiles
 for select using (id = auth.uid());
 ```
 
-- [ ] **Step 4: Add server/client factories using cookie-aware SSR auth; rerun database and TypeScript tests**
+- [x] **Step 4: Add server/client factories using cookie-aware SSR auth; rerun database and TypeScript tests**
 
-- [ ] **Step 5: Commit with `feat: add identity schema and row level security`**
+- [x] **Step 5: Commit with `feat: add identity schema and row level security`**
 
 ### Task 4: Build the clinical-premium design system and public site
 
@@ -195,25 +203,25 @@ for select using (id = auth.uid());
 - Consumes: `siteConfig` from Task 1.
 - Produces: accessible public navigation and CTA URLs `/cadastro` and `/explorar`.
 
-- [ ] **Step 1: Write component and E2E tests for headline, visible R$ 30 price, both CTAs and mobile navigation**
+- [x] **Step 1: Write component and E2E tests for headline, visible R$ 30 price, both CTAs and mobile navigation**
 
 ```ts
 await expect(page.getByRole('heading', { name: 'Medicina é difícil. Estudar não precisa ser.' })).toBeVisible();
 await expect(page.getByText('R$ 30/mês')).toBeVisible();
 ```
 
-- [ ] **Step 2: Run tests and verify the routes/components are missing**
+- [x] **Step 2: Run tests and verify the routes/components are missing**
 
-- [ ] **Step 3: Implement tokens, an accessible SVG logo lockup matching the approved cross-and-open-book concept, page sections and reduced-motion behavior**
+- [x] **Step 3: Implement tokens, an accessible SVG logo lockup matching the approved cross-and-open-book concept, page sections and reduced-motion behavior**
 
 ```css
 :root { --navy: #0b1f3a; --emerald: #16a085; --surface: #f6f8fb; --text: #102033; }
 @media (prefers-reduced-motion: reduce) { *,::before,::after { animation-duration: .01ms !important; } }
 ```
 
-- [ ] **Step 4: Run unit, E2E, axe accessibility and responsive viewport checks**
+- [x] **Step 4: Run unit, E2E, axe accessibility and responsive viewport checks**
 
-- [ ] **Step 5: Commit with `feat: add public clinical premium experience`**
+- [x] **Step 5: Commit with `feat: add public clinical premium experience`**
 
 ### Task 5: Implement authentication and protected route shells
 
@@ -226,24 +234,24 @@ await expect(page.getByText('R$ 30/mês')).toBeVisible();
 **Interfaces:**
 - Produces: `requireUser()`, `requireRole(allowed: AppRole[])`, `/aluno` and `/admin` protected shells.
 
-- [ ] **Step 1: Write tests for registration, confirmation callback, reset and forbidden editor billing access**
+- [x] **Step 1: Write tests for registration, confirmation callback, reset and forbidden editor billing access**
 
 ```ts
 await page.goto('/admin/pagamentos');
 await expect(page).toHaveURL(/\/acesso-negado$/);
 ```
 
-- [ ] **Step 2: Run tests and verify protected routes do not exist**
+- [x] **Step 2: Run tests and verify protected routes do not exist**
 
-- [ ] **Step 3: Implement server actions with Zod validation and generic credential error messages**
+- [x] **Step 3: Implement server actions with Zod validation and generic credential error messages**
 
 ```ts
 const credentialsSchema = z.object({ email: z.string().email(), password: z.string().min(10) });
 ```
 
-- [ ] **Step 4: Verify cookies, redirects, role checks and no account-enumeration response**
+- [x] **Step 4: Verify cookies, redirects, role checks and no account-enumeration response**
 
-- [ ] **Step 5: Commit with `feat: implement authentication journeys`**
+- [x] **Step 5: Commit with `feat: implement authentication journeys`**
 
 ### Task 6: Implement the academic catalog and publishing workflow
 
@@ -258,23 +266,23 @@ const credentialsSchema = z.object({ email: z.string().email(), password: z.stri
 - Produces: `Cycle`, `Discipline`, `Module`, `Lesson`, `ContentStatus`, `AccessLevel`.
 - Produces: `publishLesson(id: string, actorId: string): Promise<Lesson>`.
 
-- [ ] **Step 1: Test hierarchy integrity, valid status transitions, editor permissions and rejection of disallowed media MIME/size**
+- [x] **Step 1: Test hierarchy integrity, valid status transitions, editor permissions and rejection of disallowed media MIME/size**
 
 ```ts
 expect(() => transitionContent('archived', 'published')).toThrow('Archived content must return to draft');
 ```
 
-- [ ] **Step 2: Run domain/database tests and verify failure**
+- [x] **Step 2: Run domain/database tests and verify failure**
 
-- [ ] **Step 3: Add normalized tables, slugs, ordering, soft deletion, relations and audit trigger**
+- [x] **Step 3: Add normalized tables, slugs, ordering, soft deletion, relations and audit trigger**
 
-- [ ] **Step 4: Implement admin list/editor/preview, direct signed R2 media upload and draft → review → published → archived transitions**
+- [x] **Step 4: Implement admin list/editor/preview, direct signed R2 media upload and draft → review → published → archived transitions**
 
 ```ts
 export const contentStatuses = ['draft', 'review', 'published', 'archived'] as const;
 ```
 
-- [ ] **Step 5: Test publication, scheduling and unauthorized mutation; commit `feat: add academic content workflow`**
+- [x] **Step 5: Test publication, scheduling and unauthorized mutation; commit `feat: add academic content workflow`**
 
 ### Task 7: Build the student dashboard, lesson player and progress persistence
 
@@ -287,19 +295,19 @@ export const contentStatuses = ['draft', 'review', 'published', 'archived'] as c
 **Interfaces:**
 - Produces: `saveLessonProgress(input: LessonProgressInput): Promise<void>` and `getStudentDashboard(userId)`.
 
-- [ ] **Step 1: Test monotonic completion, resume position and preservation after subscription expiry**
+- [x] **Step 1: Test monotonic completion, resume position and preservation after subscription expiry**
 
 ```ts
 expect(mergeProgress({ seconds: 120, complete: false }, { seconds: 30, complete: false }).seconds).toBe(120);
 ```
 
-- [ ] **Step 2: Run tests and verify missing service**
+- [x] **Step 2: Run tests and verify missing service**
 
-- [ ] **Step 3: Add progress/favorites/streak tables, RLS and idempotent upserts**
+- [x] **Step 3: Add progress/favorites/streak tables, RLS and idempotent upserts**
 
-- [ ] **Step 4: Build dashboard, catalog, lesson blocks, auto-save and locked premium previews**
+- [x] **Step 4: Build dashboard, catalog, lesson blocks, auto-save and locked premium previews**
 
-- [ ] **Step 5: Run E2E on desktop/mobile and commit `feat: add student learning experience`**
+- [x] **Step 5: Run E2E on desktop/mobile and commit `feat: add student learning experience`**
 
 ### Task 8: Implement spaced-repetition flashcards
 
@@ -313,20 +321,20 @@ expect(mergeProgress({ seconds: 120, complete: false }, { seconds: 30, complete:
 - Produces: `scheduleReview(previous: ReviewState | null, grade: ReviewGrade, reviewedAt: Date): ReviewState`.
 - Grades: `again | hard | good | easy` mapped in UI to Errei, Difícil, Bom, Fácil.
 
-- [ ] **Step 1: Write deterministic interval tests and a concurrency test for duplicate submissions**
+- [x] **Step 1: Write deterministic interval tests and a concurrency test for duplicate submissions**
 
 ```ts
 expect(scheduleReview(null, 'again', now).dueAt).toEqual(addMinutes(now, 10));
 expect(scheduleReview(null, 'easy', now).intervalDays).toBe(4);
 ```
 
-- [ ] **Step 2: Run tests and verify failure**
+- [x] **Step 2: Run tests and verify failure**
 
-- [ ] **Step 3: Implement pure scheduling, review uniqueness and transactional update**
+- [x] **Step 3: Implement pure scheduling, review uniqueness and transactional update**
 
-- [ ] **Step 4: Build daily queue, card interaction, counts and keyboard controls**
+- [x] **Step 4: Build daily queue, card interaction, counts and keyboard controls**
 
-- [ ] **Step 5: Run concurrency, unit and E2E tests; commit `feat: add spaced repetition flashcards`**
+- [x] **Step 5: Run concurrency, unit and E2E tests; commit `feat: add spaced repetition flashcards`**
 
 ### Task 9: Implement questions and simulations
 
@@ -365,19 +373,19 @@ expect(scoreAttempt([{ id: 'q1', correctOptionId: 'b' }], [{ questionId: 'q1', o
 **Interfaces:**
 - Produces: `validateEbookLicense(input: EbookLicenseInput): ValidationResult` and `createSignedDownload`.
 
-- [ ] **Step 1: Test rejection of missing author, source, license type or license URL**
+- [x] **Step 1: Test rejection of missing author, source, license type or license URL**
 
 ```ts
 expect(validateEbookLicense({ type: 'open', licenseUrl: '' }).ok).toBe(false);
 ```
 
-- [ ] **Step 2: Run tests and verify failure**
+- [x] **Step 2: Run tests and verify failure**
 
-- [ ] **Step 3: Add database constraints and server validation preventing invalid publication**
+- [x] **Step 3: Add database constraints and server validation preventing invalid publication**
 
-- [ ] **Step 4: Build library search, detail, admin form and short-lived download URL**
+- [x] **Step 4: Build library search, detail, admin form and short-lived download URL**
 
-- [ ] **Step 5: Verify free/premium access and commit `feat: add rights-aware ebook library`**
+- [x] **Step 5: Verify free/premium access and commit `feat: add rights-aware ebook library`**
 
 ### Task 11: Integrate Mercado Pago subscriptions and PIX
 
