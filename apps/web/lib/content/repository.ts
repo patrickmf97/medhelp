@@ -120,6 +120,26 @@ export async function getEditorialLesson(id: string): Promise<EditorialLesson | 
   return data as unknown as EditorialLesson | null;
 }
 
+export interface EditorialLessonBlockRow {
+  id: string;
+  block_type: string;
+  content: unknown;
+  position: number;
+}
+
+export async function getEditorialLessonBlocks(id: string): Promise<EditorialLessonBlockRow[]> {
+  const { supabase } = await requireRole(['editor', 'admin'], `/editor/conteudos/${id}/preview`);
+  const { data, error } = await supabase
+    .from('lesson_blocks')
+    .select('id, block_type, content, position')
+    .eq('lesson_id', id)
+    .is('deleted_at', null)
+    .order('position');
+
+  if (error) throw new Error('Não foi possível carregar o conteúdo da aula.');
+  return (data ?? []) as unknown as EditorialLessonBlockRow[];
+}
+
 export async function createLesson(input: LessonInput): Promise<Lesson> {
   const { supabase, user } = await requireRole(['editor', 'admin'], '/editor/conteudos/novo');
   const { data, error } = await supabase

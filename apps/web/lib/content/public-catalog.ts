@@ -12,6 +12,7 @@ export interface PublicCatalogItem {
   discipline: string;
   cycle: string;
   cycleSlug: string;
+  position?: number;
 }
 
 export interface PublicFreeSample extends PublicCatalogItem {
@@ -71,6 +72,7 @@ export function mapPublicCatalogRows(rows: unknown[]): PublicCatalogItem[] {
         discipline: disciplineTitle,
         cycle: cycleTitle,
         cycleSlug,
+        position: typeof row.position === 'number' ? row.position : 0,
       },
     ];
   });
@@ -85,7 +87,7 @@ export async function listPublicCatalog(): Promise<PublicCatalogItem[]> {
     const { data, error } = await supabase
     .from('lessons')
     .select(
-      'id, title, slug, summary, access_level, modules!inner(title, disciplines!inner(title, cycles!inner(title, slug)))',
+      'id, title, slug, summary, access_level, position, modules!inner(title, disciplines!inner(title, cycles!inner(title, slug)))',
     )
     .eq('status', 'published')
     .lte('published_at', publishedBefore)

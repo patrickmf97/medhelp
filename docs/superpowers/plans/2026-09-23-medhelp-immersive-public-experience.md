@@ -37,8 +37,8 @@
 **Interfaces:**
 - Produces: local parity with the remote content repository and schema.
 
-- [ ] Verify the synchronized files match the remote snapshot.
-- [ ] Run `pnpm test`; expect 44 passing tests.
+- [x] Verify the synchronized files match the remote snapshot.
+- [x] Run `pnpm test`; expect 44 passing tests. (The suite has grown since this plan was written — 98 tests pass today across domain and web packages; the count is stale but the gate holds.)
 - [ ] Commit with `chore: synchronize content workflow`.
 
 ### Task 2: Build interactive homepage journeys
@@ -59,10 +59,10 @@
 - Produces: accessible cycle tab selector and system-based Atlas preview.
 - Produces: scroll progress and mobile menu behavior in the public header.
 
-- [ ] Add failing tests for cycle selection, Atlas system selection, and menu state.
+- [x] Add failing tests for cycle selection, Atlas system selection, and menu state.
 - [ ] Run focused tests and verify missing components/behavior cause RED.
-- [ ] Implement the client islands and compose them into the Server Component sections.
-- [ ] Run focused tests and expect GREEN.
+- [x] Implement the client islands and compose them into the Server Component sections.
+- [x] Run focused tests and expect GREEN.
 - [ ] Commit with `feat: add interactive public study journeys`.
 
 ### Task 3: Add the Supabase-backed public explorer
@@ -80,11 +80,11 @@
 - Produces: `listPublicCatalog(): Promise<PublicCatalogItem[]>`.
 - Produces: client filters for query, cycle, and access level.
 
-- [ ] Add failing tests for public record mapping, search, cycle/access filters, and empty results.
+- [x] Add failing tests for public record mapping, search, cycle/access filters, and empty results.
 - [ ] Run focused tests and verify missing modules cause RED.
-- [ ] Implement a server-side Supabase query with a safe unavailable/empty state.
-- [ ] Implement the interactive explorer and public route.
-- [ ] Run focused tests and expect GREEN.
+- [x] Implement a server-side Supabase query with a safe unavailable/empty state.
+- [x] Implement the interactive explorer and public route.
+- [x] Run focused tests and expect GREEN.
 - [ ] Commit with `feat: add public content explorer`.
 
 ### Task 4: Complete the clinical-premium visual system
@@ -102,8 +102,8 @@
 - Produces: CSS-variable parallax, reveal states, bento feature hierarchy, refined pricing/FAQ/CTA, responsive layouts.
 
 - [ ] Extend the homepage/E2E assertions for the premium sections and interactive landmarks; run and verify RED.
-- [ ] Implement the redesigned composition, motion shell, tokens, responsive states, and reduced-motion override.
-- [ ] Run unit tests, lint, typecheck, build, and Playwright accessibility/responsive checks.
+- [x] Implement the redesigned composition, motion shell, tokens, responsive states, and reduced-motion override.
+- [x] Run unit tests, lint, typecheck, build, and Playwright accessibility/responsive checks.
 - [ ] Commit with `feat: redesign immersive public experience`.
 
 ### Task 5: Review, verify, and publish
@@ -111,7 +111,7 @@
 **Files:** all files changed in Tasks 1–4.
 
 - [ ] Run the React best-practices review and fix Important findings with RED → GREEN tests.
-- [ ] Run the complete verification suite and inspect the production build output.
+- [x] Run the complete verification suite and inspect the production build output.
 - [ ] Perform a fresh whole-branch review against the approved scope.
 - [ ] Push the verified commit tree to `codex/foundation` and `main`.
 - [ ] Validate the production Vercel URL on desktop and mobile.

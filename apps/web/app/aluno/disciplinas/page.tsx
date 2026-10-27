@@ -6,7 +6,10 @@ import { groupLessons } from '@/lib/study/group-lessons';
 export default async function DisciplinesPage() {
   const { user } = await requireUser('/aluno/disciplinas');
   const journey = await getStudentDashboard(user.id);
-  const cycles = groupLessons(journey.lessons);
+  // The catalog is fetched in publish order, not curriculum order: sort by each
+  // lesson's own position before grouping so lessons inside a module stay in sequence.
+  const orderedLessons = [...journey.lessons].sort((a, b) => (a.position ?? 0) - (b.position ?? 0));
+  const cycles = groupLessons(orderedLessons);
   const completedIds = new Set(journey.progress.filter(item => item.completed_at).map(item => item.lesson_id));
   return <div className="student-page">
     <header className="student-page-head">

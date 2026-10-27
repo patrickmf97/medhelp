@@ -69,7 +69,7 @@ export async function getStudentDashboard(userId: string) {
     premiumAccess: access.premiumAccess,
     subscriptionState: access.subscriptionState,
     accessUntil: access.accessUntil,
-    lessons: catalog.map(({ id, title, cycle, discipline, module, accessLevel }) => ({ id, title, cycle, discipline, module, accessLevel })),
+    lessons: catalog.map(({ id, title, cycle, discipline, module, accessLevel, position }) => ({ id, title, cycle, discipline, module, accessLevel, position })),
     progress: (progressResult.data ?? []) as StoredProgress[],
     favoriteIds: (favoritesResult.data ?? []).map((item) => item.lesson_id),
     streak: streakResult.data?.current_count ?? 0,
@@ -78,7 +78,7 @@ export async function getStudentDashboard(userId: string) {
 
 export type LessonBlock = { id: string; type: 'heading' | 'rich_text' | 'callout' | 'image' | 'video'; text: string; src: string | null; format: 'medhelp-markdown-v1' | null };
 
-function mapLessonBlocks(rows: unknown[]): LessonBlock[] {
+export function mapLessonBlocks(rows: unknown[]): LessonBlock[] {
   return rows.flatMap((value) => {
     if (!value || typeof value !== 'object') return [];
     const row = value as Record<string, unknown>;
