@@ -1,0 +1,4567 @@
+{
+  "schemaVersion": 1,
+  "totals": {
+    "processed": 240,
+    "accepted": 235,
+    "rejected": 0,
+    "excludedForLicense": 5,
+    "unmapped": 45
+  },
+  "accepted": [
+    {
+      "objectName": " Posterior transverse collateral sulcus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 102,
+      "bounds": {
+        "min": [
+          0.015704218298196793,
+          0.0608331635594368,
+          1.5961579084396362
+        ],
+        "max": [
+          0.0338275171816349,
+          0.07565228641033173,
+          1.6094516515731812
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": " Posterior transverse collateral sulcus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 102,
+      "bounds": {
+        "min": [
+          -0.03382750228047371,
+          0.0608331635594368,
+          1.5961579084396362
+        ],
+        "max": [
+          -0.0157042033970356,
+          0.07565228641033173,
+          1.6094516515731812
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Abdominal part of pectoralis major muscle).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 756,
+      "bounds": {
+        "min": [
+          0.05408063530921936,
+          -0.11619434505701065,
+          1.1718323230743408
+        ],
+        "max": [
+          0.1861971914768219,
+          0.01680450141429901,
+          1.3487025499343872
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Abdominal part of pectoralis major muscle).ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 62,
+      "bounds": {
+        "min": [
+          0.05419349670410156,
+          -0.10997253656387329,
+          1.171966552734375
+        ],
+        "max": [
+          0.08719386160373688,
+          -0.09988043457269669,
+          1.19935142993927
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Abdominal part of pectoralis major muscle).or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 62,
+      "bounds": {
+        "min": [
+          -0.08719386160373688,
+          -0.10997253656387329,
+          1.171966552734375
+        ],
+        "max": [
+          -0.05419349670410156,
+          -0.09988043457269669,
+          1.19935142993927
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Abdominal part of pectoralis major muscle).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 756,
+      "bounds": {
+        "min": [
+          -0.1861971616744995,
+          -0.11619439721107483,
+          1.1718324422836304
+        ],
+        "max": [
+          -0.05408061668276787,
+          0.016804374754428864,
+          1.3487025499343872
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Accessory parotid gland).l",
+      "structureId": "za:bonus-collection/visceral-systems/digestive-system/mouth",
+      "status": "accepted",
+      "vertexCount": 14,
+      "bounds": {
+        "min": [
+          0.053310051560401917,
+          -0.04958440363407135,
+          1.551628589630127
+        ],
+        "max": [
+          0.05909029021859169,
+          -0.03800494223833084,
+          1.5608009099960327
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Accessory parotid gland).r",
+      "structureId": "za:bonus-collection/visceral-systems/digestive-system/mouth",
+      "status": "accepted",
+      "vertexCount": 14,
+      "bounds": {
+        "min": [
+          -0.05909017100930214,
+          -0.04958440363407135,
+          1.551628589630127
+        ],
+        "max": [
+          -0.053309932351112366,
+          -0.03800494223833084,
+          1.5608009099960327
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Adductor minimus).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 476,
+      "bounds": {
+        "min": [
+          0.01861923560500145,
+          -0.027546875178813934,
+          0.7251193523406982
+        ],
+        "max": [
+          0.09873493015766144,
+          0.013785642571747303,
+          0.8294767141342163
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Adductor minimus).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 476,
+      "bounds": {
+        "min": [
+          -0.09873493015766144,
+          -0.027546871453523636,
+          0.7251192927360535
+        ],
+        "max": [
+          -0.018619239330291748,
+          0.013785643503069878,
+          0.8294766545295715
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Anterior tibial node).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.10827549546957016,
+          0.01290347520262003,
+          0.3438374698162079
+        ],
+        "max": [
+          0.11085065454244614,
+          0.01550010684877634,
+          0.3464144170284271
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Anterior tibial node).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.11085030436515808,
+          0.01290347520262003,
+          0.3438374698162079
+        ],
+        "max": [
+          -0.1082751452922821,
+          0.01550010684877634,
+          0.3464144170284271
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Canal for vertebral artery).j",
+      "structureId": "za:bonus-collection/skeletal-system/vertebral-column/bones-of-vertebral-column/cervical-vertebrae/atlas",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.03586399555206299,
+          0.013311798684298992,
+          1.5178500413894653
+        ],
+        "max": [
+          -0.03586399555206299,
+          0.013311919756233692,
+          1.5525000095367432
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(External occipital crest).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -1.69887073298014e-8,
+          0.07819516956806183,
+          1.5267046689987183
+        ],
+        "max": [
+          -1.69887073298014e-8,
+          0.07819528132677078,
+          1.5599546432495117
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Fibular node).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.11190184950828552,
+          0.05254977196455002,
+          0.3329271376132965
+        ],
+        "max": [
+          0.11449873447418213,
+          0.055140815675258636,
+          0.33549538254737854
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Fibular node).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.11449842154979706,
+          0.05254976451396942,
+          0.3329271376132965
+        ],
+        "max": [
+          -0.11190153658390045,
+          0.05514080822467804,
+          0.33549538254737854
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Iliopectineal bursa).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 178,
+      "bounds": {
+        "min": [
+          0.07034988701343536,
+          -0.026470188051462173,
+          0.8463214039802551
+        ],
+        "max": [
+          0.09376093745231628,
+          -0.01617269590497017,
+          0.8780708909034729
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Iliopectineal bursa).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 178,
+      "bounds": {
+        "min": [
+          -0.09376096725463867,
+          -0.026470188051462173,
+          0.8463214039802551
+        ],
+        "max": [
+          -0.07034991681575775,
+          -0.01617269590497017,
+          0.8780708909034729
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Intermediate deep inguinal node).l",
+      "structureId": "za:bonus-collection/visceral-systems/lymphoid-system",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.04178696870803833,
+          -0.054892055690288544,
+          0.8390421867370605
+        ],
+        "max": [
+          0.04436212778091431,
+          -0.05229542404413223,
+          0.8416191339492798
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Intermediate deep inguinal node).r",
+      "structureId": "za:bonus-collection/visceral-systems/lymphoid-system",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.04436122626066208,
+          -0.054892055690288544,
+          0.8390421867370605
+        ],
+        "max": [
+          -0.0417860671877861,
+          -0.05229542404413223,
+          0.8416191339492798
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Intermediate lacunar node).l",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 1,
+      "bounds": {
+        "min": [
+          0.040254153311252594,
+          -0.039729878306388855,
+          0.8560214042663574
+        ],
+        "max": [
+          0.040254153311252594,
+          -0.039729878306388855,
+          0.8560214042663574
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Intermediate lacunar node).r",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 1,
+      "bounds": {
+        "min": [
+          -0.04025254398584366,
+          -0.039729878306388855,
+          0.8560214042663574
+        ],
+        "max": [
+          -0.04025254398584366,
+          -0.039729878306388855,
+          0.8560214042663574
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Internal occipital crest).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -1.722153797345527e-8,
+          0.0568377822637558,
+          1.5401090383529663
+        ],
+        "max": [
+          -1.722153797345527e-8,
+          0.05683789774775505,
+          1.5733590126037598
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Lateral lacunar node).l",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.0478939414024353,
+          -0.04132485017180443,
+          0.857119083404541
+        ],
+        "max": [
+          0.05049082636833191,
+          -0.03873138502240181,
+          0.8597095012664795
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Lateral lacunar node).r",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.050489217042922974,
+          -0.04132485017180443,
+          0.857119083404541
+        ],
+        "max": [
+          -0.04789233207702637,
+          -0.03873138502240181,
+          0.8597095012664795
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Mandibular symphysis).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          7.930970116754033e-12,
+          -0.10839453339576721,
+          1.4564589262008667
+        ],
+        "max": [
+          7.931012617479194e-12,
+          -0.10839436203241348,
+          1.5049588680267334
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Medial lacunar node).l",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 1,
+      "bounds": {
+        "min": [
+          0.03351938724517822,
+          -0.04585409536957741,
+          0.8505593538284302
+        ],
+        "max": [
+          0.03351938724517822,
+          -0.04585409536957741,
+          0.8505593538284302
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Medial lacunar node).r",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 1,
+      "bounds": {
+        "min": [
+          -0.03351777791976929,
+          -0.04585409536957741,
+          0.8505593538284302
+        ],
+        "max": [
+          -0.03351777791976929,
+          -0.04585409536957741,
+          0.8505593538284302
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Middle clinoid process).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.007535296492278576,
+          -0.016534993425011635,
+          1.5553019046783447
+        ],
+        "max": [
+          0.007535296492278576,
+          -0.0165348332375288,
+          1.6048017740249634
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Opponens digiti minimi muscle of foot).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 120,
+      "bounds": {
+        "min": [
+          0.10563655197620392,
+          -0.03877326101064682,
+          0.015597392804920673
+        ],
+        "max": [
+          0.12821581959724426,
+          0.004513160325586796,
+          0.027166470885276794
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Opponens digiti minimi muscle of foot).ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 31,
+      "bounds": {
+        "min": [
+          0.11748695373535156,
+          -0.03894200548529625,
+          0.01566755771636963
+        ],
+        "max": [
+          0.12831971049308777,
+          -0.0061996616423130035,
+          0.024236608296632767
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Opponens digiti minimi muscle of foot).or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 31,
+      "bounds": {
+        "min": [
+          -0.12831972539424896,
+          -0.03894200548529625,
+          0.01566755771636963
+        ],
+        "max": [
+          -0.11748696863651276,
+          -0.0061996616423130035,
+          0.024236608296632767
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Opponens digiti minimi muscle of foot).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 120,
+      "bounds": {
+        "min": [
+          -0.12821580469608307,
+          -0.03877323865890503,
+          0.015597512014210224
+        ],
+        "max": [
+          -0.10563653707504272,
+          0.004513162188231945,
+          0.027166586369276047
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Pancreatic impression of spleen).j",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.048702072352170944,
+          0.00040223856922239065,
+          1.1161978244781494
+        ],
+        "max": [
+          0.04884049668908119,
+          0.0006351899355649948,
+          1.1404463052749634
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Posterior obturator tubercle).i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.023384548723697662,
+          -5.4636615232084296e-9,
+          -0.000500023365020752
+        ],
+        "max": [
+          0,
+          0,
+          0.001365412026643753
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Posterior obturator tubercle).j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.05013424530625343,
+          0.008926307782530785,
+          0.8442065119743347
+        ],
+        "max": [
+          -0.02674969658255577,
+          0.00892630871385336,
+          0.8460719585418701
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Posterior tibial node).l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.0772995799779892,
+          0.04494088143110275,
+          0.3173653781414032
+        ],
+        "max": [
+          0.0798952579498291,
+          0.04752962291240692,
+          0.31992265582084656
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Posterior tibial node).r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.07989491522312164,
+          0.04494088515639305,
+          0.3173653781414032
+        ],
+        "max": [
+          -0.07729923725128174,
+          0.04752962663769722,
+          0.31992265582084656
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Proximal deep inguinal node).l",
+      "structureId": "za:bonus-collection/visceral-systems/lymphoid-system",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          0.04151907190680504,
+          -0.05032026022672653,
+          0.8494257926940918
+        ],
+        "max": [
+          0.044094230979681015,
+          -0.04772362858057022,
+          0.852002739906311
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Proximal deep inguinal node).r",
+      "structureId": "za:bonus-collection/visceral-systems/lymphoid-system",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.04409332945942879,
+          -0.05032026022672653,
+          0.8494257926940918
+        ],
+        "max": [
+          -0.04151817038655281,
+          -0.04772362858057022,
+          0.852002739906311
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Pyramidal lobe).j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          1.4901161193847656e-8,
+          -0.048745717853307724,
+          1.4557379484176636
+        ],
+        "max": [
+          1.4901161193847656e-8,
+          -0.04874563589692116,
+          1.4799878597259521
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Retropyloric nodes)",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.01222307700663805,
+          -0.058920860290527344,
+          1.1399555206298828
+        ],
+        "max": [
+          -0.009655943140387535,
+          -0.05636029317975044,
+          1.142511010169983
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Subpyloric nodes)",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 172,
+      "bounds": {
+        "min": [
+          -0.02134156972169876,
+          -0.06130737438797951,
+          1.118747353553772
+        ],
+        "max": [
+          -0.015036874450743198,
+          -0.057104479521512985,
+          1.1224867105484009
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Supra-orbital notch).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.028194455429911613,
+          -0.09657825529575348,
+          1.5688064098358154
+        ],
+        "max": [
+          0.028194455429911613,
+          -0.09657809138298035,
+          1.6163063049316406
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Suprapyloric node)",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 86,
+      "bounds": {
+        "min": [
+          -0.013758139684796333,
+          -0.06129534915089607,
+          1.1413854360580444
+        ],
+        "max": [
+          -0.011191005818545818,
+          -0.05873478576540947,
+          1.143941044807434
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Third trochanter).i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -6.661338205653582e-19,
+          -0.018752187490463257,
+          0.0005000024102628231
+        ],
+        "max": [
+          0.0063447002321481705,
+          -1.085997070049416e-8,
+          0.0008989050984382629
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Third trochanter).j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.12941011786460876,
+          0.031661901623010635,
+          0.7966132760047913
+        ],
+        "max": [
+          -0.12306541204452515,
+          0.05041408911347389,
+          0.797012209892273
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "(Vermian fossa).j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -1.6976203554008862e-8,
+          0.04843566194176674,
+          1.5337425470352173
+        ],
+        "max": [
+          -1.6976203554008862e-8,
+          0.04843577742576599,
+          1.5669925212860107
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abdominal lymph nodes.j",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.040626972913742065,
+          -0.028034277260303497,
+          1.0718637704849243
+        ],
+        "max": [
+          0.36280858516693115,
+          -0.028034275397658348,
+          1.0718891620635986
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abdominal part of muscular system.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.02544093132019043,
+          -0.3022894859313965,
+          1.0349841117858887
+        ],
+        "max": [
+          -0.02544093132019043,
+          -0.1053004339337349,
+          1.0351731777191162
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abdominopelvic cavity.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.0015349313616752625,
+          -0.19025428593158722,
+          1.05106520652771
+        ],
+        "max": [
+          0.0015349313616752625,
+          -0.03284872695803642,
+          1.0512561798095703
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abduction",
+      "structureId": "za:bonus-collection/reference-lines-planes-movements/movements",
+      "status": "accepted",
+      "vertexCount": 50,
+      "bounds": {
+        "min": [
+          -0.2432495653629303,
+          -0.027368173003196716,
+          0.7780886888504028
+        ],
+        "max": [
+          0.14020048081874847,
+          0.03514367341995239,
+          1.4727551937103271
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of foot.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 33,
+      "bounds": {
+        "min": [
+          0.1349298655986786,
+          -0.05903749167919159,
+          0.01101152878254652
+        ],
+        "max": [
+          0.13920608162879944,
+          -0.05502203479409218,
+          0.014627552591264248
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of foot.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 33,
+      "bounds": {
+        "min": [
+          -0.13920608162879944,
+          -0.05903749167919159,
+          0.01101152878254652
+        ],
+        "max": [
+          -0.1349298655986786,
+          -0.05502203479409218,
+          0.014627552591264248
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of foot.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 640,
+      "bounds": {
+        "min": [
+          0.06840932369232178,
+          -0.0588822066783905,
+          0.010193431749939919
+        ],
+        "max": [
+          0.13936808705329895,
+          0.06856423616409302,
+          0.026712916791439056
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of foot.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 640,
+      "bounds": {
+        "min": [
+          -0.13936807215213776,
+          -0.058882180601358414,
+          0.010193554684519768
+        ],
+        "max": [
+          -0.06840930879116058,
+          0.06856420636177063,
+          0.02671303227543831
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 58,
+      "bounds": {
+        "min": [
+          0.23036107420921326,
+          -0.04514530673623085,
+          0.7773998379707336
+        ],
+        "max": [
+          0.23155005276203156,
+          -0.04050969332456589,
+          0.7825929522514343
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 58,
+      "bounds": {
+        "min": [
+          -0.23155002295970917,
+          -0.04514530673623085,
+          0.7773998379707336
+        ],
+        "max": [
+          -0.23036104440689087,
+          -0.04050969332456589,
+          0.7825929522514343
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 336,
+      "bounds": {
+        "min": [
+          0.2278072088956833,
+          -0.04900394380092621,
+          0.7779539227485657
+        ],
+        "max": [
+          0.24598577618598938,
+          -0.030042480677366257,
+          0.8450021147727966
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 38,
+      "bounds": {
+        "min": [
+          0.23959679901599884,
+          -0.03715083375573158,
+          0.8399440050125122
+        ],
+        "max": [
+          0.24639639258384705,
+          -0.03008919395506382,
+          0.8446581959724426
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 38,
+      "bounds": {
+        "min": [
+          -0.24639636278152466,
+          -0.03715083375573158,
+          0.8399440050125122
+        ],
+        "max": [
+          -0.23959676921367645,
+          -0.03008919395506382,
+          0.8446581959724426
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor digiti minimi of hand.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 336,
+      "bounds": {
+        "min": [
+          -0.245985746383667,
+          -0.04900394380092621,
+          0.7779539227485657
+        ],
+        "max": [
+          -0.2278071790933609,
+          -0.030042480677366257,
+          0.8450021147727966
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 13,
+      "bounds": {
+        "min": [
+          0.06089169159531593,
+          -0.08540675789117813,
+          0.014618314802646637
+        ],
+        "max": [
+          0.0640123039484024,
+          -0.0810682475566864,
+          0.019325707107782364
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 13,
+      "bounds": {
+        "min": [
+          -0.0640123039484024,
+          -0.08540675789117813,
+          0.014618314802646637
+        ],
+        "max": [
+          -0.06089169159531593,
+          -0.0810682475566864,
+          0.019325707107782364
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 844,
+      "bounds": {
+        "min": [
+          0.055125802755355835,
+          -0.08471755683422089,
+          0.014434991404414177
+        ],
+        "max": [
+          0.07554645091295242,
+          0.06050378084182739,
+          0.04136994108557701
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          0.0719839408993721,
+          0.05167531594634056,
+          0.014951457269489765
+        ],
+        "max": [
+          0.08855954557657242,
+          0.06864312291145325,
+          0.022619787603616714
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          -0.08855954557657242,
+          0.05167531594634056,
+          0.014951457269489765
+        ],
+        "max": [
+          -0.0719839408993721,
+          0.06864312291145325,
+          0.022619787603616714
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor hallucis.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 844,
+      "bounds": {
+        "min": [
+          -0.07554643601179123,
+          -0.0847175195813179,
+          0.014435111545026302
+        ],
+        "max": [
+          -0.05512578785419464,
+          0.0605037622153759,
+          0.041370049118995667
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis brevis.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 312,
+      "bounds": {
+        "min": [
+          0.2719855010509491,
+          -0.0528404600918293,
+          0.8193526268005371
+        ],
+        "max": [
+          0.3126637637615204,
+          -0.02221996895968914,
+          0.8588409423828125
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis brevis.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 312,
+      "bounds": {
+        "min": [
+          -0.312663733959198,
+          -0.0528404600918293,
+          0.8193526268005371
+        ],
+        "max": [
+          -0.2719854712486267,
+          -0.02221996895968914,
+          0.8588409423828125
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 15,
+      "bounds": {
+        "min": [
+          0.2940579652786255,
+          -0.03157540783286095,
+          0.8384075164794922
+        ],
+        "max": [
+          0.2993257939815521,
+          -0.025551142171025276,
+          0.8448506593704224
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 15,
+      "bounds": {
+        "min": [
+          -0.2993257939815521,
+          -0.03157540783286095,
+          0.8384075164794922
+        ],
+        "max": [
+          -0.2940579652786255,
+          -0.025551142171025276,
+          0.8448506593704224
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1233,
+      "bounds": {
+        "min": [
+          0.2349395602941513,
+          -0.03121224232017994,
+          0.8389425277709961
+        ],
+        "max": [
+          0.29898372292518616,
+          0.03260538727045059,
+          1.0267460346221924
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 74,
+      "bounds": {
+        "min": [
+          0.23540811240673065,
+          0.009824351407587528,
+          0.9571786522865295
+        ],
+        "max": [
+          0.2592175602912903,
+          0.033450428396463394,
+          1.0269442796707153
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 74,
+      "bounds": {
+        "min": [
+          -0.2592175602912903,
+          0.009824351407587528,
+          0.9571786522865295
+        ],
+        "max": [
+          -0.23540811240673065,
+          0.033450428396463394,
+          1.0269442796707153
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Abductor pollicis longus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1233,
+      "bounds": {
+        "min": [
+          -0.29898378252983093,
+          -0.031212247908115387,
+          0.8389425277709961
+        ],
+        "max": [
+          -0.23493961989879608,
+          0.03260539099574089,
+          1.0267460346221924
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Accessory nucleus of oculomotor nerve.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          0.00008012456237338483,
+          0.007496851496398449,
+          1.604552984237671
+        ],
+        "max": [
+          0.0017789662815630436,
+          0.010389478877186775,
+          1.6130300760269165
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Accessory nucleus of oculomotor nerve.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          -0.0017789351986721158,
+          0.007496851496398449,
+          1.604552984237671
+        ],
+        "max": [
+          -0.00008009918383322656,
+          0.010389478877186775,
+          1.6130300760269165
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Accessory visual structures.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.012191394343972206,
+          -0.13167628645896912,
+          1.5744433403015137
+        ],
+        "max": [
+          0.01219139713793993,
+          -0.06984107196331024,
+          1.574713110923767
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular fossa.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          -5.4636615232084296e-9,
+          -0.000500023365020752
+        ],
+        "max": [
+          0.04758414626121521,
+          0,
+          -0.00029908493161201477
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular fossa.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.10950575768947601,
+          0.0199888925999403,
+          0.8660220503807068
+        ],
+        "max": [
+          -0.0619216114282608,
+          0.0199888963252306,
+          0.8662229776382446
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular labrum.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 176,
+      "bounds": {
+        "min": [
+          0.06648552417755127,
+          -0.0229435246437788,
+          0.8409664034843445
+        ],
+        "max": [
+          0.1025068610906601,
+          0.03520827367901802,
+          0.8893355131149292
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular labrum.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 176,
+      "bounds": {
+        "min": [
+          -0.10250683128833771,
+          -0.0229435246437788,
+          0.8409664034843445
+        ],
+        "max": [
+          -0.06648549437522888,
+          0.03520827367901802,
+          0.8893355131149292
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular margin.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          -7.326306672439387e-9,
+          -0.000500023365020752
+        ],
+        "max": [
+          0.030004700645804405,
+          0,
+          -0.00048313289880752563
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular margin.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.12167946249246597,
+          0.027102338150143623,
+          0.8755651116371155
+        ],
+        "max": [
+          -0.09167475998401642,
+          0.02710234560072422,
+          0.8755819797515869
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular notch.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          -6.394984097823908e-9,
+          -0.000500023365020752
+        ],
+        "max": [
+          0.048044342547655106,
+          0,
+          -0.00020705536007881165
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabular notch.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.10307887196540833,
+          0.00710380868986249,
+          0.8603998422622681
+        ],
+        "max": [
+          -0.05503452941775322,
+          0.00710381381213665,
+          0.8606927990913391
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabulum.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          -6.1621534541700385e-9,
+          -0.0005376376211643219
+        ],
+        "max": [
+          0.05566517263650894,
+          0,
+          -0.000500023365020752
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acetabulum.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.11312352120876312,
+          0.014972577802836895,
+          0.871010422706604
+        ],
+        "max": [
+          -0.05745834857225418,
+          0.014972584322094917,
+          0.8710480332374573
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial angle.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          -0.010599358938634396,
+          -0.00034508854150772095
+        ],
+        "max": [
+          0.02071121335029602,
+          -8.149190655615257e-9,
+          -0.0002709092223085463
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial angle.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.19067896902561188,
+          0.06575457006692886,
+          1.400653600692749
+        ],
+        "max": [
+          -0.16996775567531586,
+          0.07635392248630524,
+          1.4007277488708496
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial end.i",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.04999995231628418
+        ],
+        "max": [
+          0,
+          0,
+          -0.0015000104904174805
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial end.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.14291289448738098,
+          0.042164258658885956,
+          1.3848978281021118
+        ],
+        "max": [
+          -0.1429128497838974,
+          0.04216478019952774,
+          1.4333977699279785
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial facet.i",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.04999995231628418
+        ],
+        "max": [
+          0,
+          0,
+          -0.0015000104904174805
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial facet.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.1752287596464157,
+          0.03590242937207222,
+          1.3674731254577637
+        ],
+        "max": [
+          -0.17522871494293213,
+          0.035902950912714005,
+          1.4159730672836304
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial part of deltoid muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1482,
+      "bounds": {
+        "min": [
+          0.15944330394268036,
+          -0.0005333349108695984,
+          1.2686067819595337
+        ],
+        "max": [
+          0.23491400480270386,
+          0.06286647915840149,
+          1.4162116050720215
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial part of deltoid muscle.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 305,
+      "bounds": {
+        "min": [
+          0.15937814116477966,
+          0.022751854732632637,
+          1.4067869186401367
+        ],
+        "max": [
+          0.173575296998024,
+          0.06122112646698952,
+          1.414926290512085
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial part of deltoid muscle.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 305,
+      "bounds": {
+        "min": [
+          -0.1735752820968628,
+          0.022751854732632637,
+          1.4067869186401367
+        ],
+        "max": [
+          -0.15937812626361847,
+          0.06122112646698952,
+          1.414926290512085
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromial part of deltoid muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1482,
+      "bounds": {
+        "min": [
+          -0.23491400480270386,
+          -0.0005333274602890015,
+          1.2686067819595337
+        ],
+        "max": [
+          -0.15944331884384155,
+          0.06286647170782089,
+          1.4162116050720215
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromioclavicular ligament.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 9,
+      "bounds": {
+        "min": [
+          0.1354241520166397,
+          0.031071973964571953,
+          1.4145692586898804
+        ],
+        "max": [
+          0.163286954164505,
+          0.0499844029545784,
+          1.4250441789627075
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromioclavicular ligament.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 9,
+      "bounds": {
+        "min": [
+          -0.16328701376914978,
+          0.031071973964571953,
+          1.4145692586898804
+        ],
+        "max": [
+          -0.13542421162128448,
+          0.0499844029545784,
+          1.4250441789627075
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromion.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -1.4901161193847656e-8,
+          0,
+          -0.023924576118588448
+        ],
+        "max": [
+          0,
+          9.232502407030552e-8,
+          -0.0025000572204589844
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Acromion.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.16169942915439606,
+          0.047324039041996,
+          1.4149489402770996
+        ],
+        "max": [
+          -0.16169941425323486,
+          0.047324053943157196,
+          1.4363734722137451
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adduction",
+      "structureId": "za:bonus-collection/reference-lines-planes-movements/movements",
+      "status": "accepted",
+      "vertexCount": 50,
+      "bounds": {
+        "min": [
+          0.12091083824634552,
+          -0.027368199080228806,
+          0.8024910688400269
+        ],
+        "max": [
+          0.2416418492794037,
+          0.035136010497808456,
+          1.4744203090667725
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor brevis.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 1064,
+      "bounds": {
+        "min": [
+          0.019472867250442505,
+          -0.038998011499643326,
+          0.665515661239624
+        ],
+        "max": [
+          0.09852373600006104,
+          0.008769889362156391,
+          0.8418013453483582
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor brevis.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 1064,
+      "bounds": {
+        "min": [
+          -0.09852366894483566,
+          -0.03899798169732094,
+          0.665515661239624
+        ],
+        "max": [
+          -0.01947280392050743,
+          0.008769894018769264,
+          0.8418012261390686
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor hallucis.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.09108905494213104,
+          -0.05025545507669449,
+          -0.005891883745789528
+        ],
+        "max": [
+          -0.09108905494213104,
+          -0.05025520175695419,
+          0.017052780836820602
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          0.08684907108545303,
+          -0.0005319491028785706,
+          0.6657606959342957
+        ],
+        "max": [
+          0.09452833980321884,
+          0.008853898383677006,
+          0.7555898427963257
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          -0.09452833980321884,
+          -0.0005319491028785706,
+          0.6657606959342957
+        ],
+        "max": [
+          -0.08684907108545303,
+          0.008853898383677006,
+          0.7555898427963257
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 1855,
+      "bounds": {
+        "min": [
+          0.011796355247497559,
+          -0.052941884845495224,
+          0.5768002867698669
+        ],
+        "max": [
+          0.09486159682273865,
+          0.006883034482598305,
+          0.8416120409965515
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 20,
+      "bounds": {
+        "min": [
+          0.011877346783876419,
+          -0.05277710780501366,
+          0.8313321471214294
+        ],
+        "max": [
+          0.024472840130329132,
+          -0.039333079010248184,
+          0.8417977094650269
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 20,
+      "bounds": {
+        "min": [
+          -0.024472840130329132,
+          -0.05277710780501366,
+          0.8313321471214294
+        ],
+        "max": [
+          -0.011877346783876419,
+          -0.039333079010248184,
+          0.8417977094650269
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor longus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 1855,
+      "bounds": {
+        "min": [
+          -0.09486153721809387,
+          -0.05294184759259224,
+          0.5768004059791565
+        ],
+        "max": [
+          -0.011796295642852783,
+          0.0068830400705337524,
+          0.841611921787262
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 112,
+      "bounds": {
+        "min": [
+          0.034590862691402435,
+          0.006707404740154743,
+          0.46910226345062256
+        ],
+        "max": [
+          0.10816281288862228,
+          0.03473828732967377,
+          0.7868554592132568
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 112,
+      "bounds": {
+        "min": [
+          -0.10816281288862228,
+          0.006707404740154743,
+          0.46910226345062256
+        ],
+        "max": [
+          -0.034590862691402435,
+          0.03473828732967377,
+          0.7868554592132568
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 4096,
+      "bounds": {
+        "min": [
+          0.012756537646055222,
+          -0.016776422038674355,
+          0.46262964606285095
+        ],
+        "max": [
+          0.11034040153026581,
+          0.03565249219536781,
+          0.8203808069229126
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 49,
+      "bounds": {
+        "min": [
+          0.019176635891199112,
+          -0.01546710729598999,
+          0.7984668612480164
+        ],
+        "max": [
+          0.04240346699953079,
+          0.029470214620232582,
+          0.8204517364501953
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 49,
+      "bounds": {
+        "min": [
+          -0.04240346699953079,
+          -0.01546710729598999,
+          0.7984668612480164
+        ],
+        "max": [
+          -0.019176635891199112,
+          0.029470214620232582,
+          0.8204517364501953
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor magnus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 4096,
+      "bounds": {
+        "min": [
+          -0.11034032702445984,
+          -0.016776403412222862,
+          0.4626297652721405
+        ],
+        "max": [
+          -0.012756474316120148,
+          0.03565247729420662,
+          0.8203807473182678
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor pollicis.e1l",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 15,
+      "bounds": {
+        "min": [
+          0.30836090445518494,
+          -0.04787566885352135,
+          0.8054271340370178
+        ],
+        "max": [
+          0.31038811802864075,
+          -0.043740659952163696,
+          0.8095446825027466
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor pollicis.e1r",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 15,
+      "bounds": {
+        "min": [
+          -0.31038811802864075,
+          -0.04787566885352135,
+          0.8054271340370178
+        ],
+        "max": [
+          -0.30836090445518494,
+          -0.043740659952163696,
+          0.8095446825027466
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor pollicis.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 28,
+      "bounds": {
+        "min": [
+          0.2612241208553314,
+          -0.026944557204842567,
+          0.8351619839668274
+        ],
+        "max": [
+          0.27041736245155334,
+          -0.02151201106607914,
+          0.8549384474754333
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor pollicis.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 28,
+      "bounds": {
+        "min": [
+          -0.27041736245155334,
+          -0.026944557204842567,
+          0.8351619839668274
+        ],
+        "max": [
+          -0.2612241208553314,
+          -0.02151201106607914,
+          0.8549384474754333
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor tubercle.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.0038980436511337757,
+          -0.00014734298747498542,
+          -0.00033860281109809875
+        ],
+        "max": [
+          0,
+          -4.807167997000761e-9,
+          -0.0003049371880479157
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adductor tubercle.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.0364813357591629,
+          0.031447358429431915,
+          0.47528064250946045
+        ],
+        "max": [
+          0.0024991112295538187,
+          0.03292074054479599,
+          0.47561728954315186
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Adenohypophysis",
+      "structureId": "za:bonus-collection/visceral-systems/endocrine-glands",
+      "status": "accepted",
+      "vertexCount": 369,
+      "bounds": {
+        "min": [
+          -0.005950067192316055,
+          -0.021455388516187668,
+          1.595686912536621
+        ],
+        "max": [
+          0.005950082093477249,
+          -0.013345981016755104,
+          1.6077384948730469
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ala of ilium.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.01708843559026718,
+          0,
+          -0.006179109215736389
+        ],
+        "max": [
+          0,
+          0.015904098749160767,
+          -0.0004999637603759766
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ala of ilium.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.09287307411432266,
+          -0.002552808728069067,
+          0.9579617381095886
+        ],
+        "max": [
+          -0.07578463852405548,
+          0.013351268135011196,
+          0.9636409282684326
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ala of sacrum.j",
+      "structureId": "za:skeletal-system",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.04050428420305252,
+          -0.00042487881728447974,
+          0.9348049163818359
+        ],
+        "max": [
+          0.040504295378923416,
+          0.022788072004914284,
+          0.9418248534202576
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ampulla of lacrimal canaliculus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 124,
+      "bounds": {
+        "min": [
+          0.014307714067399502,
+          -0.07430136203765869,
+          1.5864834785461426
+        ],
+        "max": [
+          0.017335684970021248,
+          -0.07200183719396591,
+          1.5898691415786743
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ampulla of lacrimal canaliculus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 124,
+      "bounds": {
+        "min": [
+          -0.017335684970021248,
+          -0.07430136203765869,
+          1.5864834785461426
+        ],
+        "max": [
+          -0.014307714067399502,
+          -0.07200183719396591,
+          1.5898691415786743
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Amygdaloid body.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 194,
+      "bounds": {
+        "min": [
+          0.016468189656734467,
+          -0.01850091852247715,
+          1.6042529344558716
+        ],
+        "max": [
+          0.033015646040439606,
+          -0.0006596222519874573,
+          1.6166398525238037
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Amygdaloid body.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 194,
+      "bounds": {
+        "min": [
+          -0.033015526831150055,
+          -0.01850091852247715,
+          1.6042529344558716
+        ],
+        "max": [
+          -0.016468070447444916,
+          -0.0006596213206648827,
+          1.6166398525238037
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anal region.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/regions-of-perineum/anal-region",
+      "status": "accepted",
+      "vertexCount": 13,
+      "bounds": {
+        "min": [
+          -9.046582927219049e-16,
+          0.013215143233537674,
+          0.7391098737716675
+        ],
+        "max": [
+          0.012994147837162018,
+          0.07230232656002045,
+          0.7814732193946838
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anal region.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/regions-of-perineum/anal-region",
+      "status": "accepted",
+      "vertexCount": 13,
+      "bounds": {
+        "min": [
+          -0.012994146905839443,
+          0.013215143233537674,
+          0.7391098737716675
+        ],
+        "max": [
+          5.30825383648903e-16,
+          0.07230232656002045,
+          0.7814732193946838
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anatomical neck of humerus.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.023662619292736053,
+          0,
+          -0.0025000572204589844
+        ],
+        "max": [
+          0,
+          5.95967719618784e-10,
+          -0.0009978972375392914
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anatomical neck of humerus.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.151388481259346,
+          0.020628852769732475,
+          1.3674376010894775
+        ],
+        "max": [
+          -0.10309743881225586,
+          0.020655939355492592,
+          1.3705031871795654
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 22,
+      "bounds": {
+        "min": [
+          0.2125815898180008,
+          0.03708568215370178,
+          1.0151314735412598
+        ],
+        "max": [
+          0.23072537779808044,
+          0.05984237790107727,
+          1.090349793434143
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 22,
+      "bounds": {
+        "min": [
+          -0.23072534799575806,
+          0.03708568215370178,
+          1.0151314735412598
+        ],
+        "max": [
+          -0.2125815600156784,
+          0.05984237790107727,
+          1.090349793434143
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 723,
+      "bounds": {
+        "min": [
+          0.21313118934631348,
+          0.03561926633119583,
+          1.0151991844177246
+        ],
+        "max": [
+          0.23693066835403442,
+          0.06182539463043213,
+          1.1198281049728394
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          0.2295922189950943,
+          0.044243957847356796,
+          1.1005321741104126
+        ],
+        "max": [
+          0.24511228501796722,
+          0.05347323790192604,
+          1.1200741529464722
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          -0.24511225521564484,
+          0.044243957847356796,
+          1.1005321741104126
+        ],
+        "max": [
+          -0.2295921891927719,
+          0.05347323790192604,
+          1.1200741529464722
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anconeus muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 723,
+      "bounds": {
+        "min": [
+          -0.236930713057518,
+          0.03561927378177643,
+          1.0151993036270142
+        ],
+        "max": [
+          -0.21313123404979706,
+          0.061825405806303024,
+          1.119828224182129
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angle of mouth.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 21,
+      "bounds": {
+        "min": [
+          0.023570697754621506,
+          -0.08486437797546387,
+          1.5263538360595703
+        ],
+        "max": [
+          0.030972525477409363,
+          -0.0799126848578453,
+          1.5334012508392334
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angle of mouth.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 21,
+      "bounds": {
+        "min": [
+          -0.030972525477409363,
+          -0.08486437797546387,
+          1.5263538360595703
+        ],
+        "max": [
+          -0.023570697754621506,
+          -0.0799126848578453,
+          1.5334012508392334
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angle of rib.i",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk/thorax",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.04999995231628418
+        ],
+        "max": [
+          0,
+          0,
+          -0.0004999637603759766
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angle of rib.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk/thorax",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.07536111772060394,
+          0.12002106755971909,
+          1.2610465288162231
+        ],
+        "max": [
+          -0.07536111772060394,
+          0.12002122402191162,
+          1.3105465173721313
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angular gyrus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 759,
+      "bounds": {
+        "min": [
+          0.015535488724708557,
+          0.039224207401275635,
+          1.6295474767684937
+        ],
+        "max": [
+          0.05873408913612366,
+          0.09107329696416855,
+          1.6768492460250854
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angular gyrus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 759,
+      "bounds": {
+        "min": [
+          -0.05873408913612366,
+          0.039224207401275635,
+          1.6295474767684937
+        ],
+        "max": [
+          -0.015535488724708557,
+          0.09107329696416855,
+          1.6768492460250854
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Angular incisure.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.012112189084291458,
+          -0.060323942452669144,
+          1.1007055044174194
+        ],
+        "max": [
+          -0.012112189084291458,
+          -0.060323771089315414,
+          1.1492054462432861
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Ankle joint.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-foot",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.09040603041648865,
+          0.04877602308988571,
+          0.09848648309707642
+        ],
+        "max": [
+          0.14930537343025208,
+          0.04877602308988571,
+          0.09860585629940033
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Annular epiphysis.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.02614091895520687,
+          -0.015167978592216969,
+          1.0357933044433594
+        ],
+        "max": [
+          0.02614091895520687,
+          -0.015167857520282269,
+          1.0704432725906372
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Annular ligament of radius.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 30,
+      "bounds": {
+        "min": [
+          0.22547116875648499,
+          0.018046092242002487,
+          1.0722177028656006
+        ],
+        "max": [
+          0.2505909204483032,
+          0.04245159775018692,
+          1.089773178100586
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Annular ligament of radius.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 30,
+      "bounds": {
+        "min": [
+          -0.25070926547050476,
+          0.018040206283330917,
+          1.0723135471343994
+        ],
+        "max": [
+          -0.22525827586650848,
+          0.042384058237075806,
+          1.0896751880645752
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anserine bursa.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-lower-limb",
+      "status": "accepted",
+      "vertexCount": 77,
+      "bounds": {
+        "min": [
+          0.04844275861978531,
+          0.014486213214695454,
+          0.3651706278324127
+        ],
+        "max": [
+          0.06127806752920151,
+          0.03187127411365509,
+          0.3934905529022217
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anserine bursa.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 77,
+      "bounds": {
+        "min": [
+          -0.061278097331523895,
+          0.014486213214695454,
+          0.3651706278324127
+        ],
+        "max": [
+          -0.0484427884221077,
+          0.03187127411365509,
+          0.3934905529022217
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Antebrachial fascia.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2270,
+      "bounds": {
+        "min": [
+          0.18294808268547058,
+          -0.03405983746051788,
+          0.866432785987854
+        ],
+        "max": [
+          0.2880813181400299,
+          0.06845761090517044,
+          1.1525946855545044
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Antebrachial fascia.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2270,
+      "bounds": {
+        "min": [
+          -0.28808125853538513,
+          -0.03405983746051788,
+          0.866432785987854
+        ],
+        "max": [
+          -0.1829480230808258,
+          0.06845761090517044,
+          1.1525946855545044
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Antebrachial region.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/regions-of-upper-limb/antebrachial-region",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.3866856098175049,
+          0.005234960000962019,
+          0.9636141657829285
+        ],
+        "max": [
+          -0.27926287055015564,
+          0.005234969314187765,
+          0.9637574553489685
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior arch of atlas.j",
+      "structureId": "za:bonus-collection/skeletal-system/vertebral-column/bones-of-vertebral-column/cervical-vertebrae/atlas",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.0046107652597129345,
+          0.0017544227885082364,
+          1.5205577611923218
+        ],
+        "max": [
+          0.0046107652597129345,
+          0.0017545436276122928,
+          1.5552077293395996
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior articular facet of dens axis.j",
+      "structureId": "za:skeletal-system",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.000036980574805056676,
+          -0.03026011399924755,
+          1.4968558549880981
+        ],
+        "max": [
+          -0.000036980574805056676,
+          -0.030259940773248672,
+          1.5463558435440063
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior axillary line.l",
+      "structureId": "za:reference-lines-reference-planes-movements",
+      "status": "accepted",
+      "vertexCount": 12,
+      "bounds": {
+        "min": [
+          0.16013787686824799,
+          -0.0002594359393697232,
+          1.2525651454925537
+        ],
+        "max": [
+          0.16851256787776947,
+          0.006629293784499168,
+          1.2777131795883179
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior axillary line.r",
+      "structureId": "za:reference-lines-reference-planes-movements",
+      "status": "accepted",
+      "vertexCount": 12,
+      "bounds": {
+        "min": [
+          -0.16851256787776947,
+          -0.00025943652144633234,
+          1.2525651454925537
+        ],
+        "max": [
+          -0.16013787686824799,
+          0.0066292923875153065,
+          1.2777131795883179
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior axillary nodes.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 516,
+      "bounds": {
+        "min": [
+          0.11077026277780533,
+          -0.04049723967909813,
+          1.303389072418213
+        ],
+        "max": [
+          0.12622545659542084,
+          -0.015734445303678513,
+          1.3472096920013428
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior axillary nodes.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 516,
+      "bounds": {
+        "min": [
+          -0.1262243241071701,
+          -0.04049723967909813,
+          1.303389072418213
+        ],
+        "max": [
+          -0.110769122838974,
+          -0.015734443441033363,
+          1.3472096920013428
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior basal segment of left lung (SVIII).j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.16228727996349335,
+          -0.09716857969760895,
+          1.165120244026184
+        ],
+        "max": [
+          0.16228727996349335,
+          -0.09716841578483582,
+          1.2136201858520508
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior basal segment of right lung (SVIII).j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.1856936812400818,
+          -0.021368468180298805,
+          1.1723413467407227
+        ],
+        "max": [
+          -0.1856936812400818,
+          -0.021368298679590225,
+          1.2208412885665894
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior belly of digastric muscle.el",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 17,
+      "bounds": {
+        "min": [
+          0.0032136868685483932,
+          -0.06919290125370026,
+          1.4991499185562134
+        ],
+        "max": [
+          0.01434878446161747,
+          -0.06047431007027626,
+          1.5033447742462158
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior belly of digastric muscle.er",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 17,
+      "bounds": {
+        "min": [
+          -0.01434878446161747,
+          -0.06919290125370026,
+          1.4991499185562134
+        ],
+        "max": [
+          -0.0032136868685483932,
+          -0.06047431007027626,
+          1.5033447742462158
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior belly of digastric muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 198,
+      "bounds": {
+        "min": [
+          0.003282424993813038,
+          -0.06955371797084808,
+          1.4991726875305176
+        ],
+        "max": [
+          0.015260347165167332,
+          -0.03375498205423355,
+          1.5055060386657715
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior belly of digastric muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 198,
+      "bounds": {
+        "min": [
+          -0.01526030246168375,
+          -0.06955371797084808,
+          1.4991726875305176
+        ],
+        "max": [
+          -0.0032823802903294563,
+          -0.03375498205423355,
+          1.5055060386657715
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of fibula.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.0008753351867198944
+        ],
+        "max": [
+          7.683411240577698e-9,
+          0.0293973907828331,
+          -0.0004999935626983643
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of fibula.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.10841140151023865,
+          0.008673257194459438,
+          0.3334808349609375
+        ],
+        "max": [
+          -0.10841139405965805,
+          0.038070645183324814,
+          0.3338562846183777
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of humerus.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -2.0195612293605336e-8,
+          0,
+          -0.0025000572204589844
+        ],
+        "max": [
+          0,
+          0.020464127883315086,
+          -0.0015717819333076477
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of humerus.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.20855829119682312,
+          -0.005846421699970961,
+          1.2287555932998657
+        ],
+        "max": [
+          -0.20853202044963837,
+          0.024550175294280052,
+          1.2302802801132202
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of lung.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.020977173000574112,
+          -0.06782417744398117,
+          1.2944554090499878
+        ],
+        "max": [
+          0.020977173000574112,
+          -0.06782401353120804,
+          1.3429553508758545
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of pancreas.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.016918621957302094,
+          -0.0629182681441307,
+          1.0846911668777466
+        ],
+        "max": [
+          0.016918621957302094,
+          -0.06291810423135757,
+          1.1331911087036133
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of radius.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.0004999637603759766
+        ],
+        "max": [
+          6.332876978376589e-8,
+          0.03354905918240547,
+          -0.0004666559398174286
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of radius.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.24919070303440094,
+          -0.020621590316295624,
+          1.0353432893753052
+        ],
+        "max": [
+          -0.24918170273303986,
+          0.012926658615469933,
+          1.0355770587921143
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of testis.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.019483577460050583,
+          -0.08490994572639465,
+          0.7161538004875183
+        ],
+        "max": [
+          -0.019483577460050583,
+          -0.08490985631942749,
+          0.7404038310050964
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of tibia.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -9.499490261077881e-8,
+          0,
+          -0.0009945333003997803
+        ],
+        "max": [
+          0,
+          0.03574065864086151,
+          -0.0004999935626983643
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of tibia.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.08542422205209732,
+          -0.03459626063704491,
+          0.3175351917743683
+        ],
+        "max": [
+          -0.08542412519454956,
+          0.0011444019619375467,
+          0.31802985072135925
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of ulna.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.000868871808052063
+        ],
+        "max": [
+          1.4901161193847656e-8,
+          0.02729496732354164,
+          -0.0004999637603759766
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior border of ulna.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.22934086620807648,
+          -0.0006013644742779434,
+          1.0269964933395386
+        ],
+        "max": [
+          -0.22931277751922607,
+          0.02669110707938671,
+          1.0275171995162964
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior cells of ethmoid bone.l",
+      "structureId": "za:skeletal-system",
+      "status": "accepted",
+      "vertexCount": 72,
+      "bounds": {
+        "min": [
+          0.00506877526640892,
+          -0.06279817223548889,
+          1.580395221710205
+        ],
+        "max": [
+          0.013151945546269417,
+          -0.0547785758972168,
+          1.5959792137145996
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior cells of ethmoid bone.r",
+      "structureId": "za:skeletal-system",
+      "status": "accepted",
+      "vertexCount": 72,
+      "bounds": {
+        "min": [
+          -0.013151945546269417,
+          -0.06279817223548889,
+          1.580395221710205
+        ],
+        "max": [
+          -0.00506877526640892,
+          -0.0547785758972168,
+          1.5959792137145996
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior cervical nodes.j",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.008386284112930298,
+          -0.025552719831466675,
+          1.4576959609985352
+        ],
+        "max": [
+          0.15651385486125946,
+          -0.025552717968821526,
+          1.457848072052002
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior chamber of eyeball.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 258,
+      "bounds": {
+        "min": [
+          0.02463608607649803,
+          -0.07713344693183899,
+          1.5848604440689087
+        ],
+        "max": [
+          0.03771963343024254,
+          -0.07330130785703659,
+          1.597936749458313
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior chamber of eyeball.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 258,
+      "bounds": {
+        "min": [
+          -0.03771963343024254,
+          -0.07713344693183899,
+          1.5848604440689087
+        ],
+        "max": [
+          -0.02463608607649803,
+          -0.07330130785703659,
+          1.597936749458313
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior clinoid process.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.01436393242329359,
+          -0.012385008856654167,
+          1.5699676275253296
+        ],
+        "max": [
+          0.01436393242329359,
+          -0.012384847737848759,
+          1.6184675693511963
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior cochlear nucleus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          0.006349312607198954,
+          0.009121782146394253,
+          1.579250693321228
+        ],
+        "max": [
+          0.00834124255925417,
+          0.012157448567450047,
+          1.5817171335220337
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior cochlear nucleus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 26,
+      "bounds": {
+        "min": [
+          -0.00834124255925417,
+          0.009121782146394253,
+          1.579250693321228
+        ],
+        "max": [
+          -0.006349312141537666,
+          0.012157448567450047,
+          1.5817171335220337
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior commissure",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 406,
+      "bounds": {
+        "min": [
+          -0.011897558346390724,
+          -0.01666131801903248,
+          1.6233792304992676
+        ],
+        "max": [
+          0.011922852136194706,
+          -0.01213847752660513,
+          1.6258838176727295
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior communicating artery",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 42,
+      "bounds": {
+        "min": [
+          -0.003391504054889083,
+          -0.024160435423254967,
+          1.6091772317886353
+        ],
+        "max": [
+          0.003269891021773219,
+          -0.022403325885534286,
+          1.6105071306228638
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior compartment of arm.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.36049890518188477,
+          0.011414824053645134,
+          1.2485679388046265
+        ],
+        "max": [
+          -0.22473618388175964,
+          0.011414838023483753,
+          1.2486604452133179
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior compartment of forearm.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.4174458980560303,
+          -0.012988543137907982,
+          1.0118911266326904
+        ],
+        "max": [
+          -0.238715261220932,
+          -0.01298852451145649,
+          1.0120997428894043
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior compartment of leg.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.265235960483551,
+          0.009693327359855175,
+          0.31998392939567566
+        ],
+        "max": [
+          -0.11403846740722656,
+          0.009693333879113197,
+          0.32015159726142883
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior compartment of thigh.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-lower-limb",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.27073150873184204,
+          -0.05592399835586548,
+          0.6373236179351807
+        ],
+        "max": [
+          -0.0938706248998642,
+          -0.05564431846141815,
+          0.63746577501297
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Anterior corticospinal tract",
+      "structureId": "za:nervous-system-sense-organs",
+      "status": "accepted",
+      "vertexCount": 36,
+      "bounds": {
+        "min": [
+          -0.0009111734689213336,
+          0.03852815181016922,
+          1.3475666046142578
+        ],
+        "max": [
+          -0.00035087738069705665,
+          0.043719884008169174,
+          1.3525665998458862
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular facet.i",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.017851384356617928,
+          -3.4470257759267042e-9,
+          -0.018107585608959198
+        ],
+        "max": [
+          0,
+          6.811063713030308e-8,
+          -0.0015132422558963299
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular facet.j",
+      "structureId": "za:bonus-collection",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.15069890022277832,
+          0.03732519969344139,
+          1.4142491817474365
+        ],
+        "max": [
+          -0.13284751772880554,
+          0.037325210869312286,
+          1.430843472480774
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular head of pectoralis major muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 425,
+      "bounds": {
+        "min": [
+          0.026709958910942078,
+          -0.04892474040389061,
+          1.3037736415863037
+        ],
+        "max": [
+          0.20014625787734985,
+          0.016251301392912865,
+          1.4094083309173584
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular head of pectoralis major muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 425,
+      "bounds": {
+        "min": [
+          -0.20014622807502747,
+          -0.04892483726143837,
+          1.3037737607955933
+        ],
+        "max": [
+          -0.026709944009780884,
+          0.016251174733042717,
+          1.4094083309173584
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular notch.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk/thorax",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.04299207031726837,
+          -0.04107942804694176,
+          1.33869469165802
+        ],
+        "max": [
+          -0.04299207031726837,
+          -0.041079260408878326,
+          1.3881945610046387
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular part of deltoid muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1453,
+      "bounds": {
+        "min": [
+          0.08446326851844788,
+          -0.02037126198410988,
+          1.268237829208374
+        ],
+        "max": [
+          0.21046647429466248,
+          0.034436315298080444,
+          1.423707365989685
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular part of deltoid muscle.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 90,
+      "bounds": {
+        "min": [
+          0.09236792474985123,
+          -0.010025697760283947,
+          1.4079129695892334
+        ],
+        "max": [
+          0.14800137281417847,
+          0.032634299248456955,
+          1.4206700325012207
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular part of deltoid muscle.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 90,
+      "bounds": {
+        "min": [
+          -0.14800140261650085,
+          -0.010025697760283947,
+          1.4079129695892334
+        ],
+        "max": [
+          -0.09236793965101242,
+          0.032634299248456955,
+          1.4206700325012207
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavicular part of deltoid muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-upper-limb",
+      "status": "accepted",
+      "vertexCount": 1453,
+      "bounds": {
+        "min": [
+          -0.21046648919582367,
+          -0.020371250808238983,
+          1.268237829208374
+        ],
+        "max": [
+          -0.08446329087018967,
+          0.03443631902337074,
+          1.423707365989685
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavipectoral fascia.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 677,
+      "bounds": {
+        "min": [
+          0.04198015481233597,
+          -0.07563501596450806,
+          1.2483689785003662
+        ],
+        "max": [
+          0.19341649115085602,
+          0.03664317727088928,
+          1.4082039594650269
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Clavipectoral fascia.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 677,
+      "bounds": {
+        "min": [
+          -0.19341643154621124,
+          -0.07563506066799164,
+          1.2483689785003662
+        ],
+        "max": [
+          -0.04198009520769119,
+          0.0366431288421154,
+          1.4082039594650269
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coccygeal horn.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.00941187422722578,
+          0.09381212294101715,
+          0.8155311942100525
+        ],
+        "max": [
+          0.00941187422722578,
+          0.09381229430437088,
+          0.8650311827659607
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coccygeus muscle.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 521,
+      "bounds": {
+        "min": [
+          0.0024443641304969788,
+          0.04846751689910889,
+          0.8366008400917053
+        ],
+        "max": [
+          0.04674785956740379,
+          0.07738655805587769,
+          0.8776099681854248
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coccygeus muscle.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 521,
+      "bounds": {
+        "min": [
+          -0.04674785956740379,
+          0.04846751689910889,
+          0.8366008400917053
+        ],
+        "max": [
+          -0.0024443641304969788,
+          0.07738655805587769,
+          0.8776099681854248
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coccyx",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk/back",
+      "status": "accepted",
+      "vertexCount": 589,
+      "bounds": {
+        "min": [
+          -0.016741100698709488,
+          0.06664403527975082,
+          0.8302965760231018
+        ],
+        "max": [
+          0.01676384173333645,
+          0.08636881411075592,
+          0.8611255884170532
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coccyx.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.028495866805315018,
+          0.07751905173063278,
+          0.8022329211235046
+        ],
+        "max": [
+          -0.028495866805315018,
+          0.07751922309398651,
+          0.8517329096794128
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Cochlear nerve",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 881,
+      "bounds": {
+        "min": [
+          -0.04050043970346451,
+          -0.0023494279012084007,
+          1.5778640508651733
+        ],
+        "max": [
+          -0.018774792551994324,
+          0.006564927753061056,
+          1.5829132795333862
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Coeliac nodes",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/trunk",
+      "status": "accepted",
+      "vertexCount": 344,
+      "bounds": {
+        "min": [
+          0.003188753966242075,
+          -0.027319632470607758,
+          1.137634038925171
+        ],
+        "max": [
+          0.01733250916004181,
+          -0.021334823220968246,
+          1.1531392335891724
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Colic impression of liver.j",
+      "structureId": "za:visceral-systems",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.08400953561067581,
+          -0.01697828620672226,
+          1.0483238697052002
+        ],
+        "max": [
+          -0.08400953561067581,
+          -0.01697811298072338,
+          1.0998238325119019
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Colic impression of spleen.j",
+      "structureId": "za:lymphoid-organs",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.08713787794113159,
+          -0.01509800087660551,
+          1.072503924369812
+        ],
+        "max": [
+          0.08732345700263977,
+          -0.014785687439143658,
+          1.1249969005584717
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral interphalangeal ligaments of foot.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-foot",
+      "status": "accepted",
+      "vertexCount": 238,
+      "bounds": {
+        "min": [
+          0.0683637484908104,
+          -0.1285238116979599,
+          0.010148212313652039
+        ],
+        "max": [
+          0.14653822779655457,
+          -0.074265256524086,
+          0.019445709884166718
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral interphalangeal ligaments of foot.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-foot",
+      "status": "accepted",
+      "vertexCount": 238,
+      "bounds": {
+        "min": [
+          -0.14653824269771576,
+          -0.1285238116979599,
+          0.010148212313652039
+        ],
+        "max": [
+          -0.06836377084255219,
+          -0.074265256524086,
+          0.019445709884166718
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral interphalangeal ligaments of hand.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-hand",
+      "status": "accepted",
+      "vertexCount": 188,
+      "bounds": {
+        "min": [
+          0.22561423480510712,
+          -0.08544876426458359,
+          0.7064761519432068
+        ],
+        "max": [
+          0.3301089107990265,
+          -0.04749533534049988,
+          0.7977721691131592
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral interphalangeal ligaments of hand.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-hand",
+      "status": "accepted",
+      "vertexCount": 188,
+      "bounds": {
+        "min": [
+          -0.3301088511943817,
+          -0.08544876426458359,
+          0.7064761519432068
+        ],
+        "max": [
+          -0.22561417520046234,
+          -0.04749533534049988,
+          0.7977721691131592
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral metacarpophalangeal ligaments.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-hand",
+      "status": "accepted",
+      "vertexCount": 100,
+      "bounds": {
+        "min": [
+          0.23013189435005188,
+          -0.055398568511009216,
+          0.7643097639083862
+        ],
+        "max": [
+          0.32417961955070496,
+          -0.030736425891518593,
+          0.8253191709518433
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral metacarpophalangeal ligaments.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-hand",
+      "status": "accepted",
+      "vertexCount": 100,
+      "bounds": {
+        "min": [
+          -0.3241795599460602,
+          -0.055398568511009216,
+          0.7643097639083862
+        ],
+        "max": [
+          -0.2301318347454071,
+          -0.030736425891518593,
+          0.8253191709518433
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral metatarsophalangeal ligaments.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/left-foot",
+      "status": "accepted",
+      "vertexCount": 140,
+      "bounds": {
+        "min": [
+          0.058900974690914154,
+          -0.08966771513223648,
+          0.012155072763562202
+        ],
+        "max": [
+          0.1416015923023224,
+          -0.04727839678525925,
+          0.031121332198381424
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral metatarsophalangeal ligaments.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/right-foot",
+      "status": "accepted",
+      "vertexCount": 140,
+      "bounds": {
+        "min": [
+          -0.14160160720348358,
+          -0.08966771513223648,
+          0.012155074626207352
+        ],
+        "max": [
+          -0.058900993317365646,
+          -0.04727839678525925,
+          0.031121334061026573
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral sulcus.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 575,
+      "bounds": {
+        "min": [
+          0.008914019912481308,
+          -0.0048494525253772736,
+          1.5924264192581177
+        ],
+        "max": [
+          0.04066262021660805,
+          0.07816343009471893,
+          1.618859887123108
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Collateral sulcus.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 575,
+      "bounds": {
+        "min": [
+          -0.040662605315446854,
+          -0.0048494525253772736,
+          1.5924264192581177
+        ],
+        "max": [
+          -0.008914005011320114,
+          0.07816343009471893,
+          1.618859887123108
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Colliculus of arytenoid cartilage.i",
+      "structureId": "za:bonus-collection/skeletal-system/laryngeal-cartilages/arytenoid-cartilage/anterolateral-surface-of-arytenoid-cartilage",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0,
+          0,
+          -0.04999995231628418
+        ],
+        "max": [
+          0,
+          0,
+          -0.0015000104904174805
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Colliculus of arytenoid cartilage.j",
+      "structureId": "za:bonus-collection/skeletal-system/laryngeal-cartilages/arytenoid-cartilage/anterolateral-surface-of-arytenoid-cartilage",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.003083029529079795,
+          -0.01000817772001028,
+          1.4758083820343018
+        ],
+        "max": [
+          -0.003083029529079795,
+          -0.010008148849010468,
+          1.4806584119796753
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Colon.j",
+      "structureId": "za:bonus-collection/visceral-systems/digestive-system",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          -0.16029785573482513,
+          -0.012555327266454697,
+          1.0154494047164917
+        ],
+        "max": [
+          -0.10734250396490097,
+          -0.012555324472486973,
+          1.0154699087142944
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Commissural fibres of telencephalon.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "accepted",
+      "vertexCount": 2,
+      "bounds": {
+        "min": [
+          0.00007027311949059367,
+          -0.020971767604351044,
+          1.6439634561538696
+        ],
+        "max": [
+          0.00009446730109630153,
+          -0.020806312561035156,
+          1.6564562320709229
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Common extensor tendon.ol",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          0.2448682188987732,
+          0.04028160125017166,
+          1.1077061891555786
+        ],
+        "max": [
+          0.24883294105529785,
+          0.04691299796104431,
+          1.1153559684753418
+        ]
+      },
+      "rejectReason": null
+    },
+    {
+      "objectName": "Common extensor tendon.or",
+      "structureId": "za:muscular-insertions",
+      "status": "accepted",
+      "vertexCount": 32,
+      "bounds": {
+        "min": [
+          -0.24883291125297546,
+          0.04028160125017166,
+          1.1077061891555786
+        ],
+        "max": [
+          -0.2448681890964508,
+          0.04691299796104431,
+          1.1153559684753418
+        ]
+      },
+      "rejectReason": null
+    }
+  ],
+  "rejected": [],
+  "excluded": [
+    {
+      "objectName": "Anterior bony ampulla.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "excluded",
+      "vertexCount": 0,
+      "bounds": null,
+      "rejectReason": null
+    },
+    {
+      "objectName": "Cochlea.l",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "excluded",
+      "vertexCount": 0,
+      "bounds": null,
+      "rejectReason": null
+    },
+    {
+      "objectName": "Cochlea.r",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "excluded",
+      "vertexCount": 0,
+      "bounds": null,
+      "rejectReason": null
+    },
+    {
+      "objectName": "Cochlear cupula.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "excluded",
+      "vertexCount": 0,
+      "bounds": null,
+      "rejectReason": null
+    },
+    {
+      "objectName": "Common bony limb.j",
+      "structureId": "za:bonus-collection/regions-of-human-body/main-divisions/head",
+      "status": "excluded",
+      "vertexCount": 0,
+      "bounds": null,
+      "rejectReason": null
+    }
+  ],
+  "unmapped": [
+    "(Canal for vertebral artery).j",
+    "(Posterior obturator tubercle).i",
+    "(Posterior obturator tubercle).j",
+    "(Third trochanter).i",
+    "(Third trochanter).j",
+    "Acetabular fossa.i",
+    "Acetabular fossa.j",
+    "Acetabular margin.i",
+    "Acetabular margin.j",
+    "Acetabular notch.i",
+    "Acetabular notch.j",
+    "Acetabulum.i",
+    "Acetabulum.j",
+    "Acromial angle.i",
+    "Acromial angle.j",
+    "Acromion.i",
+    "Acromion.j",
+    "Adductor tubercle.i",
+    "Adductor tubercle.j",
+    "Ala of ilium.i",
+    "Ala of ilium.j",
+    "Anatomical neck of humerus.i",
+    "Anatomical neck of humerus.j",
+    "Ankle joint.j",
+    "Anterior arch of atlas.j",
+    "Anterior border of fibula.i",
+    "Anterior border of fibula.j",
+    "Anterior border of humerus.i",
+    "Anterior border of humerus.j",
+    "Anterior border of radius.i",
+    "Anterior border of radius.j",
+    "Anterior border of tibia.i",
+    "Anterior border of tibia.j",
+    "Anterior border of ulna.i",
+    "Anterior border of ulna.j",
+    "Clavicular facet.i",
+    "Clavicular facet.j",
+    "Collateral interphalangeal ligaments of foot.l",
+    "Collateral interphalangeal ligaments of foot.r",
+    "Collateral interphalangeal ligaments of hand.l",
+    "Collateral interphalangeal ligaments of hand.r",
+    "Collateral metacarpophalangeal ligaments.l",
+    "Collateral metacarpophalangeal ligaments.r",
+    "Collateral metatarsophalangeal ligaments.l",
+    "Collateral metatarsophalangeal ligaments.r"
+  ]
+}
