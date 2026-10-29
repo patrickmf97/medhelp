@@ -19,14 +19,16 @@ export type ConvertedAsset = {
   buffer: Uint8Array;
 };
 
-const LICENSE_URLS: Record<LicenseTag, string> = {
+// Exported so other pipeline stages (e.g. package/manifest.ts, which records source attribution
+// at the release level) reuse this exact text instead of drifting from it independently.
+export const LICENSE_URLS: Record<LicenseTag, string> = {
   'cc-by-sa-4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
   'cc-by-nc-sa-4.0': 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
   'cc-by-nc-4.0': 'https://creativecommons.org/licenses/by-nc/4.0/',
   'cc-by-4.0': 'https://creativecommons.org/licenses/by/4.0/',
 };
 
-const MODIFICATION_NOTES =
+export const MODIFICATION_NOTES =
   'Converted from a Z-Anatomy OBJ export (vertices, per-vertex normals, triangulated faces) to ' +
   'GLB by MEDHELP atlas-pipeline convertMesh(); axis-converted from Blender world space (Z-up) ' +
   'to glTF world space (Y-up).';
