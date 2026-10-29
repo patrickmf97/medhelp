@@ -1,14 +1,43 @@
 /**
- * Structured client-side error logging, used by the app's route `error.tsx`
- * boundaries (apps/web/app/error.tsx and the per-area ones under aluno/,
- * editor/, admin/ and (public)/).
+ * Structured error logging for MedHelp.
  *
- * Next.js error boundaries are Client Components, so this runs in the
- * browser. It intentionally does not bundle a paid APM SaaS: it emits a
- * single-line JSON event via console.error, which is enough to debug from
- * browser devtools today and is a clear hook point for a real provider
- * (e.g. Sentry) later without inventing a credential now.
+ * Two independent surfaces live in this module because they run in
+ * different environments and are wired up from different places:
+ *
+ * - Server-side: `logServerError` / `buildServerErrorEvent`, wired up by
+ *   `apps/web/instrumentation.ts` via Next.js's `onRequestError` hook.
+ * - Client-side: `logClientError` / `buildClientErrorEvent`, used by the
+ *   app's route `error.tsx` boundaries (apps/web/app/error.tsx and the
+ *   per-area ones under aluno/, editor/, admin/ and (public)/), which are
+ *   Client Components and therefore run in the browser.
+ *
+ * Neither bundles a paid APM SaaS yet. Each emits a single-line JSON event
+ * via console.error, which is enough to debug from server logs / browser
+ * devtools today and is a clear hook point for a real provider (the design
+ * spec names Sentry) once credentials exist. See
+ * docs/operations/observability.md for the server-side forwarding story.
  */
+
+export interface RequestErrorInfo {
+  path: string;
+  method: string;
+}
+
+export interface RequestErrorContext {
+  routerKind?: string;
+  routePath?: string;
+  routeType?: string;
+  renderSource?: string;
+}
+
+export interface ServerErrorEvent {
+  level: 'error';
+  timestamp: string;
+  message: string;
+  digest?: string;
+  request: RequestErrorInfo;
+  context: RequestErrorContext;
+}
 
 export interface ClientErrorContext {
   /** Which area of the app caught the error, e.g. 'aluno', 'editor', 'admin', 'public', 'root'. */
@@ -42,6 +71,23 @@ function readDigest(error: unknown): string | undefined {
   return undefined;
 }
 
+export function buildServerErrorEvent(error: unknown, request: RequestErrorInfo, context: RequestErrorContext = {}): ServerErrorEvent {
+  const rawMessage = error instanceof Error ? error.message : String(error);
+  return {
+    level: 'error',
+    timestamp: new Date().toISOString(),
+    message: redactSensitiveValues(rawMessage),
+    digest: readDigest(error),
+    request: { path: request.path, method: request.method },
+    context: {
+      routerKind: context.routerKind,
+      routePath: context.routePath,
+      routeType: context.routeType,
+      renderSource: context.renderSource,
+    },
+  };
+}
+
 export function buildClientErrorEvent(error: unknown, context: ClientErrorContext = {}): ClientErrorEvent {
   const rawMessage = error instanceof Error ? error.message : String(error);
   return {
@@ -51,6 +97,27 @@ export function buildClientErrorEvent(error: unknown, context: ClientErrorContex
     digest: readDigest(error),
     context,
   };
+}
+
+/**
+ * Logs a server-rendering error as structured JSON and, if a provider is
+ * configured, forwards it. Never throws: a failure to log must not affect
+ * the request lifecycle (see design spec section 16).
+ */
+export async function logServerError(error: unknown, request: RequestErrorInfo, context: RequestErrorContext = {}): Promise<void> {
+  const event = buildServerErrorEvent(error, request, context);
+
+  try {
+    console.error(JSON.stringify(event));
+  } catch {
+    // JSON.stringify should not fail for this shape, but logging must never throw.
+  }
+
+  if (process.env.SENTRY_DSN) {
+    // Hook point for a real observability provider. SENTRY_DSN is read from
+    // the hosting platform's protected environment variables; no SDK is
+    // bundled here yet. See docs/operations/observability.md.
+  }
 }
 
 /**
