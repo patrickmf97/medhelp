@@ -1,7 +1,11 @@
-import { describe, expect, it } from 'vitest';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import type { CatalogBuildResult } from '../metadata/types';
-import { objectNameFromObjFileName, resolveStructureInfo } from './convert';
+import { convertDirectory, objectNameFromObjFileName, resolveStructureInfo } from './convert';
 
 function structure(overrides: Partial<CatalogBuildResult['structures'][number]>): CatalogBuildResult['structures'][number] {
   return {
@@ -91,5 +95,49 @@ describe('resolveStructureInfo', () => {
   it('falls back to a null structureId and the default license for an unmapped object', () => {
     const info = resolveStructureInfo(catalog, 'Some unmapped thing');
     expect(info).toEqual({ structureId: null, license: 'cc-by-sa-4.0', excluded: false });
+  });
+});
+
+describe('convertDirectory', () => {
+  let objDir: string;
+  let outDir: string;
+
+  beforeEach(() => {
+    objDir = mkdtempSync(join(tmpdir(), 'atlas-convert-obj-'));
+    outDir = mkdtempSync(join(tmpdir(), 'atlas-convert-out-'));
+  });
+
+  afterEach(() => {
+    rmSync(objDir, { recursive: true, force: true });
+    rmSync(outDir, { recursive: true, force: true });
+  });
+
+  it('skips zero-face reference-point meshes instead of crashing Meshopt, and still converts real meshes', async () => {
+    // Real shape seen in the v2 export: a 2-vertex, 0-face reference-point marker (e.g.
+    // "Canal for vertebral artery.j") that passes Task 3's vertex-only validation but has no
+    // triangle data to compress. convertDirectory() must skip it, not propagate Meshopt's crash.
+    writeFileSync(
+      join(objDir, '00000_Reference_point.j.obj'),
+      ['# object: Reference point.j', 'v 0 0 0', 'v 1 1 1', 'vn 0 0 1', 'vn 0 0 1'].join('\n'),
+    );
+
+    // A real, triangulated mesh (a unit triangle) that must still convert successfully.
+    writeFileSync(
+      join(objDir, '00001_Triangle.obj'),
+      [
+        '# object: Triangle',
+        'v 0 0 0',
+        'v 1 0 0',
+        'v 0 1 0',
+        'vn 0 0 1',
+        'vn 0 0 1',
+        'vn 0 0 1',
+        'f 1//1 2//2 3//3',
+      ].join('\n'),
+    );
+
+    const result = await convertDirectory({ objDir, outDir, catalogPath: null });
+
+    expect(result).toEqual({ converted: 1, skippedExcluded: 0, skippedDegenerate: 1 });
   });
 });

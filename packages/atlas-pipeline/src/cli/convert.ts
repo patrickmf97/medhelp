@@ -92,7 +92,9 @@ function parseArgs(argv: string[]): CliArgs {
  * rationale. Draco (compressWithDraco, in ../convert/compress.ts) remains available for callers
  * that want to opt specific large assets into the smaller-but-slower-to-decode alternative.
  */
-export async function convertDirectory(args: CliArgs): Promise<{ converted: number; skippedExcluded: number }> {
+export async function convertDirectory(
+  args: CliArgs,
+): Promise<{ converted: number; skippedExcluded: number; skippedDegenerate: number }> {
   const catalog: CatalogBuildResult | null = args.catalogPath
     ? (JSON.parse(readFileSync(args.catalogPath, 'utf-8')) as CatalogBuildResult)
     : null;
@@ -102,6 +104,7 @@ export async function convertDirectory(args: CliArgs): Promise<{ converted: numb
   const files = readdirSync(args.objDir).filter((f) => f.endsWith('.obj'));
   let converted = 0;
   let skippedExcluded = 0;
+  let skippedDegenerate = 0;
 
   for (const file of files) {
     const objectName = objectNameFromObjFileName(file);
@@ -113,6 +116,16 @@ export async function convertDirectory(args: CliArgs): Promise<{ converted: numb
     }
 
     const mesh = parseObjMesh(readFileSync(join(args.objDir, file), 'utf-8'));
+
+    // Real Z-Anatomy data includes reference-point markers (e.g. "Canal for vertebral
+    // artery.j") that are 2-vertex, zero-face objects: they pass Task 3's vertex-only
+    // validation but have no triangle data, which crashes Meshopt's encoder (an assertion
+    // failure, not a thrown domain error) rather than producing an empty/degenerate GLB.
+    if (mesh.faces.length === 0) {
+      skippedDegenerate += 1;
+      continue;
+    }
+
     const asset = await convertMesh({
       objectName,
       structureId: info.structureId,
@@ -126,14 +139,17 @@ export async function convertDirectory(args: CliArgs): Promise<{ converted: numb
     converted += 1;
   }
 
-  return { converted, skippedExcluded };
+  return { converted, skippedExcluded, skippedDegenerate };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const args = parseArgs(process.argv.slice(2));
   convertDirectory(args)
-    .then(({ converted, skippedExcluded }) => {
-      console.log(`Converted ${converted} meshes to GLB in ${args.outDir} (${skippedExcluded} license-excluded skipped).`);
+    .then(({ converted, skippedExcluded, skippedDegenerate }) => {
+      console.log(
+        `Converted ${converted} meshes to GLB in ${args.outDir} ` +
+          `(${skippedExcluded} license-excluded, ${skippedDegenerate} degenerate/zero-face skipped).`,
+      );
     })
     .catch((error: unknown) => {
       console.error(error);
