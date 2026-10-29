@@ -17,7 +17,11 @@ import type { AtlasViewerProps, AtlasViewerState, LoadedAtlasPackage } from './t
  */
 function createDefaultFetchPackageBytes(manifestUrl: string | undefined): FetchPackageBytes {
   return async (id, signal) => {
-    const base = manifestUrl ?? (typeof window !== 'undefined' ? window.location.href : 'http://localhost/');
+    const pageOrigin = typeof window !== 'undefined' ? window.location.href : 'http://localhost/';
+    // manifestUrl is commonly a root-relative path (e.g. a Next.js public asset, "/atlas/manifest.json")
+    // rather than an absolute URL, and `new URL()` requires its base argument to itself be absolute —
+    // resolve it against the current page origin first so a relative manifestUrl doesn't throw.
+    const base = manifestUrl ? new URL(manifestUrl, pageOrigin).toString() : pageOrigin;
     const url = new URL(`${id}.glb`, base).toString();
     const response = await fetch(url, { signal });
     if (!response.ok) {

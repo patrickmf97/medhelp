@@ -19,12 +19,16 @@ vi.mock('./scene', () => ({
 // real binary GLB parsing (that path has its own dedicated test in loading/loader.test.ts).
 vi.mock('three/examples/jsm/loaders/GLTFLoader.js', () => {
   class FakeGLTFLoader {
+    setMeshoptDecoder() {
+      // no-op: this fake never actually decodes bytes, see parse() below.
+    }
     parse(_buffer: ArrayBuffer, _path: string, onLoad: (gltf: { scene: unknown }) => void) {
       onLoad({ scene: new Group() });
     }
   }
   return { GLTFLoader: FakeGLTFLoader };
 });
+vi.mock('three/examples/jsm/libs/meshopt_decoder.module.js', () => ({ MeshoptDecoder: {} }));
 
 function makeManifest(packageIds: string[]): AtlasManifestV1 {
   return {
@@ -103,6 +107,30 @@ describe('AtlasViewer', () => {
     await waitFor(() => {
       expect(screen.getByRole('alert')).toHaveTextContent('Failed to fetch atlas manifest');
     });
+  });
+
+  it('resolves package URLs against the page origin when the manifest URL is relative (e.g. a Next.js public asset)', async () => {
+    const requestedUrls: string[] = [];
+    global.fetch = vi.fn((input: string | URL): Promise<FetchResponseStub> => {
+      const href = typeof input === 'string' ? input : input.toString();
+      requestedUrls.push(href);
+      if (href.endsWith('manifest.json')) {
+        return Promise.resolve({
+          ok: true,
+          arrayBuffer: async () => new ArrayBuffer(0),
+          json: async () => makeManifest(['sample']),
+        });
+      }
+      return Promise.resolve({ ok: true, arrayBuffer: async () => new ArrayBuffer(0) });
+    }) as unknown as typeof fetch;
+
+    render(<AtlasViewer manifestSource={{ kind: 'url', url: '/atlas/manifest.json' }} />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('atlas-scene')).toHaveTextContent('sample');
+    });
+
+    expect(requestedUrls.some((url) => url.endsWith('/atlas/sample.glb'))).toBe(true);
   });
 
   it('never shows a superseded manifest source\'s packages once a newer one is supplied', async () => {

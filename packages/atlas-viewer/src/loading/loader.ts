@@ -1,5 +1,6 @@
 import type { Object3D } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 export type FetchPackageBytes = (id: string, signal: AbortSignal) => Promise<ArrayBuffer>;
 export type ParseGlb = (buffer: ArrayBuffer, signal: AbortSignal) => Promise<Object3D>;
@@ -19,6 +20,12 @@ export function makeAbortError(): Error {
  * Default GLB parser: parses an already-fetched ArrayBuffer into a Three.js scene graph via
  * three's own GLTFLoader. Pure parsing — no DOM/WebGL requirement — so this also runs fine under
  * jsdom or on the server; only *rendering* the result needs a real GPU context.
+ *
+ * `setMeshoptDecoder` is required here, not optional: the atlas pipeline's default compression
+ * is Meshopt (see packages/atlas-pipeline's compression-benchmark doc), so every real asset this
+ * viewer loads is Meshopt-compressed, and GLTFLoader throws ("setMeshoptDecoder must be called
+ * before loading compressed files") without it — confirmed against a real converted GLB, not
+ * assumed from docs.
  */
 export const parseGlbWithThree: ParseGlb = (buffer, signal) =>
   new Promise((resolve, reject) => {
@@ -27,6 +34,7 @@ export const parseGlbWithThree: ParseGlb = (buffer, signal) =>
       return;
     }
     const loader = new GLTFLoader();
+    loader.setMeshoptDecoder(MeshoptDecoder);
     loader.parse(
       buffer,
       '',

@@ -1,8 +1,14 @@
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import type { Object3D } from 'three';
 import { Group } from 'three';
 import { describe, expect, it, vi } from 'vitest';
 
 import { AtlasAssetLoader, parseGlbWithThree } from './loader';
+
+const here = dirname(fileURLToPath(import.meta.url));
 
 function createDeferred<T>() {
   let resolve!: (value: T) => void;
@@ -162,5 +168,31 @@ describe('AtlasAssetLoader', () => {
 
     expect(object).toBeDefined();
     expect(object.type).toBe('Group');
+  });
+
+  it('parses a real Meshopt-compressed GLB produced by the atlas pipeline (the default compression every real asset uses)', async () => {
+    // Regression test: GLTFLoader throws ("setMeshoptDecoder must be called before loading
+    // compressed files") on a real Meshopt-compressed GLB unless the loader is configured with a
+    // MeshoptDecoder first — the earlier synthetic/uncompressed fixture above can't catch this
+    // because it has no EXT_meshopt_compression extension at all. Confirmed against a real
+    // browser render before this fixture/test existed.
+    // Copy into a fresh Uint8Array/ArrayBuffer constructed in this test's own realm: Vitest's
+    // jsdom environment runs in a separate VM context, so a Node Buffer's own .buffer is an
+    // ArrayBuffer from a *different* realm than the one GLTFLoader's `instanceof` checks run
+    // in here — reusing it directly made GLTFLoader silently misparse the binary container
+    // (confirmed: valid magic/version bytes, still failed, only in this jsdom-realm test).
+    const nodeBuffer = readFileSync(join(here, '../../fixtures/synthetic-meshopt-triangle.glb'));
+    const buffer = new Uint8Array(nodeBuffer).buffer;
+    const fetchPackageBytes = vi.fn(async () => buffer);
+    const loader = new AtlasAssetLoader(fetchPackageBytes, parseGlbWithThree);
+
+    const object = await loader.loadPackage('meshopt-triangle', new AbortController().signal);
+
+    expect(object).toBeDefined();
+    let meshCount = 0;
+    object.traverse((child) => {
+      if (child.type === 'Mesh') meshCount += 1;
+    });
+    expect(meshCount).toBe(1);
   });
 });
