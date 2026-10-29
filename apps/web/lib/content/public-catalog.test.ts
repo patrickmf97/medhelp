@@ -14,6 +14,7 @@ describe('public catalog mapping', () => {
         slug: 'introducao-anatomia-cardiaca',
         summary: 'Uma visão inicial da organização do estudo.',
         access_level: 'free',
+        position: 3,
         modules: {
           title: 'Tórax',
           disciplines: {
@@ -35,6 +36,7 @@ describe('public catalog mapping', () => {
         discipline: 'Anatomia',
         cycle: 'Ciclo Básico',
         cycleSlug: 'basico',
+        position: 3,
       },
     ]);
   });
