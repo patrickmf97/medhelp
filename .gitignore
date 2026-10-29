@@ -14,3 +14,10 @@ medhelp-design/
 project_sources/
 .codex/
 *.jpg
+
+# Atlas 3D source archive — never commit the raw dataset or extracted Blender scenes.
+# These live outside the repo at ~/medhelp-atlas-source/; these patterns are a backstop
+# in case the extraction path ever ends up inside the repo by accident.
+*.blend
+*.blend1
+Z-Anatomy.zip

@@ -60,6 +60,7 @@ export interface StudentLesson {
   discipline: string;
   module: string;
   accessLevel: 'free' | 'premium';
+  position?: number;
 }
 
 export interface StoredProgress {
