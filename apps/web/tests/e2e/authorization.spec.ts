@@ -77,7 +77,11 @@ test.describe('role-based authorization matrix', () => {
 
     await login(page, email, password, '/admin');
     await expect(page).toHaveURL(/\/admin$/);
-    await expect(page.getByRole('heading', { name: 'Painel administrativo preparado' })).toBeVisible();
+    // The admin page now renders the real metrics dashboard (apps/web/app/admin/page.tsx,
+    // apps/web/lib/admin/metrics.ts) instead of the placeholder it had when this test was
+    // first written; assert against the real heading so this keeps verifying the admin role
+    // actually reaches a working /admin page instead of asserting stale copy.
+    await expect(page.getByRole('heading', { name: 'Indicadores', exact: true })).toBeVisible();
 
     await page.goto('/editor');
     await expect(page).toHaveURL(/\/editor\/conteudos$/);
