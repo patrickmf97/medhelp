@@ -1,0 +1,10 @@
+# minimal valid triangle with per-vertex normals and a triangulated face, in the v2 export
+# format (v + vn + f "a//a b//b c//c", 1-indexed, vertex and normal index always equal).
+# World space, Blender's native Z-up/meters, same as the v1 fixtures.
+v 0.0 0.0 0.0
+v 1.0 0.0 0.0
+v 0.0 1.0 0.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+f 1//1 2//2 3//3
