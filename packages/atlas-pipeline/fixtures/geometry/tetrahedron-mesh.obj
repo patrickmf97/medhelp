@@ -1,0 +1,16 @@
+# a small non-degenerate solid (4 vertices, 4 triangular faces) used to exercise real
+# compression codecs (Meshopt/Draco) in tests, since a single flat triangle is too degenerate a
+# case to usefully round-trip through a mesh compressor. Per-vertex normals are the (unnormalized
+# but finite) outward face normals repeated per vertex, consistent with the v2 export format.
+v 0.0 0.0 0.0
+v 1.0 0.0 0.0
+v 0.0 1.0 0.0
+v 0.0 0.0 1.0
+vn -1.0 -1.0 -1.0
+vn 1.0 1.0 -1.0
+vn -1.0 1.0 1.0
+vn 1.0 -1.0 1.0
+f 1//1 3//3 2//2
+f 1//1 2//2 4//4
+f 1//1 4//4 3//3
+f 2//2 3//3 4//4
