@@ -1,0 +1,17 @@
+{
+  "generatedFrom": "real Z-Anatomy Startup.blend scene graph + TA2.csv",
+  "totals": {
+    "structures": 1944,
+    "unmappedToTa2": 219,
+    "duplicateEnglishNamesInTa2": 8,
+    "cycles": 0,
+    "excludedStructures": 50,
+    "excludedObjects": 26,
+    "licenseBreakdown": {
+      "cc-by-4.0": 56,
+      "cc-by-nc-4.0": 11,
+      "cc-by-nc-sa-4.0": 39,
+      "cc-by-sa-4.0": 1838
+    }
+  }
+}
