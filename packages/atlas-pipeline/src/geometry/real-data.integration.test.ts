@@ -39,6 +39,8 @@ const haveRealExport =
 
 describe.skipIf(!haveRealExport)('geometry export report from real Blender batches', () => {
   it('aggregates every batch manifest into one deterministic, tested export report', () => {
+    // This reads and parses every exported OBJ file (up to all 4569 real mesh objects once the
+    // full-scene export is complete), which comfortably exceeds vitest's default 5s timeout.
     const catalog = JSON.parse(readFileSync(CATALOG_PATH, 'utf-8')) as CatalogBuildResult;
 
     const structureIdByObjectName = new Map<string, string>();
@@ -101,5 +103,5 @@ describe.skipIf(!haveRealExport)('geometry export report from real Blender batch
     writeFileSync(join(repoRoot, 'docs', 'atlas', 'geometry-export-report.json'), JSON.stringify(report, null, 2));
 
     writeFileSync(join(EXPORT_DIR, 'geometry-export-report-full.json'), JSON.stringify(report, null, 2));
-  });
+  }, 60_000);
 });
