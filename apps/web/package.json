@@ -12,6 +12,7 @@
     "build": "next build"
   },
   "dependencies": {
+    "@medhelp/atlas-viewer": "workspace:*",
     "@medhelp/domain": "workspace:*",
     "@medhelp/ui": "workspace:*",
     "@supabase/ssr": "0.12.7",

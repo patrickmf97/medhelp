@@ -13,7 +13,10 @@ export function AtlasDemo() {
           </div>
           <div className="atlas-copy">
             <p>Explore sistemas, selecione estruturas e mantenha cada descoberta conectada ao seu plano de estudos.</p>
-            <Link className={buttonClassName('secondary')} href="/explorar">Explorar catálogo de conteúdos <span aria-hidden="true">↗</span></Link>
+            <div className="atlas-copy__actions">
+              <Link className={buttonClassName()} href="/explorar/atlas">Ver Atlas 3D real <span aria-hidden="true">↗</span></Link>
+              <Link className={buttonClassName('secondary')} href="/explorar">Explorar catálogo de conteúdos <span aria-hidden="true">↗</span></Link>
+            </div>
           </div>
         </div>
         <AtlasExplorer />
