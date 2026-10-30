@@ -165,4 +165,60 @@ describe('AtlasViewer', () => {
     expect(screen.getByTestId('atlas-scene')).toHaveTextContent('fresh-package');
     expect(screen.getByTestId('atlas-scene').textContent).not.toContain('stale-package');
   });
+
+  it('loads packages with bounded concurrency instead of strictly one at a time, so a slow early package does not block a fast later one', async () => {
+    // Regression: a real public manifest can have thousands of small packages (one real-world
+    // route serves ~2,960 individual structure GLBs — see apps/web's /explorar/atlas route).
+    // Strictly sequential loading made that route take minutes to reach "ready". The fast
+    // "package-2" here must be able to appear in the scene before the slow "package-0" resolves.
+    const slow = createDeferred<FetchResponseStub>();
+
+    global.fetch = vi.fn((input: string | URL) => {
+      const href = typeof input === 'string' ? input : input.toString();
+      if (href.includes('package-0')) {
+        return slow.promise;
+      }
+      return Promise.resolve<FetchResponseStub>({ ok: true, arrayBuffer: async () => new ArrayBuffer(0) });
+    }) as unknown as typeof fetch;
+
+    render(
+      <AtlasViewer
+        manifestSource={{ kind: 'manifest', manifest: makeManifest(['package-0', 'package-1', 'package-2']) }}
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('atlas-scene')).toHaveTextContent('package-2');
+    });
+    expect(screen.getByTestId('atlas-scene').textContent).not.toContain('package-0');
+
+    slow.resolve({ ok: true, arrayBuffer: async () => new ArrayBuffer(0) });
+
+    await waitFor(() => {
+      expect(screen.getByTestId('atlas-scene')).toHaveTextContent('package-0');
+    });
+  });
+
+  it('final ready state lists every package in manifest order regardless of resolution order', async () => {
+    const order: string[] = [];
+    global.fetch = vi.fn(async (input: string | URL): Promise<FetchResponseStub> => {
+      const href = typeof input === 'string' ? input : input.toString();
+      order.push(href);
+      // "package-b" resolves fastest, "package-a" slowest — resolution order is reversed from
+      // manifest order, to prove the final array is sorted by manifest order, not arrival order.
+      const delay = href.includes('package-a') ? 15 : href.includes('package-b') ? 0 : 5;
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      return { ok: true, arrayBuffer: async () => new ArrayBuffer(0) };
+    }) as unknown as typeof fetch;
+
+    render(
+      <AtlasViewer
+        manifestSource={{ kind: 'manifest', manifest: makeManifest(['package-a', 'package-b', 'package-c']) }}
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('atlas-scene')).toHaveTextContent('package-a,package-b,package-c');
+    });
+  });
 });

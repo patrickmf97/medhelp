@@ -15,6 +15,13 @@ import type { AtlasViewerProps, AtlasViewerState, LoadedAtlasPackage } from './t
  * integration task own the real asset storage/CDN layout and may replace this fetcher entirely as
  * a non-breaking internal change.
  */
+/**
+ * How many packages AtlasViewer fetches/parses at once. Bounded (not unlimited) so a manifest
+ * with thousands of packages doesn't open thousands of simultaneous requests; high enough that a
+ * manifest with a realistic handful of packages still loads effectively all at once.
+ */
+const PACKAGE_LOAD_CONCURRENCY = 16;
+
 function createDefaultFetchPackageBytes(manifestUrl: string | undefined): FetchPackageBytes {
   return async (id, signal) => {
     const pageOrigin = typeof window !== 'undefined' ? window.location.href : 'http://localhost/';
@@ -107,22 +114,46 @@ export function AtlasViewer({ manifestSource }: AtlasViewerProps): ReactNode {
       );
       const loader = new AtlasAssetLoader(fetchBytes);
 
-      const loaded: LoadedAtlasPackage[] = [];
-      for (const pkg of manifest.packages) {
-        if (controller.signal.aborted || cancelled) return;
+      // Bounded concurrency, not strictly sequential: a real public manifest can list thousands
+      // of small packages (e.g. apps/web's /explorar/atlas route, ~2,960 individual structure
+      // GLBs) and loading those one at a time made the scene take minutes to fill in. Several
+      // in flight at once still fills the scene progressively (it just fills in faster), and a
+      // slow package no longer blocks faster ones behind it in the manifest.
+      const completed = new Map<string, LoadedAtlasPackage>();
+      let nextIndex = 0;
 
-        // Intentionally sequential: packages load one at a time ("progressively"), not all at
-        // once.
-        const object = await loader.loadPackage(pkg.id, controller.signal);
-        if (controller.signal.aborted || cancelled) return;
-
-        const loadedPackage: LoadedAtlasPackage = { id: pkg.id, object };
-        cache.set(loadedPackage);
-        loaded.push(loadedPackage);
-        setState({ status: 'loading-packages', manifest, loaded: [...loaded] });
+      function publish(): void {
+        const orderedLoaded = manifest.packages
+          .map((pkg) => completed.get(pkg.id))
+          .filter((entry): entry is LoadedAtlasPackage => entry !== undefined);
+        setState({ status: 'loading-packages', manifest, loaded: orderedLoaded });
       }
 
+      async function worker(): Promise<void> {
+        while (true) {
+          if (controller.signal.aborted || cancelled) return;
+          const index = nextIndex;
+          nextIndex += 1;
+          const pkg = manifest.packages[index];
+          if (!pkg) return;
+
+          const object = await loader.loadPackage(pkg.id, controller.signal);
+          if (controller.signal.aborted || cancelled) return;
+
+          const loadedPackage: LoadedAtlasPackage = { id: pkg.id, object };
+          cache.set(loadedPackage);
+          completed.set(pkg.id, loadedPackage);
+          publish();
+        }
+      }
+
+      const workerCount = Math.min(PACKAGE_LOAD_CONCURRENCY, manifest.packages.length);
+      await Promise.all(Array.from({ length: workerCount }, () => worker()));
+
       if (controller.signal.aborted || cancelled) return;
+      const loaded = manifest.packages
+        .map((pkg) => completed.get(pkg.id))
+        .filter((entry): entry is LoadedAtlasPackage => entry !== undefined);
       setState({ status: 'ready', manifest, loaded: [...loaded] });
     }
 
