@@ -1,4 +1,5 @@
 import type { AtlasManifestV1 } from '@medhelp/atlas-pipeline';
+import type { ReactNode } from 'react';
 
 export type AtlasRegionSelection = { regionId: string; label: string };
 
@@ -38,4 +39,33 @@ export type AtlasViewerProps = {
    * this set (dispose that system's already-loaded packages), not just hide them.
    */
   visibleGroupKeys?: Set<string> | string[];
+  /**
+   * Called whenever the viewer resolves a click on a loaded package's geometry to that package's
+   * manifest id (see `@medhelp/atlas-viewer`'s `resolvePackageId`, which walks up from the
+   * raycast-hit object to the nearest ancestor tagged with that package's id — every loaded
+   * package's root `Object3D` is tagged this way as it's added to the scene). `undefined` means
+   * the host doesn't care about clicks (the pre-selection-task default: nothing happens on
+   * click). The viewer itself holds no selection state — a host that wants a "pinned labels"
+   * UI (click to add, click again or close to remove) owns that set itself and decides what a
+   * repeated click on the same id means; this callback only ever reports "this package was
+   * clicked," once per click.
+   */
+  onStructureSelected?: (packageId: string) => void;
+  /**
+   * Package ids to render a leader-line label callout for right now — the host's own "pinned
+   * structures" set (add on click, remove on a repeated click or a close control; the viewer
+   * holds none of that state itself, see `onStructureSelected`). An id whose package is not
+   * currently loaded (e.g. its system was toggled off via `visibleGroupKeys`) simply renders no
+   * callout for that id, so a host does not need to prune this list in lockstep with every
+   * loading change — though it is still free to, e.g. to avoid silently resurrecting a stale pin
+   * if the same system is toggled back on later.
+   */
+  pinnedStructureIds?: string[];
+  /**
+   * Supplies the actual callout content (typically a label box with a close control) for one
+   * pinned package id; the viewer only anchors/positions whatever this returns in 3D next to the
+   * real structure (see `@medhelp/atlas-viewer`'s `computeStructureAnchor`) — it never decides
+   * what a structure is called. Required for `pinnedStructureIds` to render anything.
+   */
+  renderStructureCallout?: (packageId: string) => ReactNode;
 };

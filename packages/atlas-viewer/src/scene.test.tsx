@@ -25,6 +25,8 @@ vi.mock('@react-three/fiber', () => ({
   useThree: () => threeState,
 }));
 
+type Point3 = { x: number; y: number; z: number };
+
 vi.mock('@react-three/drei', () => ({
   OrbitControls: forwardRef((props: Record<string, unknown>, ref: Ref<unknown>) => {
     orbitControlsProps = props;
@@ -35,6 +37,18 @@ vi.mock('@react-three/drei', () => ({
     }
     return <div data-testid="orbit-controls" />;
   }),
+  // Real positioning (screen-space projection that tracks the live camera every frame) is drei's
+  // own job, not testable under jsdom's fake camera/no-WebGL setup — see this task's report. This
+  // stub only lets scene.test.tsx verify AtlasScene's own wiring: which pinned id got rendered,
+  // with which content, anchored at which computed 3D point.
+  Html: ({ children, position }: { children: ReactNode; position: Point3 }) => (
+    <div data-testid="html-label" data-position={`${position.x},${position.y},${position.z}`}>
+      {children}
+    </div>
+  ),
+  Line: ({ points }: { points: Point3[] }) => (
+    <div data-testid="leader-line" data-points={points.map((p) => `${p.x},${p.y},${p.z}`).join('|')} />
+  ),
 }));
 
 // Imported after the mocks above so scene.tsx picks up the mocked modules.
@@ -129,5 +143,112 @@ describe('AtlasScene', () => {
 
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(camera.position.equals(fittedPosition)).toBe(true);
+  });
+
+  describe('pinned structure callouts', () => {
+    it('renders a leader line + the host-supplied content for each pinned id that is loaded', () => {
+      threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+      fakeControls = { target: new Vector3(), update: vi.fn() };
+
+      const loaded: LoadedAtlasPackage[] = [
+        { id: 'femur-l', object: sphereAt(10, 0, 0) },
+        { id: 'femur-r', object: sphereAt(-10, 0, 0) },
+      ];
+
+      const { container, getByText } = render(
+        <AtlasScene
+          loaded={loaded}
+          pinnedStructureIds={['femur-l']}
+          renderStructureCallout={(id) => <span>Label for {id}</span>}
+        />,
+      );
+
+      expect(container.querySelectorAll('[data-testid="leader-line"]')).toHaveLength(1);
+      expect(container.querySelectorAll('[data-testid="html-label"]')).toHaveLength(1);
+      expect(getByText('Label for femur-l')).toBeInTheDocument();
+    });
+
+    it('renders one callout per pinned id, each with its own content', () => {
+      threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+      fakeControls = { target: new Vector3(), update: vi.fn() };
+
+      const loaded: LoadedAtlasPackage[] = [
+        { id: 'femur-l', object: sphereAt(10, 0, 0) },
+        { id: 'femur-r', object: sphereAt(-10, 0, 0) },
+      ];
+
+      const { getByText } = render(
+        <AtlasScene
+          loaded={loaded}
+          pinnedStructureIds={['femur-l', 'femur-r']}
+          renderStructureCallout={(id) => <span>Label for {id}</span>}
+        />,
+      );
+
+      expect(getByText('Label for femur-l')).toBeInTheDocument();
+      expect(getByText('Label for femur-r')).toBeInTheDocument();
+    });
+
+    it('renders no callout for a pinned id whose package is not (or no longer) loaded', () => {
+      threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+      fakeControls = { target: new Vector3(), update: vi.fn() };
+
+      const loaded: LoadedAtlasPackage[] = [{ id: 'femur-l', object: sphereAt(10, 0, 0) }];
+
+      const { container, queryByText } = render(
+        <AtlasScene
+          loaded={loaded}
+          pinnedStructureIds={['femur-l', 'some-unloaded-package']}
+          renderStructureCallout={(id) => <span>Label for {id}</span>}
+        />,
+      );
+
+      expect(container.querySelectorAll('[data-testid="html-label"]')).toHaveLength(1);
+      expect(queryByText('Label for some-unloaded-package')).not.toBeInTheDocument();
+    });
+
+    it('renders no callouts at all when pinnedStructureIds is empty/undefined, or renderStructureCallout is missing', () => {
+      threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+      fakeControls = { target: new Vector3(), update: vi.fn() };
+      const loaded: LoadedAtlasPackage[] = [{ id: 'femur-l', object: sphereAt(10, 0, 0) }];
+
+      const noPins = render(<AtlasScene loaded={loaded} renderStructureCallout={(id) => <span>{id}</span>} />);
+      expect(noPins.container.querySelectorAll('[data-testid="html-label"]')).toHaveLength(0);
+      noPins.unmount();
+
+      const noRenderer = render(<AtlasScene loaded={loaded} pinnedStructureIds={['femur-l']} />);
+      expect(noRenderer.container.querySelectorAll('[data-testid="html-label"]')).toHaveLength(0);
+    });
+
+    it('anchors the leader line on the real structure and lifts the label above it', () => {
+      threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+      fakeControls = { target: new Vector3(), update: vi.fn() };
+
+      const object = sphereAt(10, 5, -3);
+      object.updateMatrixWorld(true);
+      const loaded: LoadedAtlasPackage[] = [{ id: 'femur-l', object }];
+
+      const { container } = render(
+        <AtlasScene loaded={loaded} pinnedStructureIds={['femur-l']} renderStructureCallout={() => <span>Fêmur</span>} />,
+      );
+
+      const line = container.querySelector('[data-testid="leader-line"]')!;
+      const [start, end] = line.getAttribute('data-points')!.split('|').map((p) => p.split(',').map(Number));
+
+      // The line starts on the real structure (its world position)...
+      expect(start![0]).toBeCloseTo(10);
+      expect(start![1]).toBeCloseTo(5);
+      expect(start![2]).toBeCloseTo(-3);
+      // ...and ends lifted straight up from it (same x/z, greater y) — see interaction/anchors.ts.
+      expect(end![0]).toBeCloseTo(10);
+      expect(end![1]).toBeGreaterThan(start![1]!);
+      expect(end![2]).toBeCloseTo(-3);
+
+      const label = container.querySelector('[data-testid="html-label"]')!;
+      const [labelX, labelY, labelZ] = label.getAttribute('data-position')!.split(',').map(Number);
+      expect(labelX).toBeCloseTo(end![0]!);
+      expect(labelY).toBeCloseTo(end![1]!);
+      expect(labelZ).toBeCloseTo(end![2]!);
+    });
   });
 });

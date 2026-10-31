@@ -80,6 +80,21 @@ function isDefaultSystem(groupKey: string): boolean {
   return displayLabel(groupKey).toLowerCase() === 'sistema esquelético';
 }
 
+/** Looks up one package's real display label (see @medhelp/atlas-pipeline's label-flat-manifest
+ * CLI, which populates this on apps/web's real manifest.json) — falls back to the raw package id
+ * only as a last resort so a label never silently renders as "undefined" if a host passes an id
+ * the current manifest doesn't (or no longer) contain. */
+function labelForPackage(manifest: AtlasManifest, packageId: string): string {
+  return manifest.packages.find((pkg) => pkg.id === packageId)?.label ?? packageId;
+}
+
+/** The real manifest groupKey a given package belongs to, or undefined if the manifest doesn't
+ * (or no longer) list that package at all. Used only to prune pinned labels whose system was
+ * just toggled off — see `AtlasRealViewer`'s `toggleSystem`. */
+function groupKeyForPackage(manifest: AtlasManifest, packageId: string): string | undefined {
+  return manifest.packages.find((pkg) => pkg.id === packageId)?.groupKey;
+}
+
 function buildSystemOptions(manifest: AtlasManifest): SystemOption[] {
   const counts = new Map<string, number>();
   for (const pkg of manifest.packages) {
@@ -107,11 +122,24 @@ function buildSystemOptions(manifest: AtlasManifest): SystemOption[] {
  * manifest listing thousands of packages (~2,960 real structure GLBs, ~26MB) — only the systems
  * the user has checked are ever fetched. One system (the skeleton) starts checked so the scene
  * isn't empty on first paint, without front-loading every system like before.
+ *
+ * Also owns the "pinned structures" set for the click-to-label feature a student actually wants
+ * when studying: click a structure to pin a Portuguese-labeled callout to it (real name, from the
+ * manifest's own `label` field — see @medhelp/atlas-pipeline's label-flat-manifest CLI), click it
+ * again (or its callout's close control) to unpin just that one, and pin several at once to build
+ * up a labeled view, the way a textbook figure shows multiple labels together. `AtlasViewer`
+ * itself holds none of this state — it only reports which package id was clicked
+ * (`onStructureSelected`) and renders whatever `renderStructureCallout` returns, anchored to the
+ * real structure in 3D (see @medhelp/atlas-viewer's `computeStructureAnchor`).
  */
 export function AtlasRealViewer() {
   const [manifest, setManifest] = useState<AtlasManifest | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [visibleGroupKeys, setVisibleGroupKeys] = useState<Set<string>>(new Set());
+  // An array, not a Set, to preserve pin order (first pinned, first rendered) — matters for a
+  // student building up several labels in a deliberate order, even though lookups below are by
+  // id membership rather than position.
+  const [pinnedStructureIds, setPinnedStructureIds] = useState<string[]>([]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -140,6 +168,8 @@ export function AtlasRealViewer() {
   const systemOptions = useMemo(() => (manifest ? buildSystemOptions(manifest) : []), [manifest]);
 
   function toggleSystem(groupKey: string): void {
+    const wasVisible = visibleGroupKeys.has(groupKey);
+
     setVisibleGroupKeys((current) => {
       const next = new Set(current);
       if (next.has(groupKey)) {
@@ -149,6 +179,22 @@ export function AtlasRealViewer() {
       }
       return next;
     });
+
+    // Turning a system off: its packages are about to unload, so drop any pinned label that
+    // belongs to it too — otherwise toggling it back on later would silently resurrect a stale
+    // pin the student never re-clicked (see this component's own doc comment).
+    if (wasVisible && manifest) {
+      setPinnedStructureIds((current) => current.filter((id) => groupKeyForPackage(manifest, id) !== groupKey));
+    }
+  }
+
+  /** Click-to-pin/unpin a structure: a first click on a given package id pins it (adds its
+   * labeled callout), a second click on that same id unpins it — the close control on the
+   * callout itself calls this with the same id for the same effect. */
+  function toggleStructure(packageId: string): void {
+    setPinnedStructureIds((current) =>
+      current.includes(packageId) ? current.filter((id) => id !== packageId) : [...current, packageId],
+    );
   }
 
   if (error) {
@@ -186,7 +232,25 @@ export function AtlasRealViewer() {
 
       <div aria-label="Visualizador 3D do Atlas MEDHELP" className="atlas-viewer-shell">
         {manifest ? (
-          <AtlasViewer manifestSource={ATLAS_MANIFEST_SOURCE} visibleGroupKeys={visibleGroupKeys} />
+          <AtlasViewer
+            manifestSource={ATLAS_MANIFEST_SOURCE}
+            onStructureSelected={toggleStructure}
+            pinnedStructureIds={pinnedStructureIds}
+            renderStructureCallout={(packageId) => (
+              <div className="atlas-structure-callout">
+                <span className="atlas-structure-callout__label">{labelForPackage(manifest, packageId)}</span>
+                <button
+                  aria-label={`Remover marcação de ${labelForPackage(manifest, packageId)}`}
+                  className="atlas-structure-callout__close"
+                  onClick={() => toggleStructure(packageId)}
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+            )}
+            visibleGroupKeys={visibleGroupKeys}
+          />
         ) : (
           <div role="status">Carregando o Atlas 3D…</div>
         )}

@@ -1,13 +1,32 @@
-import { OrbitControls } from '@react-three/drei';
+import { Html, Line, OrbitControls } from '@react-three/drei';
 import { Canvas, useThree } from '@react-three/fiber';
-import { Suspense, useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
+import { Suspense, useEffect, useMemo, useRef } from 'react';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 
+import { computeStructureAnchor } from './interaction/anchors';
 import { computeCombinedBoundingBox, computeFitCamera } from './interaction/camera';
+import { createSceneClickHandler } from './interaction/selection';
 import type { LoadedAtlasPackage } from './types';
 
 export type AtlasSceneProps = {
   loaded: LoadedAtlasPackage[];
+  /** Reported whenever a click resolves to one of `loaded`'s package ids — see
+   * interaction/selection.ts's `createSceneClickHandler`/`resolvePackageId`. `undefined` means
+   * clicks are simply ignored (no handler attached beyond R3F's own default event handling). */
+  onStructureSelected?: (packageId: string) => void;
+  /** Package ids to render a leader-line label callout for right now (the host's "pinned
+   * structures" set — see apps/web's atlas-real-viewer.tsx). An id not currently present in
+   * `loaded` (e.g. its system was just toggled off) renders nothing for that id — the callout
+   * disappears the moment its package leaves the scene, without this component needing to know
+   * why. `undefined`/empty renders no callouts at all. */
+  pinnedStructureIds?: string[];
+  /** Supplies the actual callout content (label text + close control) for one pinned package id
+   * — this component only anchors/positions it in 3D (see interaction/anchors.ts), it never
+   * decides what a structure is called (that's the manifest's `label` field, read by the host).
+   * Required for `pinnedStructureIds` to render anything; omitted, pinned ids are tracked but
+   * nothing is drawn. */
+  renderStructureCallout?: (packageId: string) => ReactNode;
 };
 
 /**
@@ -89,6 +108,66 @@ function CameraRig({ loaded }: { loaded: LoadedAtlasPackage[] }) {
   return <OrbitControls enableDamping makeDefault ref={controlsRef} />;
 }
 
+const LEADER_LINE_COLOR = '#ffdd55';
+const LEADER_LINE_WIDTH = 2;
+
+/**
+ * One pinned structure's leader-line callout: a real 3D line from the structure's own
+ * world-space anchor to a point lifted above it (see interaction/anchors.ts), plus the host's
+ * label content rendered at that lifted point via drei's `<Html>` (which keeps the label
+ * correctly positioned in screen space every frame as the camera orbits, without this component
+ * driving its own per-frame React state updates). Both only depend on `object`'s current world
+ * transform, which three.js already updates every frame regardless of this component.
+ */
+function PinnedCallout({ object, children }: { object: LoadedAtlasPackage['object']; children: ReactNode }) {
+  // object identity is stable for the lifetime of a loaded package (see AtlasPackageCache), so
+  // this only recomputes if the package itself changes, not every render.
+  const anchor = useMemo(() => computeStructureAnchor(object), [object]);
+
+  return (
+    <>
+      <Line points={[anchor.point, anchor.labelPoint]} color={LEADER_LINE_COLOR} lineWidth={LEADER_LINE_WIDTH} />
+      <Html position={anchor.labelPoint} style={{ pointerEvents: 'auto', transform: 'translate(-50%, -100%)' }}>
+        {children}
+      </Html>
+    </>
+  );
+}
+
+/**
+ * Renders a `PinnedCallout` for every `pinnedStructureIds` entry that is currently loaded — an id
+ * whose package has since unloaded (its system was toggled off, etc.) is silently skipped, which
+ * is exactly how a pinned label is meant to disappear once its structure leaves the scene (see
+ * `AtlasSceneProps.pinnedStructureIds`'s doc comment). Bounded by the number of *pinned* ids, not
+ * the total loaded package count (which can be in the hundreds) — this never iterates `loaded` to
+ * decide what to render, only to look up the handful the host asked for.
+ */
+function PinnedCallouts({
+  loaded,
+  pinnedStructureIds,
+  renderStructureCallout,
+}: {
+  loaded: LoadedAtlasPackage[];
+  pinnedStructureIds: string[];
+  renderStructureCallout: (packageId: string) => ReactNode;
+}) {
+  const loadedById = useMemo(() => new Map(loaded.map((pkg) => [pkg.id, pkg])), [loaded]);
+
+  return (
+    <>
+      {pinnedStructureIds.map((id) => {
+        const pkg = loadedById.get(id);
+        if (!pkg) return null;
+        return (
+          <PinnedCallout key={id} object={pkg.object}>
+            {renderStructureCallout(id)}
+          </PinnedCallout>
+        );
+      })}
+    </>
+  );
+}
+
 /**
  * The React Three Fiber canvas shell. Renders whatever packages are currently loaded; the
  * loading/error state machine lives in atlas-viewer.tsx, not here, so this stays a thin,
@@ -101,7 +180,14 @@ function CameraRig({ loaded }: { loaded: LoadedAtlasPackage[] }) {
  * cancelled, which a thrown-promise/Suspense load cannot be — but the boundary is in place for any
  * future Suspense-based three.js helper added inside this scene.
  */
-export function AtlasScene({ loaded }: AtlasSceneProps) {
+export function AtlasScene({ loaded, onStructureSelected, pinnedStructureIds, renderStructureCallout }: AtlasSceneProps) {
+  // One click listener on the scene's whole content group, not one per loaded primitive (which
+  // can number in the hundreds-to-thousands for a real manifest) — R3F bubbles a raycast hit up
+  // through the scene graph to this single handler, which then walks back down to "which
+  // package" via resolvePackageId. Recreated each render (cheap: a closure over the current
+  // onStructureSelected prop), never attached per-mesh.
+  const handleClick = createSceneClickHandler(onStructureSelected);
+
   return (
     <Canvas>
       <ambientLight intensity={AMBIENT_LIGHT_INTENSITY} />
@@ -109,9 +195,18 @@ export function AtlasScene({ loaded }: AtlasSceneProps) {
       <directionalLight intensity={FILL_LIGHT_INTENSITY} color={FILL_LIGHT_COLOR} position={FILL_LIGHT_POSITION} />
       <CameraRig loaded={loaded} />
       <Suspense fallback={null}>
-        {loaded.map((pkg) => (
-          <primitive key={pkg.id} object={pkg.object} />
-        ))}
+        <group onClick={handleClick}>
+          {loaded.map((pkg) => (
+            <primitive key={pkg.id} object={pkg.object} />
+          ))}
+        </group>
+        {pinnedStructureIds && pinnedStructureIds.length > 0 && renderStructureCallout ? (
+          <PinnedCallouts
+            loaded={loaded}
+            pinnedStructureIds={pinnedStructureIds}
+            renderStructureCallout={renderStructureCallout}
+          />
+        ) : null}
       </Suspense>
     </Canvas>
   );

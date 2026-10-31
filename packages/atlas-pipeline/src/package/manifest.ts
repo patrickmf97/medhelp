@@ -15,6 +15,13 @@ export type ManifestPackage = {
   /** Every catalog structure id this package owns, sorted. A structure id appears in exactly one
    * package's structureIds across the whole manifest (see buildManifest). */
   structureIds: string[];
+  /** Human-readable display name for this package, in Portuguese when available. Optional and
+   * additive: `buildManifest` itself never sets it (a system/region package can bundle many
+   * objects, so it has no single display name) — it is only populated by the one-GLB-per-package
+   * "flattened" manifest layout (see cli/label-flat-manifest.ts), where each package already
+   * corresponds to exactly one real anatomical structure. Absent (undefined) on any manifest this
+   * field doesn't apply to, never an empty string. */
+  label?: string;
 };
 
 export type ManifestStructure = {

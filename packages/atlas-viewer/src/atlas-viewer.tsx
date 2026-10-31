@@ -100,7 +100,13 @@ function groupKeysCacheKey(groupKeys: string[] | null): string | undefined {
  * for the navigation panel that drives this prop. Selection, search and the educational panel are
  * still deliberately not part of this component — later tasks add them on top.
  */
-export function AtlasViewer({ manifestSource, visibleGroupKeys }: AtlasViewerProps): ReactNode {
+export function AtlasViewer({
+  manifestSource,
+  visibleGroupKeys,
+  onStructureSelected,
+  pinnedStructureIds,
+  renderStructureCallout,
+}: AtlasViewerProps): ReactNode {
   const [state, setState] = useState<AtlasViewerState>({ status: 'loading-manifest' });
   const cacheRef = useRef<AtlasPackageCache | null>(null);
 
@@ -218,6 +224,10 @@ export function AtlasViewer({ manifestSource, visibleGroupKeys }: AtlasViewerPro
         const object = await loader.loadPackage(pkg.id, controller.signal);
         if (controller.signal.aborted || cancelled) return;
 
+        // Tag the package's root object with its own manifest id so a later raycast hit
+        // anywhere inside this subtree can be walked back up to "which package was clicked" —
+        // see interaction/selection.ts's resolvePackageId, the only reader of this field.
+        object.userData['packageId'] = pkg.id;
         cache.set({ id: pkg.id, object });
         publish('loading-packages');
       }
@@ -258,7 +268,12 @@ export function AtlasViewer({ manifestSource, visibleGroupKeys }: AtlasViewerPro
   return (
     <div data-atlas-viewer-status={state.status}>
       <AtlasSceneBoundary onError={handleSceneError}>
-        <AtlasScene loaded={state.loaded} />
+        <AtlasScene
+          loaded={state.loaded}
+          onStructureSelected={onStructureSelected}
+          pinnedStructureIds={pinnedStructureIds}
+          renderStructureCallout={renderStructureCallout}
+        />
       </AtlasSceneBoundary>
     </div>
   );
