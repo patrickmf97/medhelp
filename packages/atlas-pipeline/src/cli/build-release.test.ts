@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import type { CatalogBuildResult } from '../metadata/types';
+import { readGlb } from '../convert/compress';
+import { hexToLinearRgb } from '../convert/system-palette';
 import { buildRelease } from './build-release';
 
 const TRIANGLE_OBJ = ['v 0 0 0', 'v 1 0 0', 'v 0 1 0', 'vn 0 0 1', 'vn 0 0 1', 'vn 0 0 1', 'f 1//1 2//2 3//3', ''].join(
@@ -43,7 +45,11 @@ const catalog: CatalogBuildResult = {
     structure({
       id: 'za:bonus-collection/skeletal-system/femur',
       name: 'Femur',
-      path: ['Bonus collection', 'Skeletal system', 'Femur'],
+      // Real Z-Anatomy collection names carry a numeric prefix (e.g. "1: Skeletal system" — see
+      // group-assets.ts's groupKeyForPath doc comment and a real manifest.json), which is also
+      // the palette's real lookup key (system-palette.ts) — mirrored here rather than using an
+      // unprefixed name that wouldn't exist in the real data.
+      path: ['Bonus collection', '1: Skeletal system', 'Femur'],
       ta2Id: '1',
       objectNames: ['Femur.l', 'Femur.r'],
     }),
@@ -165,5 +171,33 @@ describe('buildRelease', () => {
     const manifestA = readFileSync(join(outDirA, 'manifest.json'), 'utf-8');
     const manifestB = readFileSync(join(outDirB, 'manifest.json'), 'utf-8');
     expect(manifestA).toBe(manifestB);
+  });
+
+  it("bakes the femur's real system palette color (bone/ivory) into its output GLB material", async () => {
+    const objDir = writeFixtureObjDir();
+    const catalogPath = writeCatalogFile();
+    const outDir = makeTempDir('atlas-build-release-out-');
+
+    await buildRelease({ objDir, outDir, catalogPath });
+
+    // Femur.l/Femur.r are packaged under the "Skeletal system" groupKey (see the catalog fixture
+    // above: path ['Bonus collection', 'Skeletal system', 'Femur'] -> groupKeyForPath unwraps to
+    // "Skeletal system"), so build-release.ts must have baked the bone/ivory palette color into
+    // their GLB material, not left them an untinted default white/gray.
+    const packagesDir = join(outDir, 'packages');
+    const pkgDirName = readdirSync(packagesDir).find((d) => d.startsWith('skeletal-system'));
+    expect(pkgDirName).toBeDefined();
+
+    const glbFiles = readdirSync(join(packagesDir, pkgDirName!)).filter((f) => f.endsWith('.glb'));
+    expect(glbFiles.length).toBeGreaterThan(0);
+
+    const document = await readGlb(readFileSync(join(packagesDir, pkgDirName!, glbFiles[0]!)), 'meshopt');
+    const material = document.getRoot().listMaterials()[0]!;
+    const [r, g, b] = hexToLinearRgb('#E8DCC4');
+    const factor = material.getBaseColorFactor();
+
+    expect(factor[0]).toBeCloseTo(r, 5);
+    expect(factor[1]).toBeCloseTo(g, 5);
+    expect(factor[2]).toBeCloseTo(b, 5);
   });
 });

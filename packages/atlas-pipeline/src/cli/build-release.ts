@@ -7,7 +7,7 @@ import type { ConvertedAsset } from '../convert/convert-glb';
 import { parseObjMesh } from '../geometry/parse-obj-mesh';
 import { slugify } from '../metadata/normalize-name';
 import type { CatalogBuildResult } from '../metadata/types';
-import { DEFAULT_MAX_PACKAGE_BYTES, groupAssets } from '../package/group-assets';
+import { DEFAULT_MAX_PACKAGE_BYTES, UNMAPPED_GROUP_KEY, groupAssets, groupKeyForPath } from '../package/group-assets';
 import { buildManifest } from '../package/manifest';
 import type { AtlasManifestV1 } from '../package/manifest';
 import { objectNameFromObjFileName, resolveStructureInfo } from './convert';
@@ -50,6 +50,9 @@ export type BuildReleaseResult = {
  */
 export async function buildRelease(args: BuildReleaseArgs): Promise<BuildReleaseResult> {
   const catalog = JSON.parse(readFileSync(args.catalogPath, 'utf-8')) as CatalogBuildResult;
+  // Mirrors groupAssets()'s own structureId -> groupKey resolution exactly, so the color baked
+  // into each GLB here always matches the real system/region the asset ends up packaged under.
+  const structureById = new Map(catalog.structures.map((s) => [s.id, s]));
 
   mkdirSync(args.outDir, { recursive: true });
 
@@ -82,7 +85,16 @@ export async function buildRelease(args: BuildReleaseArgs): Promise<BuildRelease
       continue;
     }
 
-    const uncompressed = await convertMesh({ objectName, structureId: info.structureId, license: info.license, mesh });
+    const structure = info.structureId !== null ? structureById.get(info.structureId) ?? null : null;
+    const groupKey = structure ? groupKeyForPath(structure.path) : UNMAPPED_GROUP_KEY;
+
+    const uncompressed = await convertMesh({
+      objectName,
+      structureId: info.structureId,
+      license: info.license,
+      mesh,
+      groupKey,
+    });
     const compressedBuffer = await compressWithMeshopt(uncompressed.buffer);
 
     assets.push({ ...uncompressed, buffer: compressedBuffer });

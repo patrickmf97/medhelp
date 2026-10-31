@@ -2,6 +2,7 @@ import { Accessor, Document, NodeIO } from '@gltf-transform/core';
 
 import type { ParsedMesh, Vec3 } from '../geometry/types';
 import type { LicenseTag } from '../metadata/types';
+import { colorForGroupKey, hexToLinearRgb } from './system-palette';
 
 export type ConversionJob = {
   /** The Z-Anatomy object name, e.g. "Adductor magnus.l" — kept for traceability in extras. */
@@ -10,6 +11,13 @@ export type ConversionJob = {
   structureId: string | null;
   license: LicenseTag;
   mesh: ParsedMesh;
+  /**
+   * The real manifest groupKey (anatomical system/region — see package/group-assets.ts's
+   * `groupKeyForPath`) this mesh belongs to, used to look up its synthetic per-system base color
+   * (see system-palette.ts). Optional: callers that don't care about color (lower-level tests,
+   * benchmark.ts) can omit it and get the palette's neutral default color instead of a crash.
+   */
+  groupKey?: string;
 };
 
 export type ConvertedAsset = {
@@ -124,11 +132,23 @@ export function buildDocument(job: ConversionJob): Document {
     .setBuffer(buffer)
     .setArray(toIndexBuffer(job.mesh.faces));
 
+  // Synthetic per-system color (see system-palette.ts for why this is synthetic, not the real
+  // Z-Anatomy material color, and why that's an acceptable, deliberate substitute). Roughness is
+  // set reasonably high and metallic to zero so these read as matte organic tissue, not shiny
+  // plastic, under the scene's lighting rig (see atlas-viewer's scene.tsx).
+  const [r, g, b] = hexToLinearRgb(colorForGroupKey(job.groupKey));
+  const material = document
+    .createMaterial(job.objectName)
+    .setBaseColorFactor([r, g, b, 1])
+    .setRoughnessFactor(0.85)
+    .setMetallicFactor(0);
+
   const primitive = document
     .createPrimitive()
     .setAttribute('POSITION', positionAccessor)
     .setAttribute('NORMAL', normalAccessor)
-    .setIndices(indicesAccessor);
+    .setIndices(indicesAccessor)
+    .setMaterial(material);
 
   const mesh = document.createMesh(job.objectName).addPrimitive(primitive);
   const node = document.createNode(job.objectName).setMesh(mesh);
