@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 
 import { parseObjMesh } from '../geometry/parse-obj-mesh';
 import { blenderToGltf, convertMesh } from './convert-glb';
+import { DEFAULT_SYSTEM_COLOR, hexToLinearRgb } from './system-palette';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const fixtures = join(here, '..', '..', 'fixtures', 'geometry');
@@ -110,5 +111,72 @@ describe('convertMesh', () => {
 
     const indices = primitive.getIndices()!.getArray()!;
     expect(Array.from(indices)).toEqual([0, 1, 2]);
+  });
+});
+
+describe('convertMesh color', () => {
+  it('assigns the system palette color for a given groupKey to the output material', async () => {
+    const { NodeIO } = await import('@gltf-transform/core');
+    const asset = await convertMesh({
+      objectName: 'Femur.l',
+      structureId: 'za:femur',
+      license: 'cc-by-sa-4.0',
+      mesh: triangleMesh(),
+      groupKey: '1: Skeletal system',
+    });
+
+    const document = await new NodeIO().readBinary(asset.buffer);
+    const material = document.getRoot().listMaterials()[0]!;
+    const [r, g, b] = hexToLinearRgb('#E8DCC4');
+    const factor = material.getBaseColorFactor();
+
+    expect(factor[0]).toBeCloseTo(r, 5);
+    expect(factor[1]).toBeCloseTo(g, 5);
+    expect(factor[2]).toBeCloseTo(b, 5);
+    expect(factor[3]).toBe(1);
+  });
+
+  it('gives a mesh with no groupKey the neutral default color instead of crashing', async () => {
+    const { NodeIO } = await import('@gltf-transform/core');
+    const asset = await convertMesh({
+      objectName: 'Unmapped thing',
+      structureId: null,
+      license: 'cc-by-sa-4.0',
+      mesh: triangleMesh(),
+    });
+
+    const document = await new NodeIO().readBinary(asset.buffer);
+    const material = document.getRoot().listMaterials()[0]!;
+    const [r, g, b] = hexToLinearRgb(DEFAULT_SYSTEM_COLOR);
+    const factor = material.getBaseColorFactor();
+
+    expect(factor[0]).toBeCloseTo(r, 5);
+    expect(factor[1]).toBeCloseTo(g, 5);
+    expect(factor[2]).toBeCloseTo(b, 5);
+  });
+
+  it('gives muscular-system and nervous-system meshes different colors', async () => {
+    const { NodeIO } = await import('@gltf-transform/core');
+    const io = new NodeIO();
+
+    const muscle = await convertMesh({
+      objectName: 'Adductor magnus.l',
+      structureId: 'za:muscle',
+      license: 'cc-by-sa-4.0',
+      mesh: triangleMesh(),
+      groupKey: '4: Muscular system',
+    });
+    const nerve = await convertMesh({
+      objectName: 'Cochlea.r',
+      structureId: 'za:nerve',
+      license: 'cc-by-sa-4.0',
+      mesh: triangleMesh(),
+      groupKey: '7: Nervous system & Sense organs',
+    });
+
+    const muscleFactor = (await io.readBinary(muscle.buffer)).getRoot().listMaterials()[0]!.getBaseColorFactor();
+    const nerveFactor = (await io.readBinary(nerve.buffer)).getRoot().listMaterials()[0]!.getBaseColorFactor();
+
+    expect(muscleFactor).not.toEqual(nerveFactor);
   });
 });

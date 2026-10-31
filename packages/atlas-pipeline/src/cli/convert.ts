@@ -6,6 +6,7 @@ import { DEFAULT_LICENSE } from '../metadata/types';
 import type { CatalogBuildResult, LicenseTag } from '../metadata/types';
 import { compressWithMeshopt } from '../convert/compress';
 import { convertMesh } from '../convert/convert-glb';
+import { UNMAPPED_GROUP_KEY, groupKeyForPath } from '../package/group-assets';
 
 export type StructureInfo = {
   structureId: string | null;
@@ -98,6 +99,7 @@ export async function convertDirectory(
   const catalog: CatalogBuildResult | null = args.catalogPath
     ? (JSON.parse(readFileSync(args.catalogPath, 'utf-8')) as CatalogBuildResult)
     : null;
+  const structureById = new Map((catalog?.structures ?? []).map((s) => [s.id, s]));
 
   mkdirSync(args.outDir, { recursive: true });
 
@@ -126,11 +128,15 @@ export async function convertDirectory(
       continue;
     }
 
+    const structure = info.structureId !== null ? structureById.get(info.structureId) ?? null : null;
+    const groupKey = structure ? groupKeyForPath(structure.path) : UNMAPPED_GROUP_KEY;
+
     const asset = await convertMesh({
       objectName,
       structureId: info.structureId,
       license: info.license,
       mesh,
+      groupKey,
     });
     const compressed = await compressWithMeshopt(asset.buffer);
 

@@ -26,4 +26,16 @@ export type AtlasViewerProps = {
    * structure allowlist" global constraint without a breaking change to this type.
    */
   allowedStructureIds?: string[];
+  /**
+   * Which manifest packages the viewer actually fetches/renders, scoped by the real manifest
+   * `groupKey` each package carries (the real anatomical system/region name — see
+   * `@medhelp/atlas-pipeline`'s `groupKeyForPath`). `undefined` means no restriction (every
+   * package loads, the pre-navigation-panel default). An explicit `Set`/array — including an
+   * empty one — restricts the viewer to only packages whose `groupKey` is a member: this is the
+   * primary lever for "don't eagerly load the whole atlas" (a real public manifest can list
+   * thousands of packages) — a host renders a system-picker UI on top and drives this prop as
+   * the user toggles systems on/off. The viewer itself decides what to do when a groupKey leaves
+   * this set (dispose that system's already-loaded packages), not just hide them.
+   */
+  visibleGroupKeys?: Set<string> | string[];
 };

@@ -10,12 +10,40 @@ export type AtlasSceneProps = {
   loaded: LoadedAtlasPackage[];
 };
 
-/** Reasonable, non-physically-accurate intensities for a single ambient + single directional
- * light: enough to read anatomical surface shape without authoring a full lighting rig, which is
- * out of scope for the orbital-camera task. */
-const AMBIENT_LIGHT_INTENSITY = 0.7;
-const DIRECTIONAL_LIGHT_INTENSITY = 1.1;
-const DIRECTIONAL_LIGHT_POSITION: [number, number, number] = [5, 10, 7];
+/**
+ * Cheap three-point-ish lighting rig: a key light (the dominant, brighter directional light,
+ * slightly warm), a fill light (dimmer, from the opposite side, slightly cool, so the side away
+ * from the key light isn't pure black) and a soft ambient light (so no surface ever goes fully
+ * unlit). All three are scene-wide lights — three.js computes them per-pixel in the fragment
+ * shader, not per-mesh — so, unlike shadow maps, this costs the same whether the scene holds one
+ * package or the real ~2,960-package atlas; it's a strict improvement over the single
+ * ambient+directional rig this replaces, for free.
+ *
+ * Deliberately NOT physically accurate (no energy conservation, no exposure/tone-mapping
+ * tuning) — just intensities picked to read anatomical surface shape clearly with the new
+ * per-system base colors (see @medhelp/atlas-pipeline's system-palette.ts).
+ */
+const AMBIENT_LIGHT_INTENSITY = 0.45;
+const KEY_LIGHT_INTENSITY = 1.3;
+const KEY_LIGHT_COLOR = '#fff4e6'; // slightly warm, reads as the "sun"
+const KEY_LIGHT_POSITION: [number, number, number] = [5, 10, 7];
+const FILL_LIGHT_INTENSITY = 0.5;
+const FILL_LIGHT_COLOR = '#cfe0ff'; // slightly cool, opposite side from the key light
+const FILL_LIGHT_POSITION: [number, number, number] = [-6, 2, -5];
+
+/**
+ * Shadow choice, kept cheap on purpose (the "mais leve" / "tem que ser mais leve" constraint
+ * applies here too): real per-mesh shadow mapping (`renderer.shadowMap` + `castShadow` on every
+ * loaded primitive) is one more render pass over every shadow-casting triangle, which gets
+ * expensive specifically at this app's real scale (thousands of individual package meshes, not a
+ * handful of models) — turning it on was measured to visibly cost frame rate in this task's
+ * browser verification. A single blurred ground-contact shadow (`<ContactShadows>`) would have
+ * been the cheap middle ground the task description suggests, but it still renders its own
+ * extra off-screen pass over the whole scene every frame; given the three-point rig above plus
+ * the new per-system base colors already give a legible sense of form/depth without it, the
+ * simplest and lightest choice is to skip dedicated shadow rendering entirely for now rather than
+ * pay either cost.
+ */
 
 /**
  * Fits the camera to whatever is currently loaded, exactly once, the first time `loaded` goes
@@ -77,7 +105,8 @@ export function AtlasScene({ loaded }: AtlasSceneProps) {
   return (
     <Canvas>
       <ambientLight intensity={AMBIENT_LIGHT_INTENSITY} />
-      <directionalLight intensity={DIRECTIONAL_LIGHT_INTENSITY} position={DIRECTIONAL_LIGHT_POSITION} />
+      <directionalLight intensity={KEY_LIGHT_INTENSITY} color={KEY_LIGHT_COLOR} position={KEY_LIGHT_POSITION} />
+      <directionalLight intensity={FILL_LIGHT_INTENSITY} color={FILL_LIGHT_COLOR} position={FILL_LIGHT_POSITION} />
       <CameraRig loaded={loaded} />
       <Suspense fallback={null}>
         {loaded.map((pkg) => (

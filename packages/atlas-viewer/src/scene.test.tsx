@@ -53,7 +53,7 @@ describe('AtlasScene', () => {
     vi.restoreAllMocks();
   });
 
-  it('renders the canvas shell with ambient + directional lighting and a configured orbit control, without crashing', () => {
+  it('renders the canvas shell with a cheap three-point lighting rig and a configured orbit control, without crashing', () => {
     threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
     fakeControls = { target: new Vector3(), update: vi.fn() };
 
@@ -62,9 +62,29 @@ describe('AtlasScene', () => {
     expect(getByTestId('atlas-canvas')).toBeInTheDocument();
     expect(getByTestId('orbit-controls')).toBeInTheDocument();
     expect(container.querySelector('ambientlight')).not.toBeNull();
-    expect(container.querySelector('directionallight')).not.toBeNull();
+
+    // Key + fill: two directional lights, not one, with different intensities (the key light is
+    // the brighter of the two) — see scene.tsx's lighting-rig doc comment.
+    const directionalLights = container.querySelectorAll('directionallight');
+    expect(directionalLights).toHaveLength(2);
+    const intensities = Array.from(directionalLights)
+      .map((el) => Number(el.getAttribute('intensity')))
+      .sort((a, b) => a - b);
+    expect(intensities[0]).toBeGreaterThan(0);
+    expect(intensities[1]).toBeGreaterThan(intensities[0]!);
+
     expect(orbitControlsProps?.makeDefault).toBe(true);
     expect(orbitControlsProps?.enableDamping).toBe(true);
+  });
+
+  it('does not render any shadow-casting setup (deliberately cheap — see scene.tsx)', () => {
+    threeState = { camera: new PerspectiveCamera(75, 1, 0.1, 1000), size: { width: 300, height: 150 } };
+    fakeControls = { target: new Vector3(), update: vi.fn() };
+
+    const { container } = render(<AtlasScene loaded={[]} />);
+
+    expect(container.querySelector('[castshadow]')).toBeNull();
+    expect(container.querySelector('[receiveshadow]')).toBeNull();
   });
 
   it('renders every loaded package as a primitive inside the scene', () => {
